@@ -52,7 +52,7 @@ class SeasonsPage extends StatelessWidget {
                         ),
                         itemBuilder: (context, index) => ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.grey[400],
+                            primary: Colors.grey[500],
                           ),
                           onPressed: () {
                             //TODO: open series
