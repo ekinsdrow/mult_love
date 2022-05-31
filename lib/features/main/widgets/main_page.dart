@@ -26,7 +26,7 @@ class MainPage extends StatelessWidget {
                   serials: serials,
                 ),
                 error: () => const Center(
-                  child: Text('Error'),
+                  child: Text('Ошибка при загрузке списка мультфильмов'),
                 ),
               ),
             ),
@@ -47,22 +47,51 @@ class _Serials extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemBuilder: (context, index) => ListTile(
-        leading: Image.network(
-          serials[index].logoUrl,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: Constants.mediumPadding,
+          ),
+          child: Text(
+            'Сериалы',
+            style: Theme.of(context).textTheme.headline5,
+          ),
         ),
-        title: Text(
-          serials[index].title,
+        const SizedBox(
+          height: Constants.mediumPadding,
         ),
-        onTap: () {
-          //TODO: open seasons
-        },
-      ),
-      separatorBuilder: (_, __) => const SizedBox(
-        height: Constants.smallPadding,
-      ),
-      itemCount: serials.length,
+        Expanded(
+          child: ListView.builder(
+            itemBuilder: (context, index) => ListTile(
+              contentPadding: const EdgeInsets.symmetric(
+                vertical: Constants.smallPadding,
+                horizontal: Constants.mediumPadding,
+              ),
+              leading: Image.network(
+                serials[index].logoUrl,
+                width: 50,
+                height: 50,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) {
+                    return child;
+                  }
+
+                  return const CircularProgressIndicator();
+                },
+              ),
+              title: Text(
+                serials[index].title,
+              ),
+              onTap: () {
+                //TODO: open seasons
+              },
+            ),
+            itemCount: serials.length,
+          ),
+        ),
+      ],
     );
   }
 }
