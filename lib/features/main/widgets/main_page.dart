@@ -64,6 +64,7 @@ class _Serials extends StatelessWidget {
         ),
         Expanded(
           child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) => ListTile(
               contentPadding: const EdgeInsets.symmetric(
                 vertical: Constants.smallPadding,
