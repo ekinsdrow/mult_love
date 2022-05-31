@@ -30,6 +30,13 @@ class _$AppRouter extends RootStackRouter {
       return AdaptivePage<dynamic>(
           routeData: routeData,
           child: SeasonsPage(key: args.key, serial: args.serial));
+    },
+    SeriesRoute.name: (routeData) {
+      final args = routeData.argsAs<SeriesRouteArgs>();
+      return AdaptivePage<dynamic>(
+          routeData: routeData,
+          child: SeriesPage(
+              key: args.key, season: args.season, serial: args.serial));
     }
   };
 
@@ -37,7 +44,8 @@ class _$AppRouter extends RootStackRouter {
   List<RouteConfig> get routes => [
         RouteConfig(InitialRoute.name, path: '/'),
         RouteConfig(MainRoute.name, path: '/main-page'),
-        RouteConfig(SeasonsRoute.name, path: '/seasons-page')
+        RouteConfig(SeasonsRoute.name, path: '/seasons-page'),
+        RouteConfig(SeriesRoute.name, path: '/series-page')
       ];
 }
 
@@ -78,5 +86,31 @@ class SeasonsRouteArgs {
   @override
   String toString() {
     return 'SeasonsRouteArgs{key: $key, serial: $serial}';
+  }
+}
+
+/// generated route for
+/// [SeriesPage]
+class SeriesRoute extends PageRouteInfo<SeriesRouteArgs> {
+  SeriesRoute({Key? key, required Season season, required Serial serial})
+      : super(SeriesRoute.name,
+            path: '/series-page',
+            args: SeriesRouteArgs(key: key, season: season, serial: serial));
+
+  static const String name = 'SeriesRoute';
+}
+
+class SeriesRouteArgs {
+  const SeriesRouteArgs({this.key, required this.season, required this.serial});
+
+  final Key? key;
+
+  final Season season;
+
+  final Serial serial;
+
+  @override
+  String toString() {
+    return 'SeriesRouteArgs{key: $key, season: $season, serial: $serial}';
   }
 }
