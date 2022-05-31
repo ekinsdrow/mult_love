@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mult_love/common/assets/constants.dart';
+import 'package:mult_love/features/app/router/router.dart';
 import 'package:mult_love/features/main/bloc/serials/serials_bloc.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
 import 'package:mult_love/features/main/di/main_scope.dart';
@@ -86,7 +88,11 @@ class _Serials extends StatelessWidget {
                 serials[index].title,
               ),
               onTap: () {
-                //TODO: open seasons
+                context.router.push(
+                  SeasonsRoute(
+                    serial: serials[index],
+                  ),
+                );
               },
             ),
             itemCount: serials.length,

@@ -24,13 +24,20 @@ class _$AppRouter extends RootStackRouter {
     MainRoute.name: (routeData) {
       return AdaptivePage<dynamic>(
           routeData: routeData, child: const MainPage());
+    },
+    SeasonsRoute.name: (routeData) {
+      final args = routeData.argsAs<SeasonsRouteArgs>();
+      return AdaptivePage<dynamic>(
+          routeData: routeData,
+          child: SeasonsPage(key: args.key, serial: args.serial));
     }
   };
 
   @override
   List<RouteConfig> get routes => [
         RouteConfig(InitialRoute.name, path: '/'),
-        RouteConfig(MainRoute.name, path: '/main-page')
+        RouteConfig(MainRoute.name, path: '/main-page'),
+        RouteConfig(SeasonsRoute.name, path: '/seasons-page')
       ];
 }
 
@@ -48,4 +55,28 @@ class MainRoute extends PageRouteInfo<void> {
   const MainRoute() : super(MainRoute.name, path: '/main-page');
 
   static const String name = 'MainRoute';
+}
+
+/// generated route for
+/// [SeasonsPage]
+class SeasonsRoute extends PageRouteInfo<SeasonsRouteArgs> {
+  SeasonsRoute({Key? key, required Serial serial})
+      : super(SeasonsRoute.name,
+            path: '/seasons-page',
+            args: SeasonsRouteArgs(key: key, serial: serial));
+
+  static const String name = 'SeasonsRoute';
+}
+
+class SeasonsRouteArgs {
+  const SeasonsRouteArgs({this.key, required this.serial});
+
+  final Key? key;
+
+  final Serial serial;
+
+  @override
+  String toString() {
+    return 'SeasonsRouteArgs{key: $key, serial: $serial}';
+  }
 }
