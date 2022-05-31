@@ -36,6 +36,6 @@ class SeasonsSource {
       ),
     );
 
-    return result;
+    return result.reversed.toList();
   }
 }
