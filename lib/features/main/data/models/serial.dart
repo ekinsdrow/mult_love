@@ -7,6 +7,7 @@ part 'serial.g.dart';
 class Serial with _$Serial {
   factory Serial({
     required String imageUrl,
+    required String link,
   }) = _Serial;
 
   factory Serial.fromJson(Map<String, dynamic> json) => _$SerialFromJson(json);

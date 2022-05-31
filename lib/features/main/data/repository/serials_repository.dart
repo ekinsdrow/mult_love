@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
 import 'package:mult_love/features/main/data/sources/serials_source.dart';
 
@@ -12,5 +11,5 @@ class SerialsRepository implements ISerialsRepository {
   SerialsRepository(this.serialsSource);
 
   @override
-  Future<List<Serial>> getSerials() => serialsSource.getrSerials();
+  Future<List<Serial>> getSerials() => serialsSource.getSerials();
 }
