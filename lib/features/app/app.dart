@@ -10,6 +10,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+  
       debugShowCheckedModeBanner: false,
       routeInformationParser: _router.defaultRouteParser(),
       routerDelegate: _router.delegate(),

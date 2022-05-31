@@ -45,7 +45,7 @@ dev_dependencies:
   flutter_lints: ^1.0.0
 
 flutter:
-  generate: true
+  # generate: true
   uses-material-design: true
   assets:
     - assets/images/png/
@@ -58,5 +58,5 @@ flutter:
         - asset: assets/fonts/Montserrat/Montserrat-Bold.ttf
           weight: 700
 
-flutter_gen:
-  output: lib/common/generated
+# flutter_gen:
+  # output: lib/common/generated

@@ -22,7 +22,7 @@ class InitialPage extends StatelessWidget {
         child: const Scaffold(
           body: SafeArea(
             child: Center(
-              child: Text("Template app"),
+              child: Text("Mult.love"),
             ),
           ),
         ),
