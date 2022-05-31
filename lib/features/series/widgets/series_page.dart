@@ -35,7 +35,7 @@ class SeriesPage extends StatelessWidget {
                     horizontal: Constants.mediumPadding,
                   ),
                   child: Text(
-                    serial.title,
+                    '${serial.title} - ${season.number} сезон',
                     style: Theme.of(context).textTheme.headline5,
                   ),
                 ),
