@@ -23,6 +23,7 @@ mixin _$Series {
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
+  String get link => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +34,7 @@ mixin _$Series {
 abstract class $SeriesCopyWith<$Res> {
   factory $SeriesCopyWith(Series value, $Res Function(Series) then) =
       _$SeriesCopyWithImpl<$Res>;
-  $Res call({String title, String description, String imageUrl});
+  $Res call({String title, String description, String imageUrl, String link});
 }
 
 /// @nodoc
@@ -49,6 +50,7 @@ class _$SeriesCopyWithImpl<$Res> implements $SeriesCopyWith<$Res> {
     Object? title = freezed,
     Object? description = freezed,
     Object? imageUrl = freezed,
+    Object? link = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed
@@ -63,6 +65,10 @@ class _$SeriesCopyWithImpl<$Res> implements $SeriesCopyWith<$Res> {
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      link: link == freezed
+          ? _value.link
+          : link // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -72,7 +78,7 @@ abstract class _$$_SeriesCopyWith<$Res> implements $SeriesCopyWith<$Res> {
   factory _$$_SeriesCopyWith(_$_Series value, $Res Function(_$_Series) then) =
       __$$_SeriesCopyWithImpl<$Res>;
   @override
-  $Res call({String title, String description, String imageUrl});
+  $Res call({String title, String description, String imageUrl, String link});
 }
 
 /// @nodoc
@@ -89,6 +95,7 @@ class __$$_SeriesCopyWithImpl<$Res> extends _$SeriesCopyWithImpl<$Res>
     Object? title = freezed,
     Object? description = freezed,
     Object? imageUrl = freezed,
+    Object? link = freezed,
   }) {
     return _then(_$_Series(
       title: title == freezed
@@ -103,6 +110,10 @@ class __$$_SeriesCopyWithImpl<$Res> extends _$SeriesCopyWithImpl<$Res>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      link: link == freezed
+          ? _value.link
+          : link // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -111,7 +122,10 @@ class __$$_SeriesCopyWithImpl<$Res> extends _$SeriesCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Series implements _Series {
   _$_Series(
-      {required this.title, required this.description, required this.imageUrl});
+      {required this.title,
+      required this.description,
+      required this.imageUrl,
+      required this.link});
 
   factory _$_Series.fromJson(Map<String, dynamic> json) =>
       _$$_SeriesFromJson(json);
@@ -122,10 +136,12 @@ class _$_Series implements _Series {
   final String description;
   @override
   final String imageUrl;
+  @override
+  final String link;
 
   @override
   String toString() {
-    return 'Series(title: $title, description: $description, imageUrl: $imageUrl)';
+    return 'Series(title: $title, description: $description, imageUrl: $imageUrl, link: $link)';
   }
 
   @override
@@ -136,7 +152,8 @@ class _$_Series implements _Series {
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
+            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
+            const DeepCollectionEquality().equals(other.link, link));
   }
 
   @JsonKey(ignore: true)
@@ -145,7 +162,8 @@ class _$_Series implements _Series {
       runtimeType,
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(imageUrl));
+      const DeepCollectionEquality().hash(imageUrl),
+      const DeepCollectionEquality().hash(link));
 
   @JsonKey(ignore: true)
   @override
@@ -162,7 +180,8 @@ abstract class _Series implements Series {
   factory _Series(
       {required final String title,
       required final String description,
-      required final String imageUrl}) = _$_Series;
+      required final String imageUrl,
+      required final String link}) = _$_Series;
 
   factory _Series.fromJson(Map<String, dynamic> json) = _$_Series.fromJson;
 
@@ -172,6 +191,8 @@ abstract class _Series implements Series {
   String get description => throw _privateConstructorUsedError;
   @override
   String get imageUrl => throw _privateConstructorUsedError;
+  @override
+  String get link => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_SeriesCopyWith<_$_Series> get copyWith =>

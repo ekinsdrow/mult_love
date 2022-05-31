@@ -9,6 +9,7 @@ class Series with _$Series {
     required String title,
     required String description,
     required String imageUrl,
+    required String link,
   }) = _Series;
 
   factory Series.fromJson(Map<String, dynamic> json) => _$SeriesFromJson(json);
