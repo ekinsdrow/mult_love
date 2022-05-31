@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mult_love/common/assets/constants.dart';
+import 'package:mult_love/features/app/router/router.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
 import 'package:mult_love/features/seasons/bloc/seasons_bloc/seasons_bloc.dart';
 import 'package:mult_love/features/seasons/di/seasons_scope.dart';
@@ -55,7 +57,12 @@ class SeasonsPage extends StatelessWidget {
                             primary: Colors.grey[500],
                           ),
                           onPressed: () {
-                            //TODO: open series
+                            context.router.push(
+                              SeriesRoute(
+                                season: seasons[index],
+                                serial: serial,
+                              ),
+                            );
                           },
                           child: Text(
                             seasons[index].number,
