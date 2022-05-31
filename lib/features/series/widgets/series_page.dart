@@ -4,6 +4,7 @@ import 'package:mult_love/common/assets/constants.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
 import 'package:mult_love/features/seasons/data/models/season.dart';
 import 'package:mult_love/features/series/bloc/series_bloc/series_bloc.dart';
+import 'package:mult_love/features/series/data/models/series.dart';
 import 'package:mult_love/features/series/di/series_scope.dart';
 
 class SeriesPage extends StatelessWidget {
@@ -53,17 +54,9 @@ class SeriesPage extends StatelessWidget {
                       ),
                       success: (series) => ListView.builder(
                         physics: const BouncingScrollPhysics(),
-                        itemBuilder: (context, index) => ListTile(
-                          contentPadding: const EdgeInsets.symmetric(
-                            vertical: Constants.smallPadding,
-                            horizontal: Constants.mediumPadding,
-                          ),
-                          title: Text(
-                            series[index].title,
-                          ),
-                          onTap: () {
-                            //TODO:open series
-                          },
+                        itemBuilder: (context, index) => _Item(
+                          index: index + 1,
+                          series: series[index],
                         ),
                         itemCount: series.length,
                       ),
@@ -73,6 +66,60 @@ class SeriesPage extends StatelessWidget {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _Item extends StatelessWidget {
+  const _Item({
+    required this.series,
+    required this.index,
+    Key? key,
+  }) : super(key: key);
+
+  final Series series;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        //TODO: open seria
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          horizontal: Constants.mediumPadding,
+          vertical: Constants.smallPadding,
+        ),
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.network(
+                series.imageUrl,
+                width: 174 / 1.5,
+                height: 125 / 1.5,
+              ),
+            ),
+            const SizedBox(
+              width: Constants.smallPadding,
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '$index. ${series.title}',
+                    style: const TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
