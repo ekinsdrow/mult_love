@@ -30,9 +30,14 @@ class SeriesPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  serial.title,
-                  style: Theme.of(context).textTheme.headline5,
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: Constants.mediumPadding,
+                  ),
+                  child: Text(
+                    serial.title,
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
                 ),
                 const SizedBox(
                   height: Constants.bigPadding,
