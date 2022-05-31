@@ -7,11 +7,13 @@ part of 'serial.dart';
 // **************************************************************************
 
 _$_Serial _$$_SerialFromJson(Map<String, dynamic> json) => _$_Serial(
-      imageUrl: json['imageUrl'] as String,
+      logoUrl: json['logoUrl'] as String,
+      title: json['title'] as String,
       link: json['link'] as String,
     );
 
 Map<String, dynamic> _$$_SerialToJson(_$_Serial instance) => <String, dynamic>{
-      'imageUrl': instance.imageUrl,
+      'logoUrl': instance.logoUrl,
+      'title': instance.title,
       'link': instance.link,
     };

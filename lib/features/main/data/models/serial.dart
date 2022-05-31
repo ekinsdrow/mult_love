@@ -6,7 +6,8 @@ part 'serial.g.dart';
 @freezed
 class Serial with _$Serial {
   factory Serial({
-    required String imageUrl,
+    required String logoUrl,
+    required String title,
     required String link,
   }) = _Serial;
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mult_love/common/assets/constants.dart';
 import 'package:mult_love/features/main/bloc/serials/serials_bloc.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
 import 'package:mult_love/features/main/di/main_scope.dart';
@@ -12,16 +13,21 @@ class MainPage extends StatelessWidget {
     return MainScope(
       child: Scaffold(
         body: SafeArea(
-          child: BlocBuilder<SerialsBloc, SerialsState>(
-            builder: (context, state) => state.when(
-              loading: () => const Center(
-                child: CircularProgressIndicator(),
-              ),
-              success: (serials) => _Serials(
-                serials: serials,
-              ),
-              error: () => const Center(
-                child: Text('Error'),
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              vertical: Constants.mediumPadding,
+            ),
+            child: BlocBuilder<SerialsBloc, SerialsState>(
+              builder: (context, state) => state.when(
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                success: (serials) => _Serials(
+                  serials: serials,
+                ),
+                error: () => const Center(
+                  child: Text('Error'),
+                ),
               ),
             ),
           ),
@@ -41,11 +47,20 @@ class _Serials extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (context, index) => Image.network(
-        serials[index].imageUrl,
-        width: 100,
-        height: 100,
+    return ListView.separated(
+      itemBuilder: (context, index) => ListTile(
+        leading: Image.network(
+          serials[index].logoUrl,
+        ),
+        title: Text(
+          serials[index].title,
+        ),
+        onTap: () {
+          //TODO: open seasons
+        },
+      ),
+      separatorBuilder: (_, __) => const SizedBox(
+        height: Constants.smallPadding,
       ),
       itemCount: serials.length,
     );

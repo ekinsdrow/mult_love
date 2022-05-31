@@ -21,20 +21,21 @@ class SerialsSource {
         .querySelectorAll('li');
 
     for (final serialLi in serialsLis) {
-      final style = serialLi.attributes['style']!;
-
-      final imageUrl = 'https://mult.love/' +
-          style.substring(
-            style.indexOf('url') + 4,
-            style.indexOf(') no'),
-          );
-
       final link = serialLi.querySelector('a')!.attributes['href']!;
+      final logoUrl = 'https://mult.love/' +
+          serialLi.querySelector('img')!.attributes['src']!;
+
+      final bigTitle = serialLi.querySelector('img')!.attributes['alt']!;
+      final title = bigTitle.substring(
+        bigTitle.indexOf('«') +1,
+        bigTitle.indexOf('»'),
+      );
 
       serials.add(
         Serial(
-          imageUrl: imageUrl,
           link: link,
+          logoUrl: logoUrl,
+          title: title,
         ),
       );
     }

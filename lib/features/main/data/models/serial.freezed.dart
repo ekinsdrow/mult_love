@@ -20,7 +20,8 @@ Serial _$SerialFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Serial {
-  String get imageUrl => throw _privateConstructorUsedError;
+  String get logoUrl => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
   String get link => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -32,7 +33,7 @@ mixin _$Serial {
 abstract class $SerialCopyWith<$Res> {
   factory $SerialCopyWith(Serial value, $Res Function(Serial) then) =
       _$SerialCopyWithImpl<$Res>;
-  $Res call({String imageUrl, String link});
+  $Res call({String logoUrl, String title, String link});
 }
 
 /// @nodoc
@@ -45,13 +46,18 @@ class _$SerialCopyWithImpl<$Res> implements $SerialCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? imageUrl = freezed,
+    Object? logoUrl = freezed,
+    Object? title = freezed,
     Object? link = freezed,
   }) {
     return _then(_value.copyWith(
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
+      logoUrl: logoUrl == freezed
+          ? _value.logoUrl
+          : logoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       link: link == freezed
           ? _value.link
@@ -66,7 +72,7 @@ abstract class _$$_SerialCopyWith<$Res> implements $SerialCopyWith<$Res> {
   factory _$$_SerialCopyWith(_$_Serial value, $Res Function(_$_Serial) then) =
       __$$_SerialCopyWithImpl<$Res>;
   @override
-  $Res call({String imageUrl, String link});
+  $Res call({String logoUrl, String title, String link});
 }
 
 /// @nodoc
@@ -80,13 +86,18 @@ class __$$_SerialCopyWithImpl<$Res> extends _$SerialCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? imageUrl = freezed,
+    Object? logoUrl = freezed,
+    Object? title = freezed,
     Object? link = freezed,
   }) {
     return _then(_$_Serial(
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
+      logoUrl: logoUrl == freezed
+          ? _value.logoUrl
+          : logoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       link: link == freezed
           ? _value.link
@@ -99,19 +110,21 @@ class __$$_SerialCopyWithImpl<$Res> extends _$SerialCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Serial implements _Serial {
-  _$_Serial({required this.imageUrl, required this.link});
+  _$_Serial({required this.logoUrl, required this.title, required this.link});
 
   factory _$_Serial.fromJson(Map<String, dynamic> json) =>
       _$$_SerialFromJson(json);
 
   @override
-  final String imageUrl;
+  final String logoUrl;
+  @override
+  final String title;
   @override
   final String link;
 
   @override
   String toString() {
-    return 'Serial(imageUrl: $imageUrl, link: $link)';
+    return 'Serial(logoUrl: $logoUrl, title: $title, link: $link)';
   }
 
   @override
@@ -119,7 +132,8 @@ class _$_Serial implements _Serial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Serial &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
+            const DeepCollectionEquality().equals(other.logoUrl, logoUrl) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.link, link));
   }
 
@@ -127,7 +141,8 @@ class _$_Serial implements _Serial {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(imageUrl),
+      const DeepCollectionEquality().hash(logoUrl),
+      const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(link));
 
   @JsonKey(ignore: true)
@@ -143,12 +158,16 @@ class _$_Serial implements _Serial {
 
 abstract class _Serial implements Serial {
   factory _Serial(
-      {required final String imageUrl, required final String link}) = _$_Serial;
+      {required final String logoUrl,
+      required final String title,
+      required final String link}) = _$_Serial;
 
   factory _Serial.fromJson(Map<String, dynamic> json) = _$_Serial.fromJson;
 
   @override
-  String get imageUrl => throw _privateConstructorUsedError;
+  String get logoUrl => throw _privateConstructorUsedError;
+  @override
+  String get title => throw _privateConstructorUsedError;
   @override
   String get link => throw _privateConstructorUsedError;
   @override
