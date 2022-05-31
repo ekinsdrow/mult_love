@@ -30,6 +30,7 @@ class SeasonsPage extends StatelessWidget {
               ),
               Expanded(
                 child: GridView.builder(
+                  physics: const BouncingScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4,
                     crossAxisSpacing: Constants.smallPadding,
