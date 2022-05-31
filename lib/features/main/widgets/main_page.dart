@@ -1,16 +1,98 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mult_love/common/assets/constants.dart';
+import 'package:mult_love/features/main/bloc/serials/serials_bloc.dart';
+import 'package:mult_love/features/main/data/models/serial.dart';
+import 'package:mult_love/features/main/di/main_scope.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Text('Main'),
+    return MainScope(
+      child: Scaffold(
+        body: SafeArea(
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              vertical: Constants.mediumPadding,
+            ),
+            child: BlocBuilder<SerialsBloc, SerialsState>(
+              builder: (context, state) => state.when(
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                success: (serials) => _Serials(
+                  serials: serials,
+                ),
+                error: () => const Center(
+                  child: Text('Ошибка при загрузке списка мультфильмов'),
+                ),
+              ),
+            ),
+          ),
         ),
       ),
+    );
+  }
+}
+
+class _Serials extends StatelessWidget {
+  const _Serials({
+    Key? key,
+    required this.serials,
+  }) : super(key: key);
+
+  final List<Serial> serials;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: Constants.mediumPadding,
+          ),
+          child: Text(
+            'Сериалы',
+            style: Theme.of(context).textTheme.headline5,
+          ),
+        ),
+        const SizedBox(
+          height: Constants.mediumPadding,
+        ),
+        Expanded(
+          child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            itemBuilder: (context, index) => ListTile(
+              contentPadding: const EdgeInsets.symmetric(
+                vertical: Constants.smallPadding,
+                horizontal: Constants.mediumPadding,
+              ),
+              leading: Image.network(
+                serials[index].logoUrl,
+                width: 50,
+                height: 50,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) {
+                    return child;
+                  }
+
+                  return const CircularProgressIndicator();
+                },
+              ),
+              title: Text(
+                serials[index].title,
+              ),
+              onTap: () {
+                //TODO: open seasons
+              },
+            ),
+            itemCount: serials.length,
+          ),
+        ),
+      ],
     );
   }
 }

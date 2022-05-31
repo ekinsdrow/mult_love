@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'initial_bloc.dart';
+part of 'serials_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,88 +15,87 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$InitialEvent {
+mixin _$SerialsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? fetch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Fetch value) fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Fetch value)? fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Fetch value)? fetch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InitialEventCopyWith<$Res> {
-  factory $InitialEventCopyWith(
-          InitialEvent value, $Res Function(InitialEvent) then) =
-      _$InitialEventCopyWithImpl<$Res>;
+abstract class $SerialsEventCopyWith<$Res> {
+  factory $SerialsEventCopyWith(
+          SerialsEvent value, $Res Function(SerialsEvent) then) =
+      _$SerialsEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$InitialEventCopyWithImpl<$Res> implements $InitialEventCopyWith<$Res> {
-  _$InitialEventCopyWithImpl(this._value, this._then);
+class _$SerialsEventCopyWithImpl<$Res> implements $SerialsEventCopyWith<$Res> {
+  _$SerialsEventCopyWithImpl(this._value, this._then);
 
-  final InitialEvent _value;
+  final SerialsEvent _value;
   // ignore: unused_field
-  final $Res Function(InitialEvent) _then;
+  final $Res Function(SerialsEvent) _then;
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$_FetchCopyWith<$Res> {
+  factory _$$_FetchCopyWith(_$_Fetch value, $Res Function(_$_Fetch) then) =
+      __$$_FetchCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res> extends _$InitialEventCopyWithImpl<$Res>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
-      : super(_value, (v) => _then(v as _$_Started));
+class __$$_FetchCopyWithImpl<$Res> extends _$SerialsEventCopyWithImpl<$Res>
+    implements _$$_FetchCopyWith<$Res> {
+  __$$_FetchCopyWithImpl(_$_Fetch _value, $Res Function(_$_Fetch) _then)
+      : super(_value, (v) => _then(v as _$_Fetch));
 
   @override
-  _$_Started get _value => super._value as _$_Started;
+  _$_Fetch get _value => super._value as _$_Fetch;
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$_Fetch implements _Fetch {
+  const _$_Fetch();
 
   @override
   String toString() {
-    return 'InitialEvent.started()';
+    return 'SerialsEvent.fetch()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$_Fetch);
   }
 
   @override
@@ -105,27 +104,27 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() fetch,
   }) {
-    return started();
+    return fetch();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? fetch,
   }) {
-    return started?.call();
+    return fetch?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? fetch,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (fetch != null) {
+      return fetch();
     }
     return orElse();
   }
@@ -133,54 +132,57 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Fetch value) fetch,
   }) {
-    return started(this);
+    return fetch(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Fetch value)? fetch,
   }) {
-    return started?.call(this);
+    return fetch?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Fetch value)? fetch,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (fetch != null) {
+      return fetch(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements InitialEvent {
-  const factory _Started() = _$_Started;
+abstract class _Fetch implements SerialsEvent {
+  const factory _Fetch() = _$_Fetch;
 }
 
 /// @nodoc
-mixin _$InitialState {
+mixin _$SerialsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<Serial> serials) success,
+    required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<Serial> serials)? success,
+    TResult Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<Serial> serials)? success,
+    TResult Function()? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -188,37 +190,40 @@ mixin _$InitialState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InitialStateCopyWith<$Res> {
-  factory $InitialStateCopyWith(
-          InitialState value, $Res Function(InitialState) then) =
-      _$InitialStateCopyWithImpl<$Res>;
+abstract class $SerialsStateCopyWith<$Res> {
+  factory $SerialsStateCopyWith(
+          SerialsState value, $Res Function(SerialsState) then) =
+      _$SerialsStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$InitialStateCopyWithImpl<$Res> implements $InitialStateCopyWith<$Res> {
-  _$InitialStateCopyWithImpl(this._value, this._then);
+class _$SerialsStateCopyWithImpl<$Res> implements $SerialsStateCopyWith<$Res> {
+  _$SerialsStateCopyWithImpl(this._value, this._then);
 
-  final InitialState _value;
+  final SerialsState _value;
   // ignore: unused_field
-  final $Res Function(InitialState) _then;
+  final $Res Function(SerialsState) _then;
 }
 
 /// @nodoc
@@ -229,7 +234,7 @@ abstract class _$$_LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res> extends _$InitialStateCopyWithImpl<$Res>
+class __$$_LoadingCopyWithImpl<$Res> extends _$SerialsStateCopyWithImpl<$Res>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
       : super(_value, (v) => _then(v as _$_Loading));
@@ -245,7 +250,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'InitialState.loading()';
+    return 'SerialsState.loading()';
   }
 
   @override
@@ -261,7 +266,8 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<Serial> serials) success,
+    required TResult Function() error,
   }) {
     return loading();
   }
@@ -270,7 +276,8 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<Serial> serials)? success,
+    TResult Function()? error,
   }) {
     return loading?.call();
   }
@@ -279,7 +286,8 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<Serial> serials)? success,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -293,6 +301,7 @@ class _$_Loading implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
   }) {
     return loading(this);
   }
@@ -302,6 +311,7 @@ class _$_Loading implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
   }) {
     return loading?.call(this);
   }
@@ -311,6 +321,7 @@ class _$_Loading implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -320,7 +331,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements InitialState {
+abstract class _Loading implements SerialsState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -329,64 +340,95 @@ abstract class _$$_SuccessCopyWith<$Res> {
   factory _$$_SuccessCopyWith(
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
+  $Res call({List<Serial> serials});
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res> extends _$InitialStateCopyWithImpl<$Res>
+class __$$_SuccessCopyWithImpl<$Res> extends _$SerialsStateCopyWithImpl<$Res>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
       : super(_value, (v) => _then(v as _$_Success));
 
   @override
   _$_Success get _value => super._value as _$_Success;
+
+  @override
+  $Res call({
+    Object? serials = freezed,
+  }) {
+    return _then(_$_Success(
+      serials: serials == freezed
+          ? _value._serials
+          : serials // ignore: cast_nullable_to_non_nullable
+              as List<Serial>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Success implements _Success {
-  const _$_Success();
+  const _$_Success({required final List<Serial> serials}) : _serials = serials;
+
+  final List<Serial> _serials;
+  @override
+  List<Serial> get serials {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_serials);
+  }
 
   @override
   String toString() {
-    return 'InitialState.success()';
+    return 'SerialsState.success(serials: $serials)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Success);
+        (other.runtimeType == runtimeType &&
+            other is _$_Success &&
+            const DeepCollectionEquality().equals(other._serials, _serials));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_serials));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SuccessCopyWith<_$_Success> get copyWith =>
+      __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<Serial> serials) success,
+    required TResult Function() error,
   }) {
-    return success();
+    return success(serials);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<Serial> serials)? success,
+    TResult Function()? error,
   }) {
-    return success?.call();
+    return success?.call(serials);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<Serial> serials)? success,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success();
+      return success(serials);
     }
     return orElse();
   }
@@ -396,6 +438,7 @@ class _$_Success implements _Success {
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
   }) {
     return success(this);
   }
@@ -405,6 +448,7 @@ class _$_Success implements _Success {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
   }) {
     return success?.call(this);
   }
@@ -414,6 +458,7 @@ class _$_Success implements _Success {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -423,6 +468,119 @@ class _$_Success implements _Success {
   }
 }
 
-abstract class _Success implements InitialState {
-  const factory _Success() = _$_Success;
+abstract class _Success implements SerialsState {
+  const factory _Success({required final List<Serial> serials}) = _$_Success;
+
+  List<Serial> get serials => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_SuccessCopyWith<_$_Success> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ErrorCopyWith<$Res> {
+  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
+      __$$_ErrorCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_ErrorCopyWithImpl<$Res> extends _$SerialsStateCopyWithImpl<$Res>
+    implements _$$_ErrorCopyWith<$Res> {
+  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+      : super(_value, (v) => _then(v as _$_Error));
+
+  @override
+  _$_Error get _value => super._value as _$_Error;
+}
+
+/// @nodoc
+
+class _$_Error implements _Error {
+  const _$_Error();
+
+  @override
+  String toString() {
+    return 'SerialsState.error()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Error);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<Serial> serials) success,
+    required TResult Function() error,
+  }) {
+    return error();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Serial> serials)? success,
+    TResult Function()? error,
+  }) {
+    return error?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Serial> serials)? success,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Error implements SerialsState {
+  const factory _Error() = _$_Error;
 }
