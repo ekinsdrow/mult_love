@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -193,44 +195,45 @@ class _VideoState extends State<_Video> {
                         horizontal: Constants.smallPadding,
                       ),
                       child: ValueListenableBuilder<VideoPlayerValue>(
-                          valueListenable: _controller,
-                          builder: (context, value, child) {
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                IconButton(
-                                  splashRadius: 20,
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    value.isPlaying
-                                        ? Icons.pause
-                                        : Icons.play_arrow,
-                                  ),
+                        valueListenable: _controller,
+                        builder: (context, value, child) {
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconButton(
+                                splashRadius: 20,
+                                onPressed: () {},
+                                icon: Icon(
+                                  value.isPlaying
+                                      ? Icons.pause
+                                      : Icons.play_arrow,
                                 ),
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width -
-                                      Constants.mediumPadding * 2 -
-                                      130,
-                                  child: ProgressBar(
-                                    progress: value.position,
-                                    onSeek: (duration) {
-                                      _controller.seekTo(duration);
-                                    },
-                                    total: value.duration,
-                                  ),
-                                ),
-                                IconButton(
-                                  splashRadius: 20,
-                                  onPressed: () {
-                                    //TODO: fullscreen
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width -
+                                    Constants.mediumPadding * 2 -
+                                    130,
+                                child: ProgressBar(
+                                  progress: value.position,
+                                  onSeek: (duration) {
+                                    _controller.seekTo(duration);
                                   },
-                                  icon: const Icon(
-                                    Icons.fullscreen,
-                                  ),
+                                  total: value.duration,
                                 ),
-                              ],
-                            );
-                          }),
+                              ),
+                              IconButton(
+                                splashRadius: 20,
+                                onPressed: () {
+                                  //TODO: fullscreen
+                                },
+                                icon: const Icon(
+                                  Icons.fullscreen,
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
                     ),
                   ),
                 )
