@@ -11,12 +11,10 @@ class SpecificSeriesScope extends StatelessWidget {
   const SpecificSeriesScope({
     Key? key,
     required this.child,
-    required this.serialLink,
     required this.series,
   }) : super(key: key);
 
   final Widget child;
-  final String serialLink;
   final Series series;
 
   @override
