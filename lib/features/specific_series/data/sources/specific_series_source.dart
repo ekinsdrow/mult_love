@@ -21,6 +21,12 @@ class SpecificSeriesSource {
     final doc = parse(response.data);
     final body = doc.body!.innerHtml;
 
+    log(body);
+    final imageUrl = body.substring(
+      body.indexOf('poster:\'') + 8,
+      body.indexOf('_big.jpg') + 8,
+    );
+
     final videoLink = body.substring(
       body.indexOf('file:\'') + 6,
       body.indexOf('.mp4') + 4,
@@ -67,7 +73,7 @@ class SpecificSeriesSource {
       title: series.title,
       description: series.description,
       videoLink: videoLink,
-      imageUrl: series.imageUrl,
+      imageUrl: imageUrl,
       voices: voices,
     );
   }
