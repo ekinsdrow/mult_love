@@ -7,7 +7,7 @@ import 'package:mult_love/features/series/data/models/series.dart';
 import 'package:mult_love/features/specific_series/bloc/specific_series_bloc/specific_series_bloc.dart';
 import 'package:mult_love/features/specific_series/di/specific_series_scope.dart';
 
-class SpecificSeriesPage extends StatelessWidget {
+class SpecificSeriesPage extends StatefulWidget {
   const SpecificSeriesPage({
     Key? key,
     required this.season,
@@ -22,10 +22,17 @@ class SpecificSeriesPage extends StatelessWidget {
   final String seriesIndex;
 
   @override
+  State<SpecificSeriesPage> createState() => _SpecificSeriesPageState();
+}
+
+class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
+  int voiceIndex = 0;
+
+  @override
   Widget build(BuildContext context) {
     return SpecificSeriesScope(
-      series: series,
-      serial: serial,
+      series: widget.series,
+      serial: widget.serial,
       child: Scaffold(
         body: SafeArea(
           child: Container(
@@ -40,25 +47,25 @@ class SpecificSeriesPage extends StatelessWidget {
                 error: () => const Center(
                   child: Text('Ошибка при запросе серии'),
                 ),
-                success: (series) => Column(
+                success: (s) => Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      serial.title,
+                      widget.serial.title,
                       style: Theme.of(context).textTheme.headline5,
                     ),
                     const SizedBox(
                       height: Constants.smallPadding,
                     ),
                     Text(
-                      '${season.number} сезон - $seriesIndex серия',
+                      '${widget.season.number} сезон - ${widget.seriesIndex} серия',
                       style: Theme.of(context).textTheme.headline5,
                     ),
                     const SizedBox(
                       height: Constants.smallPadding,
                     ),
                     Text(
-                      series.title,
+                      s.title,
                       style: Theme.of(context).textTheme.headline5,
                     ),
                     const SizedBox(
@@ -71,19 +78,29 @@ class SpecificSeriesPage extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) => ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: series.voices[index].isActive
+                            primary: voiceIndex == index
                                 ? Theme.of(context).progressIndicatorTheme.color
                                 : Colors.grey,
                           ),
                           onPressed: () {
-                            //TODO: change voice
+                            setState(() {
+                              voiceIndex = index;
+                            });
+                            
+                            context.read<SpecificSeriesBloc>().add(
+                                  SpecificSeriesEvent.fetch(
+                                    series: widget.series,
+                                    serial: widget.serial,
+                                    link: s.voices[index].link,
+                                  ),
+                                );
                           },
-                          child: Text(series.voices[index].name),
+                          child: Text(s.voices[index].name),
                         ),
                         separatorBuilder: (_, __) => const SizedBox(
                           width: Constants.smallPadding,
                         ),
-                        itemCount: series.voices.length,
+                        itemCount: s.voices.length,
                       ),
                     ),
                     const SizedBox(
@@ -95,7 +112,7 @@ class SpecificSeriesPage extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: Image.network(
-                          series.imageUrl,
+                          widget.series.imageUrl,
                           fit: BoxFit.cover,
                           width: double.infinity,
                         ),

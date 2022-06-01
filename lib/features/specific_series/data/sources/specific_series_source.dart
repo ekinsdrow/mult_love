@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:html/parser.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
@@ -15,7 +17,8 @@ class SpecificSeriesSource {
     required String link,
     required Serial serial,
   }) async {
-    final response = await dio.get(series.link);
+    log(link);
+    final response = await dio.get(link);
 
     final doc = parse(response.data);
     final body = doc.body!.innerHtml;
@@ -36,19 +39,8 @@ class SpecificSeriesSource {
         doc.body!.querySelector('#centerSeries')!.querySelector('#voice')!;
 
     for (final voice in voicesElem.querySelectorAll('li')) {
-      if (voice.id != 'otherVoice') {
-        final isActive = voice.classes.contains('voiceOn');
-        final link = voice.querySelector('a')!.attributes['href']!;
-        final name = voice.querySelector('a')!.innerHtml;
-
-        voices.add(
-          Voice(
-            name: name,
-            link: '${serial.link}/$link',
-            isActive: isActive,
-          ),
-        );
-      } else {
+      log(voice.id);
+      if (voice.id == 'otherVoice') {
         final fontsElem = voice.querySelector('div')!.querySelectorAll('font');
         for (final f in fontsElem) {
           final link = f.querySelector('a')!.attributes['href']!;
@@ -62,6 +54,32 @@ class SpecificSeriesSource {
             ),
           );
         }
+      } else if (voice.id == 'captionsrusAll') {
+        final aElem = voice.querySelector('div')!.querySelectorAll('a');
+        for (final a in aElem) {
+          final link = a.attributes['href']!;
+          final name = a.innerHtml;
+
+          voices.add(
+            Voice(
+              name: 'Субтитры ' + name,
+              link: '${serial.link}/$link',
+              isActive: false,
+            ),
+          );
+        }
+      } else {
+        final isActive = voice.classes.contains('voiceOn');
+        final link = voice.querySelector('a')!.attributes['href']!;
+        final name = voice.querySelector('a')!.innerHtml;
+
+        voices.add(
+          Voice(
+            name: name,
+            link: '${serial.link}/$link',
+            isActive: isActive,
+          ),
+        );
       }
     }
 
