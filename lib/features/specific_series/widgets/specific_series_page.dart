@@ -233,7 +233,7 @@ class _VideoState extends State<_Video> {
       _controller = VideoPlayerController.network(url);
       await _controller.initialize();
 
-      // _controller.setVolume(100);
+      _controller.setVolume(100);
 
       _controller.play();
       init = true;
