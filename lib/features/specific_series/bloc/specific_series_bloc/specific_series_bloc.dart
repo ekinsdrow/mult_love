@@ -32,6 +32,7 @@ class SpecificSeriesBloc
     try {
       final specificSeries = await specificSeriesRepository.getSeries(
         series: event.series,
+        link: event.link,
         serial: event.serial,
       );
 

@@ -7,6 +7,7 @@ abstract class ISpecificSeriesRepository {
   Future<SpecificSeries> getSeries({
     required Series series,
     required Serial serial,
+    required String link,
   });
 }
 
@@ -18,10 +19,12 @@ class SpecificSeriesRepository implements ISpecificSeriesRepository {
   @override
   Future<SpecificSeries> getSeries({
     required Series series,
+    required String link,
     required Serial serial,
   }) =>
       specificSeriesSource.getSeries(
         series: series,
         serial: serial,
+        link: link,
       );
 }
