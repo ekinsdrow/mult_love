@@ -1,5 +1,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
@@ -223,6 +224,7 @@ class _VideoState extends State<_Video> {
   late VideoPlayerController _controller;
 
   bool init = false;
+  bool _showPanel = true;
 
   Future<void> _initController(
     String url,
@@ -240,12 +242,24 @@ class _VideoState extends State<_Video> {
   @override
   void initState() {
     super.initState();
+    _hidePanelTimerStart();
   }
 
   @override
   void dispose() {
     super.dispose();
     _controller.dispose();
+  }
+
+  void _hidePanelTimerStart() {
+    Timer(
+      const Duration(seconds: 3),
+      () {
+        setState(() {
+          _showPanel = false;
+        });
+      },
+    );
   }
 
   @override
@@ -256,10 +270,18 @@ class _VideoState extends State<_Video> {
         if (snapshot.connectionState == ConnectionState.done) {
           return GestureDetector(
             onTap: () {
-              if (_controller.value.isPlaying) {
-                _controller.pause();
+              if (!_showPanel) {
+                setState(() {
+                  _showPanel = true;
+                });
+
+                _hidePanelTimerStart();
               } else {
-                _controller.play();
+                if (_controller.value.isPlaying) {
+                  _controller.pause();
+                } else {
+                  _controller.play();
+                }
               }
             },
             child: Stack(
@@ -270,63 +292,64 @@ class _VideoState extends State<_Video> {
                     key: widget.playerKey,
                   ),
                 ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  child: Container(
-                    height: 70,
-                    width: widget.isFullScreen
-                        ? MediaQuery.of(context).size.width
-                        : MediaQuery.of(context).size.width -
-                            Constants.mediumPadding * 2,
-                    color: Colors.black38,
+                if (_showPanel)
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: Constants.smallPadding,
-                      ),
-                      child: ValueListenableBuilder<VideoPlayerValue>(
-                        valueListenable: _controller,
-                        builder: (context, value, child) {
-                          return Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              IgnorePointer(
-                                child: IconButton(
-                                  splashRadius: 20,
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    value.isPlaying
-                                        ? Icons.pause
-                                        : Icons.play_arrow,
+                      height: 70,
+                      width: widget.isFullScreen
+                          ? MediaQuery.of(context).size.width
+                          : MediaQuery.of(context).size.width -
+                              Constants.mediumPadding * 2,
+                      color: Colors.black38,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: Constants.smallPadding,
+                        ),
+                        child: ValueListenableBuilder<VideoPlayerValue>(
+                          valueListenable: _controller,
+                          builder: (context, value, child) {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                IgnorePointer(
+                                  child: IconButton(
+                                    splashRadius: 20,
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      value.isPlaying
+                                          ? Icons.pause
+                                          : Icons.play_arrow,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width -
-                                    Constants.mediumPadding * 2 -
-                                    130,
-                                child: ProgressBar(
-                                  progress: value.position,
-                                  onSeek: (duration) {
-                                    _controller.seekTo(duration);
-                                  },
-                                  total: value.duration,
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width -
+                                      Constants.mediumPadding * 2 -
+                                      130,
+                                  child: ProgressBar(
+                                    progress: value.position,
+                                    onSeek: (duration) {
+                                      _controller.seekTo(duration);
+                                    },
+                                    total: value.duration,
+                                  ),
                                 ),
-                              ),
-                              IconButton(
-                                splashRadius: 20,
-                                onPressed: widget.fullscreenCallback,
-                                icon: const Icon(
-                                  Icons.fullscreen,
+                                IconButton(
+                                  splashRadius: 20,
+                                  onPressed: widget.fullscreenCallback,
+                                  icon: const Icon(
+                                    Icons.fullscreen,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          );
-                        },
+                              ],
+                            );
+                          },
+                        ),
                       ),
                     ),
-                  ),
-                )
+                  )
               ],
             ),
           );
