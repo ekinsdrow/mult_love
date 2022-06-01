@@ -48,6 +48,7 @@ class SpecificSeriesScope extends StatelessWidget {
                   SpecificSeriesEvent.fetch(
                     series: series,
                     serial: serial,
+                    link: serial.link,
                   ),
                 ),
             ),

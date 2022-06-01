@@ -12,6 +12,7 @@ class SpecificSeriesSource {
 
   Future<SpecificSeries> getSeries({
     required Series series,
+    required String link,
     required Serial serial,
   }) async {
     final response = await dio.get(series.link);
