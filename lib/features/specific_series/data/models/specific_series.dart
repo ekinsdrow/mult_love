@@ -9,6 +9,7 @@ class SpecificSeries with _$SpecificSeries {
   factory SpecificSeries({
     required String title,
     required String description,
+    required String videoLink,
     required List<Voice> voices,
   }) = _SpecificSeries;
 

@@ -2,7 +2,7 @@ import 'package:mult_love/features/specific_series/data/models/specific_series.d
 import 'package:mult_love/features/specific_series/data/sources/specific_series_source.dart';
 
 abstract class ISpecificSeriesRepository {
-  Future<List<SpecificSeries>> getSeries({
+  Future<SpecificSeries> getSeries({
     required String link,
   });
 }
@@ -13,7 +13,7 @@ class SpecificSeriesRepository implements ISpecificSeriesRepository {
   SpecificSeriesRepository(this.specificSeriesSource);
 
   @override
-  Future<List<SpecificSeries>> getSeries({
+  Future<SpecificSeries> getSeries({
     required String link,
   }) =>
       specificSeriesSource.getSeries(link: link);
