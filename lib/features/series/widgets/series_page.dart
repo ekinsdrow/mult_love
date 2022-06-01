@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mult_love/common/assets/constants.dart';
+import 'package:mult_love/features/app/router/router.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
 import 'package:mult_love/features/seasons/data/models/season.dart';
 import 'package:mult_love/features/series/bloc/series_bloc/series_bloc.dart';
@@ -57,6 +59,8 @@ class SeriesPage extends StatelessWidget {
                         itemBuilder: (context, index) => _Item(
                           index: index + 1,
                           series: series[index],
+                          season: season,
+                          serial: serial,
                         ),
                         itemCount: series.length,
                       ),
@@ -76,17 +80,28 @@ class _Item extends StatelessWidget {
   const _Item({
     required this.series,
     required this.index,
+    required this.season,
+    required this.serial,
     Key? key,
   }) : super(key: key);
 
   final Series series;
+  final Serial serial;
+  final Season season;
   final int index;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        //TODO: open seria
+        context.router.push(
+          SpecificSeriesRoute(
+            season: season,
+            seriesIndex: index.toString(),
+            serial: serial,
+            series: series,
+          ),
+        );
       },
       child: Container(
         padding: const EdgeInsets.symmetric(
