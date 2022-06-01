@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:html/parser.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
@@ -21,7 +19,6 @@ class SpecificSeriesSource {
     final doc = parse(response.data);
     final body = doc.body!.innerHtml;
 
-    log(body);
     final imageUrl = body.substring(
       body.indexOf('poster:\'') + 8,
       body.indexOf('_big.jpg') + 8,
@@ -66,8 +63,6 @@ class SpecificSeriesSource {
         }
       }
     }
-
-    log(voices.toString());
 
     return SpecificSeries(
       title: series.title,
