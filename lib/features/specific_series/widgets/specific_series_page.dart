@@ -89,6 +89,7 @@ class SpecificSeriesPage extends StatelessWidget {
                     const SizedBox(
                       height: Constants.bigPadding,
                     ),
+                    //TODO: video
                     AspectRatio(
                       aspectRatio: 16 / 9,
                       child: ClipRRect(
