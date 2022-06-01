@@ -23,6 +23,7 @@ class SpecificSeriesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SpecificSeriesScope(
       series: series,
+      serial: serial,
       child: Scaffold(
         body: SafeArea(
           child: Container(
@@ -37,8 +38,10 @@ class SpecificSeriesPage extends StatelessWidget {
                 error: () => const Center(
                   child: Text('Ошибка при запросе серии'),
                 ),
-                success: (series) => Text(
-                  series.description,
+                success: (series) => Center(
+                  child: Text(
+                    series.videoLink,
+                  ),
                 ),
               ),
             ),

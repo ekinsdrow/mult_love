@@ -23,6 +23,7 @@ mixin _$SpecificSeries {
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get videoLink => throw _privateConstructorUsedError;
+  String get imageUrl => throw _privateConstructorUsedError;
   List<Voice> get voices => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +38,11 @@ abstract class $SpecificSeriesCopyWith<$Res> {
           SpecificSeries value, $Res Function(SpecificSeries) then) =
       _$SpecificSeriesCopyWithImpl<$Res>;
   $Res call(
-      {String title, String description, String videoLink, List<Voice> voices});
+      {String title,
+      String description,
+      String videoLink,
+      String imageUrl,
+      List<Voice> voices});
 }
 
 /// @nodoc
@@ -54,6 +59,7 @@ class _$SpecificSeriesCopyWithImpl<$Res>
     Object? title = freezed,
     Object? description = freezed,
     Object? videoLink = freezed,
+    Object? imageUrl = freezed,
     Object? voices = freezed,
   }) {
     return _then(_value.copyWith(
@@ -68,6 +74,10 @@ class _$SpecificSeriesCopyWithImpl<$Res>
       videoLink: videoLink == freezed
           ? _value.videoLink
           : videoLink // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: imageUrl == freezed
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       voices: voices == freezed
           ? _value.voices
@@ -85,7 +95,11 @@ abstract class _$$_SpecificSeriesCopyWith<$Res>
       __$$_SpecificSeriesCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String title, String description, String videoLink, List<Voice> voices});
+      {String title,
+      String description,
+      String videoLink,
+      String imageUrl,
+      List<Voice> voices});
 }
 
 /// @nodoc
@@ -104,6 +118,7 @@ class __$$_SpecificSeriesCopyWithImpl<$Res>
     Object? title = freezed,
     Object? description = freezed,
     Object? videoLink = freezed,
+    Object? imageUrl = freezed,
     Object? voices = freezed,
   }) {
     return _then(_$_SpecificSeries(
@@ -118,6 +133,10 @@ class __$$_SpecificSeriesCopyWithImpl<$Res>
       videoLink: videoLink == freezed
           ? _value.videoLink
           : videoLink // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: imageUrl == freezed
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       voices: voices == freezed
           ? _value._voices
@@ -134,6 +153,7 @@ class _$_SpecificSeries implements _SpecificSeries {
       {required this.title,
       required this.description,
       required this.videoLink,
+      required this.imageUrl,
       required final List<Voice> voices})
       : _voices = voices;
 
@@ -146,6 +166,8 @@ class _$_SpecificSeries implements _SpecificSeries {
   final String description;
   @override
   final String videoLink;
+  @override
+  final String imageUrl;
   final List<Voice> _voices;
   @override
   List<Voice> get voices {
@@ -155,7 +177,7 @@ class _$_SpecificSeries implements _SpecificSeries {
 
   @override
   String toString() {
-    return 'SpecificSeries(title: $title, description: $description, videoLink: $videoLink, voices: $voices)';
+    return 'SpecificSeries(title: $title, description: $description, videoLink: $videoLink, imageUrl: $imageUrl, voices: $voices)';
   }
 
   @override
@@ -167,6 +189,7 @@ class _$_SpecificSeries implements _SpecificSeries {
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.videoLink, videoLink) &&
+            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
             const DeepCollectionEquality().equals(other._voices, _voices));
   }
 
@@ -177,6 +200,7 @@ class _$_SpecificSeries implements _SpecificSeries {
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(videoLink),
+      const DeepCollectionEquality().hash(imageUrl),
       const DeepCollectionEquality().hash(_voices));
 
   @JsonKey(ignore: true)
@@ -195,6 +219,7 @@ abstract class _SpecificSeries implements SpecificSeries {
       {required final String title,
       required final String description,
       required final String videoLink,
+      required final String imageUrl,
       required final List<Voice> voices}) = _$_SpecificSeries;
 
   factory _SpecificSeries.fromJson(Map<String, dynamic> json) =
@@ -206,6 +231,8 @@ abstract class _SpecificSeries implements SpecificSeries {
   String get description => throw _privateConstructorUsedError;
   @override
   String get videoLink => throw _privateConstructorUsedError;
+  @override
+  String get imageUrl => throw _privateConstructorUsedError;
   @override
   List<Voice> get voices => throw _privateConstructorUsedError;
   @override

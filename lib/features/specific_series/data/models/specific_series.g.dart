@@ -11,6 +11,7 @@ _$_SpecificSeries _$$_SpecificSeriesFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String,
       description: json['description'] as String,
       videoLink: json['videoLink'] as String,
+      imageUrl: json['imageUrl'] as String,
       voices: (json['voices'] as List<dynamic>)
           .map((e) => Voice.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -21,5 +22,6 @@ Map<String, dynamic> _$$_SpecificSeriesToJson(_$_SpecificSeries instance) =>
       'title': instance.title,
       'description': instance.description,
       'videoLink': instance.videoLink,
+      'imageUrl': instance.imageUrl,
       'voices': instance.voices,
     };

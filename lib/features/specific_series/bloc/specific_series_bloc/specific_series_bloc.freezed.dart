@@ -16,20 +16,21 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SpecificSeriesEvent {
-  String get link => throw _privateConstructorUsedError;
+  Series get series => throw _privateConstructorUsedError;
+  Serial get serial => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String link) fetch,
+    required TResult Function(Series series, Serial serial) fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String link)? fetch,
+    TResult Function(Series series, Serial serial)? fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String link)? fetch,
+    TResult Function(Series series, Serial serial)? fetch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,7 +61,10 @@ abstract class $SpecificSeriesEventCopyWith<$Res> {
   factory $SpecificSeriesEventCopyWith(
           SpecificSeriesEvent value, $Res Function(SpecificSeriesEvent) then) =
       _$SpecificSeriesEventCopyWithImpl<$Res>;
-  $Res call({String link});
+  $Res call({Series series, Serial serial});
+
+  $SeriesCopyWith<$Res> get series;
+  $SerialCopyWith<$Res> get serial;
 }
 
 /// @nodoc
@@ -74,14 +78,33 @@ class _$SpecificSeriesEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? link = freezed,
+    Object? series = freezed,
+    Object? serial = freezed,
   }) {
     return _then(_value.copyWith(
-      link: link == freezed
-          ? _value.link
-          : link // ignore: cast_nullable_to_non_nullable
-              as String,
+      series: series == freezed
+          ? _value.series
+          : series // ignore: cast_nullable_to_non_nullable
+              as Series,
+      serial: serial == freezed
+          ? _value.serial
+          : serial // ignore: cast_nullable_to_non_nullable
+              as Serial,
     ));
+  }
+
+  @override
+  $SeriesCopyWith<$Res> get series {
+    return $SeriesCopyWith<$Res>(_value.series, (value) {
+      return _then(_value.copyWith(series: value));
+    });
+  }
+
+  @override
+  $SerialCopyWith<$Res> get serial {
+    return $SerialCopyWith<$Res>(_value.serial, (value) {
+      return _then(_value.copyWith(serial: value));
+    });
   }
 }
 
@@ -91,7 +114,12 @@ abstract class _$$_FetchCopyWith<$Res>
   factory _$$_FetchCopyWith(_$_Fetch value, $Res Function(_$_Fetch) then) =
       __$$_FetchCopyWithImpl<$Res>;
   @override
-  $Res call({String link});
+  $Res call({Series series, Serial serial});
+
+  @override
+  $SeriesCopyWith<$Res> get series;
+  @override
+  $SerialCopyWith<$Res> get serial;
 }
 
 /// @nodoc
@@ -106,13 +134,18 @@ class __$$_FetchCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? link = freezed,
+    Object? series = freezed,
+    Object? serial = freezed,
   }) {
     return _then(_$_Fetch(
-      link: link == freezed
-          ? _value.link
-          : link // ignore: cast_nullable_to_non_nullable
-              as String,
+      series: series == freezed
+          ? _value.series
+          : series // ignore: cast_nullable_to_non_nullable
+              as Series,
+      serial: serial == freezed
+          ? _value.serial
+          : serial // ignore: cast_nullable_to_non_nullable
+              as Serial,
     ));
   }
 }
@@ -120,14 +153,16 @@ class __$$_FetchCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Fetch implements _Fetch {
-  const _$_Fetch({required this.link});
+  const _$_Fetch({required this.series, required this.serial});
 
   @override
-  final String link;
+  final Series series;
+  @override
+  final Serial serial;
 
   @override
   String toString() {
-    return 'SpecificSeriesEvent.fetch(link: $link)';
+    return 'SpecificSeriesEvent.fetch(series: $series, serial: $serial)';
   }
 
   @override
@@ -135,12 +170,15 @@ class _$_Fetch implements _Fetch {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Fetch &&
-            const DeepCollectionEquality().equals(other.link, link));
+            const DeepCollectionEquality().equals(other.series, series) &&
+            const DeepCollectionEquality().equals(other.serial, serial));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(link));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(series),
+      const DeepCollectionEquality().hash(serial));
 
   @JsonKey(ignore: true)
   @override
@@ -150,27 +188,27 @@ class _$_Fetch implements _Fetch {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String link) fetch,
+    required TResult Function(Series series, Serial serial) fetch,
   }) {
-    return fetch(link);
+    return fetch(series, serial);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String link)? fetch,
+    TResult Function(Series series, Serial serial)? fetch,
   }) {
-    return fetch?.call(link);
+    return fetch?.call(series, serial);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String link)? fetch,
+    TResult Function(Series series, Serial serial)? fetch,
     required TResult orElse(),
   }) {
     if (fetch != null) {
-      return fetch(link);
+      return fetch(series, serial);
     }
     return orElse();
   }
@@ -205,10 +243,13 @@ class _$_Fetch implements _Fetch {
 }
 
 abstract class _Fetch implements SpecificSeriesEvent {
-  const factory _Fetch({required final String link}) = _$_Fetch;
+  const factory _Fetch(
+      {required final Series series, required final Serial serial}) = _$_Fetch;
 
   @override
-  String get link => throw _privateConstructorUsedError;
+  Series get series => throw _privateConstructorUsedError;
+  @override
+  Serial get serial => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_FetchCopyWith<_$_Fetch> get copyWith =>

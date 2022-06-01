@@ -8,6 +8,7 @@ class Voice with _$Voice {
   factory Voice({
     required String name,
     required String link,
+    required bool isActive,
   }) = _Voice;
 
   factory Voice.fromJson(Map<String, dynamic> json) => _$VoiceFromJson(json);
