@@ -46,7 +46,8 @@ class _$AppRouter extends RootStackRouter {
               key: args.key,
               season: args.season,
               serial: args.serial,
-              series: args.series));
+              series: args.series,
+              seriesIndex: args.seriesIndex));
     }
   };
 
@@ -133,11 +134,16 @@ class SpecificSeriesRoute extends PageRouteInfo<SpecificSeriesRouteArgs> {
       {Key? key,
       required Season season,
       required Serial serial,
-      required Series series})
+      required Series series,
+      required String seriesIndex})
       : super(SpecificSeriesRoute.name,
             path: '/specific-series-page',
             args: SpecificSeriesRouteArgs(
-                key: key, season: season, serial: serial, series: series));
+                key: key,
+                season: season,
+                serial: serial,
+                series: series,
+                seriesIndex: seriesIndex));
 
   static const String name = 'SpecificSeriesRoute';
 }
@@ -147,7 +153,8 @@ class SpecificSeriesRouteArgs {
       {this.key,
       required this.season,
       required this.serial,
-      required this.series});
+      required this.series,
+      required this.seriesIndex});
 
   final Key? key;
 
@@ -157,8 +164,10 @@ class SpecificSeriesRouteArgs {
 
   final Series series;
 
+  final String seriesIndex;
+
   @override
   String toString() {
-    return 'SpecificSeriesRouteArgs{key: $key, season: $season, serial: $serial, series: $series}';
+    return 'SpecificSeriesRouteArgs{key: $key, season: $season, serial: $serial, series: $series, seriesIndex: $seriesIndex}';
   }
 }

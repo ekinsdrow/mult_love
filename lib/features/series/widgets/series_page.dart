@@ -97,6 +97,7 @@ class _Item extends StatelessWidget {
         context.router.push(
           SpecificSeriesRoute(
             season: season,
+            seriesIndex: index.toString(),
             serial: serial,
             series: series,
           ),
