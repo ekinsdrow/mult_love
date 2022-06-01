@@ -37,6 +37,16 @@ class _$AppRouter extends RootStackRouter {
           routeData: routeData,
           child: SeriesPage(
               key: args.key, season: args.season, serial: args.serial));
+    },
+    SpecificSeriesRoute.name: (routeData) {
+      final args = routeData.argsAs<SpecificSeriesRouteArgs>();
+      return AdaptivePage<dynamic>(
+          routeData: routeData,
+          child: SpecificSeriesPage(
+              key: args.key,
+              season: args.season,
+              serial: args.serial,
+              series: args.series));
     }
   };
 
@@ -45,7 +55,8 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(InitialRoute.name, path: '/'),
         RouteConfig(MainRoute.name, path: '/main-page'),
         RouteConfig(SeasonsRoute.name, path: '/seasons-page'),
-        RouteConfig(SeriesRoute.name, path: '/series-page')
+        RouteConfig(SeriesRoute.name, path: '/series-page'),
+        RouteConfig(SpecificSeriesRoute.name, path: '/specific-series-page')
       ];
 }
 
@@ -112,5 +123,42 @@ class SeriesRouteArgs {
   @override
   String toString() {
     return 'SeriesRouteArgs{key: $key, season: $season, serial: $serial}';
+  }
+}
+
+/// generated route for
+/// [SpecificSeriesPage]
+class SpecificSeriesRoute extends PageRouteInfo<SpecificSeriesRouteArgs> {
+  SpecificSeriesRoute(
+      {Key? key,
+      required Season season,
+      required Serial serial,
+      required Series series})
+      : super(SpecificSeriesRoute.name,
+            path: '/specific-series-page',
+            args: SpecificSeriesRouteArgs(
+                key: key, season: season, serial: serial, series: series));
+
+  static const String name = 'SpecificSeriesRoute';
+}
+
+class SpecificSeriesRouteArgs {
+  const SpecificSeriesRouteArgs(
+      {this.key,
+      required this.season,
+      required this.serial,
+      required this.series});
+
+  final Key? key;
+
+  final Season season;
+
+  final Serial serial;
+
+  final Series series;
+
+  @override
+  String toString() {
+    return 'SpecificSeriesRouteArgs{key: $key, season: $season, serial: $serial, series: $series}';
   }
 }
