@@ -220,6 +220,8 @@ class _Video extends StatefulWidget {
   State<_Video> createState() => _VideoState();
 }
 
+
+//TODO: fullscreen 16/9
 class _VideoState extends State<_Video> {
   late VideoPlayerController _controller;
 
