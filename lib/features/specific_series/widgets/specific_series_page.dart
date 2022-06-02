@@ -173,7 +173,9 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                           ? MediaQuery.of(context).size.height
                           : MediaQuery.of(context).size.width / 16 * 9,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: isPlayerFullScreen
+                            ? BorderRadius.circular(0)
+                            : BorderRadius.circular(10),
                         child: _Video(
                           playerKey: playerKey,
                           isFullScreen: isPlayerFullScreen,
@@ -338,7 +340,7 @@ class _VideoState extends State<_Video> {
                             bottom: 0,
                             left: 0,
                             child: Container(
-                              height: 70,
+                              height: widget.isFullScreen ? 150 : 120,
                               width: widget.isFullScreen
                                   ? MediaQuery.of(context).size.width
                                   : MediaQuery.of(context).size.width -
