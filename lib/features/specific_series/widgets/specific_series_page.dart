@@ -41,22 +41,42 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SpecificSeriesScope(
-      series: widget.series,
-      serial: widget.serial,
-      child: Scaffold(
-        body: SafeArea(
-          child: BlocBuilder<SpecificSeriesBloc, SpecificSeriesState>(
-            builder: (context, state) => state.when(
-              loading: () => const Center(
-                child: CircularProgressIndicator(),
-              ),
-              error: () => const Center(
-                child: Text('Ошибка при запросе серии'),
-              ),
-              success: (s) => SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Column(
+    return WillPopScope(
+      onWillPop: () async {
+        if (isPlayerFullScreen) {
+          SystemChrome.setPreferredOrientations(
+            [
+              DeviceOrientation.portraitDown,
+              DeviceOrientation.portraitUp,
+            ],
+          );
+
+          setState(() {
+            isPlayerFullScreen = false;
+          });
+
+          SystemChrome.setEnabledSystemUIMode(
+            SystemUiMode.edgeToEdge,
+          );
+          return false;
+        }
+
+        return true;
+      },
+      child: SpecificSeriesScope(
+        series: widget.series,
+        serial: widget.serial,
+        child: Scaffold(
+          body: SafeArea(
+            child: BlocBuilder<SpecificSeriesBloc, SpecificSeriesState>(
+              builder: (context, state) => state.when(
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                error: () => const Center(
+                  child: Text('Ошибка при запросе серии'),
+                ),
+                success: (s) => Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     if (!isPlayerFullScreen)
