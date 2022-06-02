@@ -14,6 +14,7 @@ import 'package:mult_love/features/series/data/models/series.dart';
 import 'package:mult_love/features/specific_series/bloc/specific_series_bloc/specific_series_bloc.dart';
 import 'package:mult_love/features/specific_series/di/specific_series_scope.dart';
 import 'package:video_player/video_player.dart';
+import 'package:wakelock/wakelock.dart';
 
 class SpecificSeriesPage extends StatefulWidget {
   const SpecificSeriesPage({
@@ -39,25 +40,50 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
 
   final playerKey = GlobalKey();
 
+  void _closeFullScreen() {
+    SystemChrome.setPreferredOrientations(
+      [
+        DeviceOrientation.portraitDown,
+        DeviceOrientation.portraitUp,
+      ],
+    );
+
+    setState(() {
+      isPlayerFullScreen = false;
+    });
+
+    Wakelock.enable();
+
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.edgeToEdge,
+    );
+  }
+
+  void _openFullScreen() {
+    SystemChrome.setPreferredOrientations(
+      [
+        DeviceOrientation.portraitDown,
+        DeviceOrientation.portraitUp,
+      ],
+    );
+
+    Wakelock.disable();
+
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.edgeToEdge,
+    );
+
+    setState(() {
+      isPlayerFullScreen = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
         if (isPlayerFullScreen) {
-          SystemChrome.setPreferredOrientations(
-            [
-              DeviceOrientation.portraitDown,
-              DeviceOrientation.portraitUp,
-            ],
-          );
-
-          setState(() {
-            isPlayerFullScreen = false;
-          });
-
-          SystemChrome.setEnabledSystemUIMode(
-            SystemUiMode.edgeToEdge,
-          );
+          _closeFullScreen();
           return false;
         }
 
@@ -181,35 +207,11 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                           isFullScreen: isPlayerFullScreen,
                           videoLink: s.videoLink,
                           fullscreenCallback: () {
-                            setState(() {
-                              isPlayerFullScreen = !isPlayerFullScreen;
-
-                              List<DeviceOrientation> orientations = [];
-
-                              if (isPlayerFullScreen) {
-                                orientations.addAll([
-                                  DeviceOrientation.landscapeRight,
-                                  DeviceOrientation.landscapeLeft,
-                                ]);
-
-                                SystemChrome.setEnabledSystemUIMode(
-                                  SystemUiMode.immersive,
-                                );
-                              } else {
-                                orientations.addAll([
-                                  DeviceOrientation.portraitDown,
-                                  DeviceOrientation.portraitUp,
-                                ]);
-
-                                SystemChrome.setEnabledSystemUIMode(
-                                  SystemUiMode.edgeToEdge,
-                                );
-                              }
-
-                              SystemChrome.setPreferredOrientations(
-                                orientations,
-                              );
-                            });
+                            if (isPlayerFullScreen) {
+                              _closeFullScreen();
+                            } else {
+                              _openFullScreen();
+                            }
                           },
                         ),
                       ),
