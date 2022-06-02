@@ -62,15 +62,15 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
   void _openFullScreen() {
     SystemChrome.setPreferredOrientations(
       [
-        DeviceOrientation.portraitDown,
-        DeviceOrientation.portraitUp,
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.landscapeRight,
       ],
     );
 
     Wakelock.disable();
 
     SystemChrome.setEnabledSystemUIMode(
-      SystemUiMode.edgeToEdge,
+      SystemUiMode.immersive,
     );
 
     setState(() {
