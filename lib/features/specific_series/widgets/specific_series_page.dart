@@ -52,7 +52,7 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
       isPlayerFullScreen = false;
     });
 
-    Wakelock.enable();
+    Wakelock.disable();
 
     SystemChrome.setEnabledSystemUIMode(
       SystemUiMode.edgeToEdge,
@@ -67,7 +67,7 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
       ],
     );
 
-    Wakelock.disable();
+    Wakelock.enable();
 
     SystemChrome.setEnabledSystemUIMode(
       SystemUiMode.immersive,
