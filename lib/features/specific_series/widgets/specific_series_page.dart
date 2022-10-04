@@ -1,7 +1,5 @@
 // ignore_for_file: lines_longer_than_80_chars
-
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
@@ -102,121 +100,124 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                 error: () => const Center(
                   child: Text('Ошибка при запросе серии'),
                 ),
-                success: (s) => Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (!isPlayerFullScreen)
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.only(
-                              left: Constants.mediumPadding,
-                              right: Constants.mediumPadding,
-                              top: Constants.mediumPadding,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  widget.serial.title,
-                                  style: Theme.of(context).textTheme.headline5,
-                                ),
-                                const SizedBox(
-                                  height: Constants.smallPadding,
-                                ),
-                                Text(
-                                  '${widget.season.number} сезон - ${widget.seriesIndex} серия',
-                                  style: Theme.of(context).textTheme.headline5,
-                                ),
-                                const SizedBox(
-                                  height: Constants.smallPadding,
-                                ),
-                                Text(
-                                  s.title,
-                                  style: Theme.of(context).textTheme.headline5,
-                                ),
-                                const SizedBox(
-                                  height: Constants.bigPadding,
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 40,
-                            child: ListView.separated(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: Constants.mediumPadding,
+                success: (s) => SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (!isPlayerFullScreen)
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.only(
+                                left: Constants.mediumPadding,
+                                right: Constants.mediumPadding,
+                                top: Constants.mediumPadding,
                               ),
-                              physics: const BouncingScrollPhysics(),
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: (context, index) => ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  primary: voiceIndex == index
-                                      ? Theme.of(context)
-                                          .progressIndicatorTheme
-                                          .color
-                                      : Colors.grey,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    voiceIndex = index;
-                                  });
-
-                                  context.read<SpecificSeriesBloc>().add(
-                                        SpecificSeriesEvent.fetch(
-                                          series: widget.series,
-                                          serial: widget.serial,
-                                          link: s.voices[index].link,
-                                        ),
-                                      );
-                                },
-                                child: Text(s.voices[index].name),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    widget.serial.title,
+                                    style: Theme.of(context).textTheme.headline5,
+                                  ),
+                                  const SizedBox(
+                                    height: Constants.smallPadding,
+                                  ),
+                                  Text(
+                                    '${widget.season.number} сезон - ${widget.seriesIndex} серия',
+                                    style: Theme.of(context).textTheme.headline5,
+                                  ),
+                                  const SizedBox(
+                                    height: Constants.smallPadding,
+                                  ),
+                                  Text(
+                                    s.title,
+                                    style: Theme.of(context).textTheme.headline5,
+                                  ),
+                                  const SizedBox(
+                                    height: Constants.bigPadding,
+                                  ),
+                                ],
                               ),
-                              separatorBuilder: (_, __) => const SizedBox(
-                                width: Constants.smallPadding,
-                              ),
-                              itemCount: s.voices.length,
                             ),
+                            SizedBox(
+                              height: 40,
+                              child: ListView.separated(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: Constants.mediumPadding,
+                                ),
+                                physics: const BouncingScrollPhysics(),
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, index) => ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    primary: voiceIndex == index
+                                        ? Theme.of(context)
+                                            .progressIndicatorTheme
+                                            .color
+                                        : Colors.grey,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      voiceIndex = index;
+                                    });
+                
+                                    context.read<SpecificSeriesBloc>().add(
+                                          SpecificSeriesEvent.fetch(
+                                            series: widget.series,
+                                            serial: widget.serial,
+                                            link: s.voices[index].link,
+                                          ),
+                                        );
+                                  },
+                                  child: Text(s.voices[index].name),
+                                ),
+                                separatorBuilder: (_, __) => const SizedBox(
+                                  width: Constants.smallPadding,
+                                ),
+                                itemCount: s.voices.length,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: Constants.bigPadding,
+                            ),
+                          ],
+                        ),
+                      Container(
+                        padding: EdgeInsets.only(
+                          left: !isPlayerFullScreen ? Constants.mediumPadding : 0,
+                          right:
+                              !isPlayerFullScreen ? Constants.mediumPadding : 0,
+                          bottom:
+                              !isPlayerFullScreen ? Constants.mediumPadding : 0,
+                        ),
+                        width: isPlayerFullScreen
+                            ? MediaQuery.of(context).size.width
+                            : MediaQuery.of(context).size.width,
+                        height: isPlayerFullScreen
+                            ? MediaQuery.of(context).size.height
+                            : MediaQuery.of(context).size.width / 16 * 9,
+                        child: ClipRRect(
+                          borderRadius: isPlayerFullScreen
+                              ? BorderRadius.circular(0)
+                              : BorderRadius.circular(10),
+                          child: _Video(
+                            playerKey: playerKey,
+                            isFullScreen: isPlayerFullScreen,
+                            videoLink: s.videoLink,
+                            fullscreenCallback: () {
+                              if (isPlayerFullScreen) {
+                                _closeFullScreen();
+                              } else {
+                                _openFullScreen();
+                              }
+                            },
                           ),
-                          const SizedBox(
-                            height: Constants.bigPadding,
-                          ),
-                        ],
-                      ),
-                    Container(
-                      padding: EdgeInsets.only(
-                        left: !isPlayerFullScreen ? Constants.mediumPadding : 0,
-                        right:
-                            !isPlayerFullScreen ? Constants.mediumPadding : 0,
-                        bottom:
-                            !isPlayerFullScreen ? Constants.mediumPadding : 0,
-                      ),
-                      width: isPlayerFullScreen
-                          ? MediaQuery.of(context).size.width
-                          : MediaQuery.of(context).size.width,
-                      height: isPlayerFullScreen
-                          ? MediaQuery.of(context).size.height
-                          : MediaQuery.of(context).size.width / 16 * 9,
-                      child: ClipRRect(
-                        borderRadius: isPlayerFullScreen
-                            ? BorderRadius.circular(0)
-                            : BorderRadius.circular(10),
-                        child: _Video(
-                          playerKey: playerKey,
-                          isFullScreen: isPlayerFullScreen,
-                          videoLink: s.videoLink,
-                          fullscreenCallback: () {
-                            if (isPlayerFullScreen) {
-                              _closeFullScreen();
-                            } else {
-                              _openFullScreen();
-                            }
-                          },
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

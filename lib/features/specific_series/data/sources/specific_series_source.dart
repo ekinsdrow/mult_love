@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:html/parser.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
@@ -17,7 +15,6 @@ class SpecificSeriesSource {
     required String link,
     required Serial serial,
   }) async {
-    log(link);
     final response = await dio.get(link);
 
     final doc = parse(response.data);
@@ -39,7 +36,6 @@ class SpecificSeriesSource {
         doc.body!.querySelector('#centerSeries')!.querySelector('#voice')!;
 
     for (final voice in voicesElem.querySelectorAll('li')) {
-      log(voice.id);
       if (voice.id == 'otherVoice') {
         final fontsElem = voice.querySelector('div')!.querySelectorAll('font');
         for (final f in fontsElem) {
