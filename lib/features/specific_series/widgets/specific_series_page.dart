@@ -1,5 +1,7 @@
 // ignore_for_file: lines_longer_than_80_chars
 
+import 'dart:math' as math;
+
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,6 +40,11 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
       series: widget.series,
       serial: widget.serial,
       child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            widget.serial.title,
+          ),
+        ),
         body: SafeArea(
           child: BlocBuilder<SpecificSeriesBloc, SpecificSeriesState>(
             builder: (context, state) => state.when(
@@ -64,13 +71,6 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                widget.serial.title,
-                                style: Theme.of(context).textTheme.headline5,
-                              ),
-                              const SizedBox(
-                                height: Constants.smallPadding,
-                              ),
                               Text(
                                 '${widget.season.number} сезон - ${widget.seriesIndex} серия',
                                 style: Theme.of(context).textTheme.headline5,
@@ -187,8 +187,12 @@ class _VideoState extends State<_Video> {
           autoInitialize: true,
           allowedScreenSleep: false,
           aspectRatio: 16 / 9,
-          customControls: _PlayerBackNextControll(),
           showControlsOnInitialize: false,
+          customControls: CupertinoControls(
+            backgroundColor: Colors.white,
+            iconColor: widget.primaryColor,
+            showPlayButton: true,
+          ),
           materialProgressColors: ChewieProgressColors(
             handleColor: widget.primaryColor,
             backgroundColor: Colors.white,
@@ -219,19 +223,5 @@ class _VideoState extends State<_Video> {
         : Chewie(
             controller: _chewieController,
           );
-  }
-}
-
-class _PlayerBackNextControll extends StatelessWidget {
-  const _PlayerBackNextControll({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 100,
-      height: 100,
-      color: Colors.red,
-      alignment: Alignment.center,
-    );
   }
 }
