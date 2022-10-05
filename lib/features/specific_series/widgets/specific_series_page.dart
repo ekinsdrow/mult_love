@@ -67,24 +67,23 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                           padding: const EdgeInsets.only(
                             left: Constants.mediumPadding,
                             right: Constants.mediumPadding,
-                            top: Constants.mediumPadding,
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 '${widget.season.number} ${AppLocalizations.of(context).season} - ${widget.seriesIndex} ${AppLocalizations.of(context).seria}',
-                                style: Theme.of(context).textTheme.headline5,
+                                style: Theme.of(context).textTheme.headline6,
                               ),
                               const SizedBox(
                                 height: Constants.smallPadding,
                               ),
                               Text(
                                 s.title,
-                                style: Theme.of(context).textTheme.headline5,
+                                style: Theme.of(context).textTheme.headline6,
                               ),
                               const SizedBox(
-                                height: Constants.bigPadding,
+                                height: Constants.mediumPadding,
                               ),
                             ],
                           ),
@@ -123,7 +122,7 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                           ),
                         ),
                         const SizedBox(
-                          height: Constants.bigPadding,
+                          height: Constants.mediumPadding,
                         ),
                       ],
                     ),
@@ -142,9 +141,6 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                           primaryColor: Theme.of(context).primaryColor,
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: Constants.smallPadding,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
