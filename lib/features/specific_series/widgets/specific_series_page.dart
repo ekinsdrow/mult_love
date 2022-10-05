@@ -88,7 +88,7 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) => ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                primary: voiceIndex == index ? Theme.of(context).primaryColor : Colors.grey,
+                                primary: voiceIndex == index ? Theme.of(context).splashColor : Colors.grey,
                               ),
                               onPressed: () {
                                 setState(() {
@@ -176,6 +176,7 @@ class _VideoState extends State<_Video> {
       materialProgressColors: ChewieProgressColors(
         handleColor: widget.primaryColor,
         backgroundColor: Colors.white,
+        playedColor: Colors.blue,
       ),
     );
   }
