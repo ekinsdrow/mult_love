@@ -1,9 +1,10 @@
 {
-    "serials":"Сериалы",
-    "error_mult_list":"Ошибка при загрузке списка мультфильмов",
-    "error_seasons_list":"Ошибка при запросе списка сезонов",
-    "error_series_list":"Ошибка при запросе списка серий",
-    "error_specific_series":"Ошибка при запросе серии",
-    "season":"сезон",
-    "seria":"серия"
+  "description": "Описание",
+  "error_mult_list": "Ошибка при загрузке списка мультфильмов",
+  "error_seasons_list": "Ошибка при запросе списка сезонов",
+  "error_series_list": "Ошибка при запросе списка серий",
+  "error_specific_series": "Ошибка при запросе серии",
+  "season": "сезон",
+  "seria": "серия",
+  "serials": "Сериалы"
 }

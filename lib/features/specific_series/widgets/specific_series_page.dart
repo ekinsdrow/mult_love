@@ -3,6 +3,7 @@ import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:mult_love/common/assets/constants.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
 import 'package:mult_love/features/seasons/data/models/season.dart';
@@ -49,7 +50,7 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
               loading: () => const Center(
                 child: CircularProgressIndicator(),
               ),
-              error: () =>  Center(
+              error: () => Center(
                 child: Text(
                   AppLocalizations.of(context).error_specific_series,
                 ),
@@ -66,24 +67,23 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                           padding: const EdgeInsets.only(
                             left: Constants.mediumPadding,
                             right: Constants.mediumPadding,
-                            top: Constants.mediumPadding,
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 '${widget.season.number} ${AppLocalizations.of(context).season} - ${widget.seriesIndex} ${AppLocalizations.of(context).seria}',
-                                style: Theme.of(context).textTheme.headline5,
+                                style: Theme.of(context).textTheme.headline6,
                               ),
                               const SizedBox(
                                 height: Constants.smallPadding,
                               ),
                               Text(
                                 s.title,
-                                style: Theme.of(context).textTheme.headline5,
+                                style: Theme.of(context).textTheme.headline6,
                               ),
                               const SizedBox(
-                                height: Constants.bigPadding,
+                                height: Constants.mediumPadding,
                               ),
                             ],
                           ),
@@ -122,7 +122,7 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                           ),
                         ),
                         const SizedBox(
-                          height: Constants.bigPadding,
+                          height: Constants.mediumPadding,
                         ),
                       ],
                     ),
@@ -140,6 +140,31 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                           videoLink: s.videoLink,
                           primaryColor: Theme.of(context).primaryColor,
                         ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: Constants.mediumPadding,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            AppLocalizations.of(context).description,
+                            style: Theme.of(context).textTheme.headline6,
+                          ),
+                          const SizedBox(
+                            height: Constants.smallPadding,
+                          ),
+                          Html(
+                            data: widget.series.description,
+                            style: {
+                              '*': Style(
+                                margin: EdgeInsets.zero,
+                              ),
+                            },
+                          ),
+                        ],
                       ),
                     ),
                   ],
