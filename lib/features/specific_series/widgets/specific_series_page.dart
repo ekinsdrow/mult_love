@@ -2,6 +2,7 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mult_love/common/assets/constants.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
 import 'package:mult_love/features/seasons/data/models/season.dart';
@@ -48,8 +49,10 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
               loading: () => const Center(
                 child: CircularProgressIndicator(),
               ),
-              error: () => const Center(
-                child: Text('Ошибка при запросе серии'),
+              error: () =>  Center(
+                child: Text(
+                  AppLocalizations.of(context).error_specific_series,
+                ),
               ),
               success: (s) => SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
@@ -69,7 +72,7 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${widget.season.number} сезон - ${widget.seriesIndex} серия',
+                                '${widget.season.number} ${AppLocalizations.of(context).season} - ${widget.seriesIndex} ${AppLocalizations.of(context).seria}',
                                 style: Theme.of(context).textTheme.headline5,
                               ),
                               const SizedBox(

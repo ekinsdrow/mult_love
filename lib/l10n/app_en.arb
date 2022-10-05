@@ -1,0 +1,9 @@
+{
+    "serials":"Serials",
+    "error_mult_list":"Error when fetching serials list",
+    "error_seasons_list":"Error when fetching seasons list",
+    "error_series_list":"Error when fetching series list",
+    "error_specific_series":"Error when fetching series",
+    "season":"season",
+    "seria":"series"
+}

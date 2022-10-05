@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mult_love/common/assets/constants.dart';
 import 'package:mult_love/features/app/router/router.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
@@ -27,7 +28,8 @@ class SeriesPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            '${serial.title} - ${season.number} сезон',
+            // ignore: lines_longer_than_80_chars
+            '${serial.title} - ${season.number} ${AppLocalizations.of(context).season}',
           ),
         ),
         body: SafeArea(
@@ -44,8 +46,10 @@ class SeriesPage extends StatelessWidget {
                       loading: () => const Center(
                         child: CircularProgressIndicator(),
                       ),
-                      error: () => const Center(
-                        child: Text('Ошибка при запросе списка серий'),
+                      error: () => Center(
+                        child: Text(
+                          AppLocalizations.of(context).error_series_list,
+                        ),
                       ),
                       success: (series) => ListView.builder(
                         physics: const BouncingScrollPhysics(),

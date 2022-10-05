@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mult_love/common/assets/constants.dart';
 import 'package:mult_love/features/app/router/router.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
@@ -39,8 +40,10 @@ class SeasonsPage extends StatelessWidget {
                       loading: () => const Center(
                         child: CircularProgressIndicator(),
                       ),
-                      error: () => const Center(
-                        child: Text('Ошибка при запросе списка сезонов'),
+                      error: () =>  Center(
+                        child: Text(
+                          AppLocalizations.of(context).error_seasons_list,
+                        ),
                       ),
                       success: (seasons) => GridView.builder(
                         physics: const BouncingScrollPhysics(),
