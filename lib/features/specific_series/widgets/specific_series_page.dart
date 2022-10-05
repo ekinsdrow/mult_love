@@ -38,6 +38,8 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
     return SpecificSeriesScope(
       series: widget.series,
       serial: widget.serial,
+      season: widget.season,
+      seriesIndex: widget.seriesIndex,
       child: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -108,7 +110,9 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                                 context.read<SpecificSeriesBloc>().add(
                                       SpecificSeriesEvent.fetch(
                                         series: widget.series,
+                                        seriesIndex: widget.seriesIndex,
                                         serial: widget.serial,
+                                        season: widget.season,
                                         link: s.voices[index].link,
                                         isSubtitles: s.voices[index].isSub,
                                         subType: s.voices[index].subType,
