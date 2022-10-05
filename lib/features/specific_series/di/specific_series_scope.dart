@@ -49,6 +49,8 @@ class SpecificSeriesScope extends StatelessWidget {
                     series: series,
                     serial: serial,
                     link: series.link,
+                    isSubtitles: false,
+                    subType: null,
                   ),
                 ),
             ),

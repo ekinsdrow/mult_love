@@ -6,5 +6,7 @@ class SpecificSeriesEvent with _$SpecificSeriesEvent {
     required Series series,
     required Serial serial,
     required String link,
+    required bool isSubtitles,
+    required SubType? subType,
   }) = _Fetch;
 }

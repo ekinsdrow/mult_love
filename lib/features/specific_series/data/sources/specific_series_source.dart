@@ -3,6 +3,7 @@ import 'package:html/parser.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
 import 'package:mult_love/features/series/data/models/series.dart';
 import 'package:mult_love/features/specific_series/data/models/specific_series.dart';
+import 'package:mult_love/features/specific_series/data/models/sub_type.dart';
 import 'package:mult_love/features/specific_series/data/models/voice.dart';
 
 class SpecificSeriesSource {
@@ -32,8 +33,8 @@ class SpecificSeriesSource {
 
     final voices = <Voice>[];
 
-    final voicesElem =
-        doc.body!.querySelector('#centerSeries')!.querySelector('#voice')!;
+    // ignore: lines_longer_than_80_chars
+    final voicesElem = doc.body!.querySelector('#centerSeries')!.querySelector('#voice')!;
 
     for (final voice in voicesElem.querySelectorAll('li')) {
       if (voice.id == 'otherVoice') {
@@ -47,6 +48,8 @@ class SpecificSeriesSource {
               name: name,
               link: '${serial.link}/$link',
               isActive: false,
+              isSub: false,
+              subType: null,
             ),
           );
         }
@@ -61,6 +64,8 @@ class SpecificSeriesSource {
               name: 'Субтитры ' + name,
               link: '${serial.link}/$link',
               isActive: false,
+              isSub: true,
+              subType: name == '(анг.)' ? SubType.eng : SubType.rus,
             ),
           );
         }
@@ -74,6 +79,8 @@ class SpecificSeriesSource {
             name: name,
             link: '${serial.link}/$link',
             isActive: isActive,
+            isSub: false,
+            subType: null,
           ),
         );
       }

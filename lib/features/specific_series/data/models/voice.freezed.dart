@@ -23,6 +23,8 @@ mixin _$Voice {
   String get name => throw _privateConstructorUsedError;
   String get link => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
+  bool get isSub => throw _privateConstructorUsedError;
+  SubType? get subType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +35,8 @@ mixin _$Voice {
 abstract class $VoiceCopyWith<$Res> {
   factory $VoiceCopyWith(Voice value, $Res Function(Voice) then) =
       _$VoiceCopyWithImpl<$Res>;
-  $Res call({String name, String link, bool isActive});
+  $Res call(
+      {String name, String link, bool isActive, bool isSub, SubType? subType});
 }
 
 /// @nodoc
@@ -49,6 +52,8 @@ class _$VoiceCopyWithImpl<$Res> implements $VoiceCopyWith<$Res> {
     Object? name = freezed,
     Object? link = freezed,
     Object? isActive = freezed,
+    Object? isSub = freezed,
+    Object? subType = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -63,6 +68,14 @@ class _$VoiceCopyWithImpl<$Res> implements $VoiceCopyWith<$Res> {
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSub: isSub == freezed
+          ? _value.isSub
+          : isSub // ignore: cast_nullable_to_non_nullable
+              as bool,
+      subType: subType == freezed
+          ? _value.subType
+          : subType // ignore: cast_nullable_to_non_nullable
+              as SubType?,
     ));
   }
 }
@@ -72,7 +85,8 @@ abstract class _$$_VoiceCopyWith<$Res> implements $VoiceCopyWith<$Res> {
   factory _$$_VoiceCopyWith(_$_Voice value, $Res Function(_$_Voice) then) =
       __$$_VoiceCopyWithImpl<$Res>;
   @override
-  $Res call({String name, String link, bool isActive});
+  $Res call(
+      {String name, String link, bool isActive, bool isSub, SubType? subType});
 }
 
 /// @nodoc
@@ -89,6 +103,8 @@ class __$$_VoiceCopyWithImpl<$Res> extends _$VoiceCopyWithImpl<$Res>
     Object? name = freezed,
     Object? link = freezed,
     Object? isActive = freezed,
+    Object? isSub = freezed,
+    Object? subType = freezed,
   }) {
     return _then(_$_Voice(
       name: name == freezed
@@ -103,6 +119,14 @@ class __$$_VoiceCopyWithImpl<$Res> extends _$VoiceCopyWithImpl<$Res>
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSub: isSub == freezed
+          ? _value.isSub
+          : isSub // ignore: cast_nullable_to_non_nullable
+              as bool,
+      subType: subType == freezed
+          ? _value.subType
+          : subType // ignore: cast_nullable_to_non_nullable
+              as SubType?,
     ));
   }
 }
@@ -110,7 +134,12 @@ class __$$_VoiceCopyWithImpl<$Res> extends _$VoiceCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Voice implements _Voice {
-  _$_Voice({required this.name, required this.link, required this.isActive});
+  _$_Voice(
+      {required this.name,
+      required this.link,
+      required this.isActive,
+      required this.isSub,
+      required this.subType});
 
   factory _$_Voice.fromJson(Map<String, dynamic> json) =>
       _$$_VoiceFromJson(json);
@@ -121,10 +150,14 @@ class _$_Voice implements _Voice {
   final String link;
   @override
   final bool isActive;
+  @override
+  final bool isSub;
+  @override
+  final SubType? subType;
 
   @override
   String toString() {
-    return 'Voice(name: $name, link: $link, isActive: $isActive)';
+    return 'Voice(name: $name, link: $link, isActive: $isActive, isSub: $isSub, subType: $subType)';
   }
 
   @override
@@ -134,7 +167,9 @@ class _$_Voice implements _Voice {
             other is _$_Voice &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.link, link) &&
-            const DeepCollectionEquality().equals(other.isActive, isActive));
+            const DeepCollectionEquality().equals(other.isActive, isActive) &&
+            const DeepCollectionEquality().equals(other.isSub, isSub) &&
+            const DeepCollectionEquality().equals(other.subType, subType));
   }
 
   @JsonKey(ignore: true)
@@ -143,7 +178,9 @@ class _$_Voice implements _Voice {
       runtimeType,
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(link),
-      const DeepCollectionEquality().hash(isActive));
+      const DeepCollectionEquality().hash(isActive),
+      const DeepCollectionEquality().hash(isSub),
+      const DeepCollectionEquality().hash(subType));
 
   @JsonKey(ignore: true)
   @override
@@ -160,7 +197,9 @@ abstract class _Voice implements Voice {
   factory _Voice(
       {required final String name,
       required final String link,
-      required final bool isActive}) = _$_Voice;
+      required final bool isActive,
+      required final bool isSub,
+      required final SubType? subType}) = _$_Voice;
 
   factory _Voice.fromJson(Map<String, dynamic> json) = _$_Voice.fromJson;
 
@@ -170,6 +209,10 @@ abstract class _Voice implements Voice {
   String get link => throw _privateConstructorUsedError;
   @override
   bool get isActive => throw _privateConstructorUsedError;
+  @override
+  bool get isSub => throw _privateConstructorUsedError;
+  @override
+  SubType? get subType => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_VoiceCopyWith<_$_Voice> get copyWith =>

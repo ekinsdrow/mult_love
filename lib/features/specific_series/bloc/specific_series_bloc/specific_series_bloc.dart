@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
 import 'package:mult_love/features/series/data/models/series.dart';
 import 'package:mult_love/features/specific_series/data/models/specific_series.dart';
+import 'package:mult_love/features/specific_series/data/models/sub_type.dart';
 import 'package:mult_love/features/specific_series/data/repositories/specific_series_repository.dart';
 
 part 'specific_series_event.dart';

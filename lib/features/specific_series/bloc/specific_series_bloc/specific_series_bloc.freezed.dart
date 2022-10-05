@@ -19,19 +19,27 @@ mixin _$SpecificSeriesEvent {
   Series get series => throw _privateConstructorUsedError;
   Serial get serial => throw _privateConstructorUsedError;
   String get link => throw _privateConstructorUsedError;
+  bool get isSubtitles => throw _privateConstructorUsedError;
+  SubType? get subType => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Series series, Serial serial, String link) fetch,
+    required TResult Function(Series series, Serial serial, String link,
+            bool isSubtitles, SubType? subType)
+        fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Series series, Serial serial, String link)? fetch,
+    TResult Function(Series series, Serial serial, String link,
+            bool isSubtitles, SubType? subType)?
+        fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Series series, Serial serial, String link)? fetch,
+    TResult Function(Series series, Serial serial, String link,
+            bool isSubtitles, SubType? subType)?
+        fetch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,7 +70,12 @@ abstract class $SpecificSeriesEventCopyWith<$Res> {
   factory $SpecificSeriesEventCopyWith(
           SpecificSeriesEvent value, $Res Function(SpecificSeriesEvent) then) =
       _$SpecificSeriesEventCopyWithImpl<$Res>;
-  $Res call({Series series, Serial serial, String link});
+  $Res call(
+      {Series series,
+      Serial serial,
+      String link,
+      bool isSubtitles,
+      SubType? subType});
 
   $SeriesCopyWith<$Res> get series;
   $SerialCopyWith<$Res> get serial;
@@ -82,6 +95,8 @@ class _$SpecificSeriesEventCopyWithImpl<$Res>
     Object? series = freezed,
     Object? serial = freezed,
     Object? link = freezed,
+    Object? isSubtitles = freezed,
+    Object? subType = freezed,
   }) {
     return _then(_value.copyWith(
       series: series == freezed
@@ -96,6 +111,14 @@ class _$SpecificSeriesEventCopyWithImpl<$Res>
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
               as String,
+      isSubtitles: isSubtitles == freezed
+          ? _value.isSubtitles
+          : isSubtitles // ignore: cast_nullable_to_non_nullable
+              as bool,
+      subType: subType == freezed
+          ? _value.subType
+          : subType // ignore: cast_nullable_to_non_nullable
+              as SubType?,
     ));
   }
 
@@ -120,7 +143,12 @@ abstract class _$$_FetchCopyWith<$Res>
   factory _$$_FetchCopyWith(_$_Fetch value, $Res Function(_$_Fetch) then) =
       __$$_FetchCopyWithImpl<$Res>;
   @override
-  $Res call({Series series, Serial serial, String link});
+  $Res call(
+      {Series series,
+      Serial serial,
+      String link,
+      bool isSubtitles,
+      SubType? subType});
 
   @override
   $SeriesCopyWith<$Res> get series;
@@ -143,6 +171,8 @@ class __$$_FetchCopyWithImpl<$Res>
     Object? series = freezed,
     Object? serial = freezed,
     Object? link = freezed,
+    Object? isSubtitles = freezed,
+    Object? subType = freezed,
   }) {
     return _then(_$_Fetch(
       series: series == freezed
@@ -157,6 +187,14 @@ class __$$_FetchCopyWithImpl<$Res>
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
               as String,
+      isSubtitles: isSubtitles == freezed
+          ? _value.isSubtitles
+          : isSubtitles // ignore: cast_nullable_to_non_nullable
+              as bool,
+      subType: subType == freezed
+          ? _value.subType
+          : subType // ignore: cast_nullable_to_non_nullable
+              as SubType?,
     ));
   }
 }
@@ -165,7 +203,11 @@ class __$$_FetchCopyWithImpl<$Res>
 
 class _$_Fetch implements _Fetch {
   const _$_Fetch(
-      {required this.series, required this.serial, required this.link});
+      {required this.series,
+      required this.serial,
+      required this.link,
+      required this.isSubtitles,
+      required this.subType});
 
   @override
   final Series series;
@@ -173,10 +215,14 @@ class _$_Fetch implements _Fetch {
   final Serial serial;
   @override
   final String link;
+  @override
+  final bool isSubtitles;
+  @override
+  final SubType? subType;
 
   @override
   String toString() {
-    return 'SpecificSeriesEvent.fetch(series: $series, serial: $serial, link: $link)';
+    return 'SpecificSeriesEvent.fetch(series: $series, serial: $serial, link: $link, isSubtitles: $isSubtitles, subType: $subType)';
   }
 
   @override
@@ -186,7 +232,10 @@ class _$_Fetch implements _Fetch {
             other is _$_Fetch &&
             const DeepCollectionEquality().equals(other.series, series) &&
             const DeepCollectionEquality().equals(other.serial, serial) &&
-            const DeepCollectionEquality().equals(other.link, link));
+            const DeepCollectionEquality().equals(other.link, link) &&
+            const DeepCollectionEquality()
+                .equals(other.isSubtitles, isSubtitles) &&
+            const DeepCollectionEquality().equals(other.subType, subType));
   }
 
   @override
@@ -194,7 +243,9 @@ class _$_Fetch implements _Fetch {
       runtimeType,
       const DeepCollectionEquality().hash(series),
       const DeepCollectionEquality().hash(serial),
-      const DeepCollectionEquality().hash(link));
+      const DeepCollectionEquality().hash(link),
+      const DeepCollectionEquality().hash(isSubtitles),
+      const DeepCollectionEquality().hash(subType));
 
   @JsonKey(ignore: true)
   @override
@@ -204,27 +255,33 @@ class _$_Fetch implements _Fetch {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Series series, Serial serial, String link) fetch,
+    required TResult Function(Series series, Serial serial, String link,
+            bool isSubtitles, SubType? subType)
+        fetch,
   }) {
-    return fetch(series, serial, link);
+    return fetch(series, serial, link, isSubtitles, subType);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Series series, Serial serial, String link)? fetch,
+    TResult Function(Series series, Serial serial, String link,
+            bool isSubtitles, SubType? subType)?
+        fetch,
   }) {
-    return fetch?.call(series, serial, link);
+    return fetch?.call(series, serial, link, isSubtitles, subType);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Series series, Serial serial, String link)? fetch,
+    TResult Function(Series series, Serial serial, String link,
+            bool isSubtitles, SubType? subType)?
+        fetch,
     required TResult orElse(),
   }) {
     if (fetch != null) {
-      return fetch(series, serial, link);
+      return fetch(series, serial, link, isSubtitles, subType);
     }
     return orElse();
   }
@@ -262,7 +319,9 @@ abstract class _Fetch implements SpecificSeriesEvent {
   const factory _Fetch(
       {required final Series series,
       required final Serial serial,
-      required final String link}) = _$_Fetch;
+      required final String link,
+      required final bool isSubtitles,
+      required final SubType? subType}) = _$_Fetch;
 
   @override
   Series get series => throw _privateConstructorUsedError;
@@ -270,6 +329,10 @@ abstract class _Fetch implements SpecificSeriesEvent {
   Serial get serial => throw _privateConstructorUsedError;
   @override
   String get link => throw _privateConstructorUsedError;
+  @override
+  bool get isSubtitles => throw _privateConstructorUsedError;
+  @override
+  SubType? get subType => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_FetchCopyWith<_$_Fetch> get copyWith =>

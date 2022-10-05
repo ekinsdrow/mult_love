@@ -110,6 +110,8 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                                         series: widget.series,
                                         serial: widget.serial,
                                         link: s.voices[index].link,
+                                        isSubtitles:  s.voices[index].isSub,
+                                        subType: s.voices[index].subType,
                                       ),
                                     );
                               },
