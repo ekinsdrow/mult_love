@@ -16,13 +16,6 @@ class InitialBloc extends Bloc<InitialEvent, InitialState> {
     InitialEvent event,
     Emitter<InitialState> emit,
   ) async {
-    emit(const InitialState.loading());
-
-    //TODO: add initialization
-    await Future.delayed(
-      const Duration(milliseconds: 500),
-    );
-
     emit(const InitialState.success());
   }
 }

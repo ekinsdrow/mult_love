@@ -44,6 +44,7 @@ class SeasonsPage extends StatelessWidget {
                       ),
                       success: (seasons) => GridView.builder(
                         physics: const BouncingScrollPhysics(),
+                        // ignore: lines_longer_than_80_chars
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 4,
                           crossAxisSpacing: Constants.smallPadding,
@@ -51,7 +52,7 @@ class SeasonsPage extends StatelessWidget {
                         ),
                         itemBuilder: (context, index) => ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.grey[500],
+                            backgroundColor: Colors.grey[500],
                           ),
                           onPressed: () {
                             context.router.push(

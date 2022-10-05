@@ -88,7 +88,7 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) => ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                primary: voiceIndex == index ? Theme.of(context).splashColor : Colors.grey,
+                                backgroundColor: voiceIndex == index ? Theme.of(context).splashColor : Colors.grey,
                               ),
                               onPressed: () {
                                 setState(() {
