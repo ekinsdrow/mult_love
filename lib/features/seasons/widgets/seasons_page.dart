@@ -40,15 +40,15 @@ class SeasonsPage extends StatelessWidget {
                       loading: () => const Center(
                         child: CircularProgressIndicator(),
                       ),
-                      error: () =>  Center(
+                      error: () => Center(
                         child: Text(
                           AppLocalizations.of(context).error_seasons_list,
                         ),
                       ),
                       success: (seasons) => GridView.builder(
                         physics: const BouncingScrollPhysics(),
-                        // ignore: lines_longer_than_80_chars
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 4,
                           crossAxisSpacing: Constants.smallPadding,
                           mainAxisSpacing: Constants.smallPadding,

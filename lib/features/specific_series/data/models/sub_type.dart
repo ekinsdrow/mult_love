@@ -1,0 +1,3 @@
+enum SubType{
+  eng, rus,
+}

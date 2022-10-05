@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
+import 'package:mult_love/features/seasons/data/models/season.dart';
 import 'package:mult_love/features/series/data/models/series.dart';
 import 'package:mult_love/features/specific_series/data/models/specific_series.dart';
+import 'package:mult_love/features/specific_series/data/models/sub_type.dart';
 import 'package:mult_love/features/specific_series/data/repositories/specific_series_repository.dart';
 
 part 'specific_series_event.dart';
@@ -34,6 +36,10 @@ class SpecificSeriesBloc
         series: event.series,
         link: event.link,
         serial: event.serial,
+        isSub: event.isSubtitles,
+        subType: event.subType,
+        season: event.season,
+        seriesIndex: event.seriesIndex,
       );
 
       emit(

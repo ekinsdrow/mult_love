@@ -1,8 +1,8 @@
+import 'package:chewie/chewie.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mult_love/features/specific_series/data/models/voice.dart';
 
 part 'specific_series.freezed.dart';
-part 'specific_series.g.dart';
 
 @freezed
 class SpecificSeries with _$SpecificSeries {
@@ -12,8 +12,6 @@ class SpecificSeries with _$SpecificSeries {
     required String videoLink,
     required String imageUrl,
     required List<Voice> voices,
+    required List<Subtitle>? subtitles,
   }) = _SpecificSeries;
-
-  factory SpecificSeries.fromJson(Map<String, dynamic> json) =>
-      _$SpecificSeriesFromJson(json);
 }

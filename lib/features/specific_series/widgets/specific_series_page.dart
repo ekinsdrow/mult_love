@@ -38,6 +38,8 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
     return SpecificSeriesScope(
       series: widget.series,
       serial: widget.serial,
+      season: widget.season,
+      seriesIndex: widget.seriesIndex,
       child: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -108,8 +110,12 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                                 context.read<SpecificSeriesBloc>().add(
                                       SpecificSeriesEvent.fetch(
                                         series: widget.series,
+                                        seriesIndex: widget.seriesIndex,
                                         serial: widget.serial,
+                                        season: widget.season,
                                         link: s.voices[index].link,
+                                        isSubtitles: s.voices[index].isSub,
+                                        subType: s.voices[index].subType,
                                       ),
                                     );
                               },
@@ -139,6 +145,7 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                         child: _Video(
                           videoLink: s.videoLink,
                           primaryColor: Theme.of(context).primaryColor,
+                          subtitles: s.subtitles,
                         ),
                       ),
                     ),
@@ -183,10 +190,12 @@ class _Video extends StatefulWidget {
     Key? key,
     required this.videoLink,
     required this.primaryColor,
+    required this.subtitles,
   }) : super(key: key);
 
   final String videoLink;
   final Color primaryColor;
+  final List<Subtitle>? subtitles;
 
   @override
   State<_Video> createState() => _VideoState();
@@ -224,6 +233,11 @@ class _VideoState extends State<_Video> {
             playedColor: widget.primaryColor,
             bufferedColor: widget.primaryColor.withAlpha(160),
           ),
+          subtitle: widget.subtitles != null
+              ? Subtitles(
+                  widget.subtitles!,
+                )
+              : null,
         );
 
         setState(() {

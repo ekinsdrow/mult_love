@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-SpecificSeries _$SpecificSeriesFromJson(Map<String, dynamic> json) {
-  return _SpecificSeries.fromJson(json);
-}
-
 /// @nodoc
 mixin _$SpecificSeries {
   String get title => throw _privateConstructorUsedError;
@@ -25,8 +21,8 @@ mixin _$SpecificSeries {
   String get videoLink => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   List<Voice> get voices => throw _privateConstructorUsedError;
+  List<Subtitle>? get subtitles => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SpecificSeriesCopyWith<SpecificSeries> get copyWith =>
       throw _privateConstructorUsedError;
@@ -42,7 +38,8 @@ abstract class $SpecificSeriesCopyWith<$Res> {
       String description,
       String videoLink,
       String imageUrl,
-      List<Voice> voices});
+      List<Voice> voices,
+      List<Subtitle>? subtitles});
 }
 
 /// @nodoc
@@ -61,6 +58,7 @@ class _$SpecificSeriesCopyWithImpl<$Res>
     Object? videoLink = freezed,
     Object? imageUrl = freezed,
     Object? voices = freezed,
+    Object? subtitles = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed
@@ -83,6 +81,10 @@ class _$SpecificSeriesCopyWithImpl<$Res>
           ? _value.voices
           : voices // ignore: cast_nullable_to_non_nullable
               as List<Voice>,
+      subtitles: subtitles == freezed
+          ? _value.subtitles
+          : subtitles // ignore: cast_nullable_to_non_nullable
+              as List<Subtitle>?,
     ));
   }
 }
@@ -99,7 +101,8 @@ abstract class _$$_SpecificSeriesCopyWith<$Res>
       String description,
       String videoLink,
       String imageUrl,
-      List<Voice> voices});
+      List<Voice> voices,
+      List<Subtitle>? subtitles});
 }
 
 /// @nodoc
@@ -120,6 +123,7 @@ class __$$_SpecificSeriesCopyWithImpl<$Res>
     Object? videoLink = freezed,
     Object? imageUrl = freezed,
     Object? voices = freezed,
+    Object? subtitles = freezed,
   }) {
     return _then(_$_SpecificSeries(
       title: title == freezed
@@ -142,23 +146,26 @@ class __$$_SpecificSeriesCopyWithImpl<$Res>
           ? _value._voices
           : voices // ignore: cast_nullable_to_non_nullable
               as List<Voice>,
+      subtitles: subtitles == freezed
+          ? _value._subtitles
+          : subtitles // ignore: cast_nullable_to_non_nullable
+              as List<Subtitle>?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_SpecificSeries implements _SpecificSeries {
   _$_SpecificSeries(
       {required this.title,
       required this.description,
       required this.videoLink,
       required this.imageUrl,
-      required final List<Voice> voices})
-      : _voices = voices;
-
-  factory _$_SpecificSeries.fromJson(Map<String, dynamic> json) =>
-      _$$_SpecificSeriesFromJson(json);
+      required final List<Voice> voices,
+      required final List<Subtitle>? subtitles})
+      : _voices = voices,
+        _subtitles = subtitles;
 
   @override
   final String title;
@@ -175,9 +182,18 @@ class _$_SpecificSeries implements _SpecificSeries {
     return EqualUnmodifiableListView(_voices);
   }
 
+  final List<Subtitle>? _subtitles;
+  @override
+  List<Subtitle>? get subtitles {
+    final value = _subtitles;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'SpecificSeries(title: $title, description: $description, videoLink: $videoLink, imageUrl: $imageUrl, voices: $voices)';
+    return 'SpecificSeries(title: $title, description: $description, videoLink: $videoLink, imageUrl: $imageUrl, voices: $voices, subtitles: $subtitles)';
   }
 
   @override
@@ -190,10 +206,11 @@ class _$_SpecificSeries implements _SpecificSeries {
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.videoLink, videoLink) &&
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
-            const DeepCollectionEquality().equals(other._voices, _voices));
+            const DeepCollectionEquality().equals(other._voices, _voices) &&
+            const DeepCollectionEquality()
+                .equals(other._subtitles, _subtitles));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -201,17 +218,13 @@ class _$_SpecificSeries implements _SpecificSeries {
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(videoLink),
       const DeepCollectionEquality().hash(imageUrl),
-      const DeepCollectionEquality().hash(_voices));
+      const DeepCollectionEquality().hash(_voices),
+      const DeepCollectionEquality().hash(_subtitles));
 
   @JsonKey(ignore: true)
   @override
   _$$_SpecificSeriesCopyWith<_$_SpecificSeries> get copyWith =>
       __$$_SpecificSeriesCopyWithImpl<_$_SpecificSeries>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_SpecificSeriesToJson(this);
-  }
 }
 
 abstract class _SpecificSeries implements SpecificSeries {
@@ -220,10 +233,8 @@ abstract class _SpecificSeries implements SpecificSeries {
       required final String description,
       required final String videoLink,
       required final String imageUrl,
-      required final List<Voice> voices}) = _$_SpecificSeries;
-
-  factory _SpecificSeries.fromJson(Map<String, dynamic> json) =
-      _$_SpecificSeries.fromJson;
+      required final List<Voice> voices,
+      required final List<Subtitle>? subtitles}) = _$_SpecificSeries;
 
   @override
   String get title => throw _privateConstructorUsedError;
@@ -235,6 +246,8 @@ abstract class _SpecificSeries implements SpecificSeries {
   String get imageUrl => throw _privateConstructorUsedError;
   @override
   List<Voice> get voices => throw _privateConstructorUsedError;
+  @override
+  List<Subtitle>? get subtitles => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_SpecificSeriesCopyWith<_$_SpecificSeries> get copyWith =>
