@@ -1,7 +1,4 @@
 // ignore_for_file: lines_longer_than_80_chars
-
-import 'dart:math' as math;
-
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -98,7 +95,7 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) => ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                primary: voiceIndex == index ? Theme.of(context).primaryColor : Colors.grey,
+                                backgroundColor: voiceIndex == index ? Theme.of(context).primaryColor : Colors.grey,
                               ),
                               onPressed: () {
                                 setState(() {
