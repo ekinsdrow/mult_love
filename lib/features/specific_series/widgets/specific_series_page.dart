@@ -158,6 +158,8 @@ class _Video extends StatefulWidget {
 }
 
 class _VideoState extends State<_Video> {
+  var _isLoading = true;
+
   late VideoPlayerController _videoPlayerController;
   late ChewieController _chewieController;
 
@@ -166,18 +168,25 @@ class _VideoState extends State<_Video> {
     super.initState();
 
     _videoPlayerController = VideoPlayerController.network(widget.videoLink);
-    _chewieController = ChewieController(
-      videoPlayerController: _videoPlayerController,
-      autoPlay: true,
-      looping: false,
-      autoInitialize: true,
-      allowedScreenSleep: false,
-      aspectRatio: 16 / 9,
-      materialProgressColors: ChewieProgressColors(
-        handleColor: widget.primaryColor,
-        backgroundColor: Colors.white,
-        playedColor: Colors.blue,
-      ),
+    _videoPlayerController.initialize().then(
+      (_) {
+        _chewieController = ChewieController(
+          videoPlayerController: _videoPlayerController,
+          autoPlay: true,
+          looping: false,
+          autoInitialize: true,
+          allowedScreenSleep: false,
+          aspectRatio: 16 / 9,
+          materialProgressColors: ChewieProgressColors(
+            handleColor: widget.primaryColor,
+            backgroundColor: Colors.white,
+          ),
+        );
+
+        setState(() {
+          _isLoading = false;
+        });
+      },
     );
   }
 
@@ -190,8 +199,12 @@ class _VideoState extends State<_Video> {
 
   @override
   Widget build(BuildContext context) {
-    return Chewie(
-      controller: _chewieController,
-    );
+    return _isLoading
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : Chewie(
+            controller: _chewieController,
+          );
   }
 }
