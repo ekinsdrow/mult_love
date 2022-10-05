@@ -38,11 +38,6 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
       series: widget.series,
       serial: widget.serial,
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            '${widget.serial.title} ${widget.season.number} сезон - ${widget.seriesIndex} серия',
-          ),
-        ),
         body: SafeArea(
           child: BlocBuilder<SpecificSeriesBloc, SpecificSeriesState>(
             builder: (context, state) => state.when(
@@ -64,10 +59,25 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                           padding: const EdgeInsets.only(
                             left: Constants.mediumPadding,
                             right: Constants.mediumPadding,
+                            top: Constants.mediumPadding,
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              Text(
+                                widget.serial.title,
+                                style: Theme.of(context).textTheme.headline5,
+                              ),
+                              const SizedBox(
+                                height: Constants.smallPadding,
+                              ),
+                              Text(
+                                '${widget.season.number} сезон - ${widget.seriesIndex} серия',
+                                style: Theme.of(context).textTheme.headline5,
+                              ),
+                              const SizedBox(
+                                height: Constants.smallPadding,
+                              ),
                               Text(
                                 s.title,
                                 style: Theme.of(context).textTheme.headline5,
@@ -88,7 +98,7 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) => ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: voiceIndex == index ? Theme.of(context).splashColor : Colors.grey,
+                                primary: voiceIndex == index ? Theme.of(context).primaryColor : Colors.grey,
                               ),
                               onPressed: () {
                                 setState(() {
@@ -158,8 +168,6 @@ class _Video extends StatefulWidget {
 }
 
 class _VideoState extends State<_Video> {
-  var _isLoading = true;
-
   late VideoPlayerController _videoPlayerController;
   late ChewieController _chewieController;
 
@@ -168,25 +176,18 @@ class _VideoState extends State<_Video> {
     super.initState();
 
     _videoPlayerController = VideoPlayerController.network(widget.videoLink);
-    _videoPlayerController.initialize().then(
-      (_) {
-        _chewieController = ChewieController(
-          videoPlayerController: _videoPlayerController,
-          autoPlay: true,
-          looping: false,
-          autoInitialize: true,
-          allowedScreenSleep: false,
-          aspectRatio: 16 / 9,
-          materialProgressColors: ChewieProgressColors(
-            handleColor: widget.primaryColor,
-            backgroundColor: Colors.white,
-          ),
-        );
-
-        setState(() {
-          _isLoading = false;
-        });
-      },
+    _chewieController = ChewieController(
+      videoPlayerController: _videoPlayerController,
+      autoPlay: true,
+      looping: false,
+      autoInitialize: true,
+      allowedScreenSleep: false,
+      aspectRatio: 16 / 9,
+      materialProgressColors: ChewieProgressColors(
+        handleColor: widget.primaryColor,
+        backgroundColor: Colors.white,
+        playedColor: Colors.blue,
+      ),
     );
   }
 
@@ -199,12 +200,8 @@ class _VideoState extends State<_Video> {
 
   @override
   Widget build(BuildContext context) {
-    return _isLoading
-        ? const Center(
-            child: CircularProgressIndicator(),
-          )
-        : Chewie(
-            controller: _chewieController,
-          );
+    return Chewie(
+      controller: _chewieController,
+    );
   }
 }
