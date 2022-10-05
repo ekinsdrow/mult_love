@@ -1,5 +1,7 @@
 // ignore_for_file: lines_longer_than_80_chars
 
+import 'dart:math' as math;
+
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,6 +40,11 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
       series: widget.series,
       serial: widget.serial,
       child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            widget.serial.title,
+          ),
+        ),
         body: SafeArea(
           child: BlocBuilder<SpecificSeriesBloc, SpecificSeriesState>(
             builder: (context, state) => state.when(
@@ -64,13 +71,6 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                widget.serial.title,
-                                style: Theme.of(context).textTheme.headline5,
-                              ),
-                              const SizedBox(
-                                height: Constants.smallPadding,
-                              ),
                               Text(
                                 '${widget.season.number} сезон - ${widget.seriesIndex} серия',
                                 style: Theme.of(context).textTheme.headline5,
@@ -171,23 +171,39 @@ class _VideoState extends State<_Video> {
   late VideoPlayerController _videoPlayerController;
   late ChewieController _chewieController;
 
+  var _isLoading = true;
+
   @override
   void initState() {
     super.initState();
 
     _videoPlayerController = VideoPlayerController.network(widget.videoLink);
-    _chewieController = ChewieController(
-      videoPlayerController: _videoPlayerController,
-      autoPlay: true,
-      looping: false,
-      autoInitialize: true,
-      allowedScreenSleep: false,
-      aspectRatio: 16 / 9,
-      materialProgressColors: ChewieProgressColors(
-        handleColor: widget.primaryColor,
-        backgroundColor: Colors.white,
-        playedColor: Colors.blue,
-      ),
+    _videoPlayerController.initialize().then(
+      (_) {
+        _chewieController = ChewieController(
+          videoPlayerController: _videoPlayerController,
+          autoPlay: true,
+          looping: false,
+          autoInitialize: true,
+          allowedScreenSleep: false,
+          aspectRatio: 16 / 9,
+          showControlsOnInitialize: false,
+          customControls: CupertinoControls(
+            backgroundColor: Colors.white,
+            iconColor: widget.primaryColor,
+            showPlayButton: true,
+          ),
+          materialProgressColors: ChewieProgressColors(
+            handleColor: widget.primaryColor,
+            backgroundColor: Colors.white,
+            playedColor: Colors.blue,
+          ),
+        );
+
+        setState(() {
+          _isLoading = false;
+        });
+      },
     );
   }
 
@@ -200,8 +216,12 @@ class _VideoState extends State<_Video> {
 
   @override
   Widget build(BuildContext context) {
-    return Chewie(
-      controller: _chewieController,
-    );
+    return _isLoading
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : Chewie(
+            controller: _chewieController,
+          );
   }
 }
