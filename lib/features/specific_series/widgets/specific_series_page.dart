@@ -214,14 +214,15 @@ class _VideoState extends State<_Video> {
           aspectRatio: 16 / 9,
           showControlsOnInitialize: false,
           customControls: CupertinoControls(
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.white.withOpacity(.6),
             iconColor: widget.primaryColor,
             showPlayButton: true,
           ),
-          materialProgressColors: ChewieProgressColors(
+          cupertinoProgressColors: ChewieProgressColors(
             handleColor: widget.primaryColor,
-            backgroundColor: Colors.white,
-            playedColor: Colors.blue,
+            backgroundColor: widget.primaryColor.withAlpha(125),
+            playedColor: widget.primaryColor,
+            bufferedColor: widget.primaryColor.withAlpha(160),
           ),
         );
 
