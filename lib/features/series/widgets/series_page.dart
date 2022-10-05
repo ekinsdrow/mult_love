@@ -25,6 +25,11 @@ class SeriesPage extends StatelessWidget {
       season: season,
       serial: serial,
       child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            '${serial.title} - ${season.number} сезон',
+          ),
+        ),
         body: SafeArea(
           child: Container(
             padding: const EdgeInsets.symmetric(
@@ -33,18 +38,6 @@ class SeriesPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: Constants.mediumPadding,
-                  ),
-                  child: Text(
-                    '${serial.title} - ${season.number} сезон',
-                    style: Theme.of(context).textTheme.headline5,
-                  ),
-                ),
-                const SizedBox(
-                  height: Constants.bigPadding,
-                ),
                 Expanded(
                   child: BlocBuilder<SeriesBloc, SeriesState>(
                     builder: (context, state) => state.when(
