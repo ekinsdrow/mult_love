@@ -49,13 +49,19 @@ class SpecificSeriesSource {
           final link = f.querySelector('a')!.attributes['href']!;
           final name = f.querySelector('a')!.innerHtml;
 
+          final isSub = (name.contains('(анг.)')) || (name.contains('(рус.)'));
+
           voices.add(
             Voice(
               name: name,
               link: '${serial.link}/$link',
               isActive: false,
-              isSub: false,
-              subType: null,
+              isSub: isSub,
+              subType: isSub
+                  ? name.contains('(анг.)')
+                      ? SubType.eng
+                      : SubType.rus
+                  : null,
             ),
           );
         }
@@ -79,14 +85,19 @@ class SpecificSeriesSource {
         final isActive = voice.classes.contains('voiceOn');
         final link = voice.querySelector('a')!.attributes['href']!;
         final name = voice.querySelector('a')!.innerHtml;
+        final isSub = (name.contains('(анг.)')) || (name.contains('(рус.)'));
 
         voices.add(
           Voice(
             name: name,
             link: '${serial.link}/$link',
             isActive: isActive,
-            isSub: false,
-            subType: null,
+            isSub: isSub,
+            subType: isSub
+                ? name.contains('(анг.)')
+                    ? SubType.eng
+                    : SubType.rus
+                : null,
           ),
         );
       }
@@ -102,7 +113,6 @@ class SpecificSeriesSource {
           '/' +
           link.substring(link.indexOf('id=') + 3, link.indexOf('&')) +
           '.vtt';
-
 
       final response = await dio.get(subtitleLink);
       final responseData = (response.data as String);
@@ -144,7 +154,6 @@ class SpecificSeriesSource {
         }
       }
     }
-
 
     return SpecificSeries(
       title: series.title,
