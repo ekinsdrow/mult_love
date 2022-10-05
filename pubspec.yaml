@@ -11,6 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations: 
+    sdk: flutter
 
   #UI
   flutter_svg: ^0.23.0+1
@@ -39,6 +41,9 @@ dependencies:
   video_player: ^2.4.2
   chewie: ^1.3.5
 
+  #localization
+  intl: ^0.17.0 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -49,7 +54,7 @@ dev_dependencies:
   flutter_lints: ^1.0.0
 
 flutter:
-  # generate: true
+  generate: true
   uses-material-design: true
   assets:
     - assets/images/png/
