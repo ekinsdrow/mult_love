@@ -33,39 +33,34 @@ class SeriesPage extends StatelessWidget {
           ),
         ),
         body: SafeArea(
-          child: Container(
-            padding: const EdgeInsets.symmetric(
-              vertical: Constants.mediumPadding,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: BlocBuilder<SeriesBloc, SeriesState>(
-                    builder: (context, state) => state.when(
-                      loading: () => const Center(
-                        child: CircularProgressIndicator(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: BlocBuilder<SeriesBloc, SeriesState>(
+                  builder: (context, state) => state.when(
+                    loading: () => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    error: () => Center(
+                      child: Text(
+                        AppLocalizations.of(context).error_series_list,
                       ),
-                      error: () => Center(
-                        child: Text(
-                          AppLocalizations.of(context).error_series_list,
-                        ),
+                    ),
+                    success: (series) => ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) => _Item(
+                        index: index + 1,
+                        series: series[index],
+                        season: season,
+                        serial: serial,
                       ),
-                      success: (series) => ListView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        itemBuilder: (context, index) => _Item(
-                          index: index + 1,
-                          series: series[index],
-                          season: season,
-                          serial: serial,
-                        ),
-                        itemCount: series.length,
-                      ),
+                      itemCount: series.length,
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
