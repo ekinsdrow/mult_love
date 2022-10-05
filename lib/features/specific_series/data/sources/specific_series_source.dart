@@ -103,7 +103,7 @@ class SpecificSeriesSource {
       }
     }
 
-    //TODO: separet to another method
+    //TODO: separete to another method
     final subtitles = <Subtitle>[];
     if (isSub && subType != null) {
       final subtitleLink = link.substring(0, link.indexOf('series')) +
