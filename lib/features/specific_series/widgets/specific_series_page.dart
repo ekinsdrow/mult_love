@@ -38,6 +38,11 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
       series: widget.series,
       serial: widget.serial,
       child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            '${widget.serial.title} ${widget.season.number} сезон - ${widget.seriesIndex} серия',
+          ),
+        ),
         body: SafeArea(
           child: BlocBuilder<SpecificSeriesBloc, SpecificSeriesState>(
             builder: (context, state) => state.when(
@@ -59,25 +64,10 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                           padding: const EdgeInsets.only(
                             left: Constants.mediumPadding,
                             right: Constants.mediumPadding,
-                            top: Constants.mediumPadding,
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                widget.serial.title,
-                                style: Theme.of(context).textTheme.headline5,
-                              ),
-                              const SizedBox(
-                                height: Constants.smallPadding,
-                              ),
-                              Text(
-                                '${widget.season.number} сезон - ${widget.seriesIndex} серия',
-                                style: Theme.of(context).textTheme.headline5,
-                              ),
-                              const SizedBox(
-                                height: Constants.smallPadding,
-                              ),
                               Text(
                                 s.title,
                                 style: Theme.of(context).textTheme.headline5,
@@ -98,7 +88,7 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) => ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                primary: voiceIndex == index ? Theme.of(context).primaryColor : Colors.grey,
+                                backgroundColor: voiceIndex == index ? Theme.of(context).splashColor : Colors.grey,
                               ),
                               onPressed: () {
                                 setState(() {

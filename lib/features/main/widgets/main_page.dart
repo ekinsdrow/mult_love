@@ -14,22 +14,22 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MainScope(
       child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Сериалы',
+          ),
+        ),
         body: SafeArea(
-          child: Container(
-            padding: const EdgeInsets.symmetric(
-              vertical: Constants.mediumPadding,
-            ),
-            child: BlocBuilder<SerialsBloc, SerialsState>(
-              builder: (context, state) => state.when(
-                loading: () => const Center(
-                  child: CircularProgressIndicator(),
-                ),
-                success: (serials) => _Serials(
-                  serials: serials,
-                ),
-                error: () => const Center(
-                  child: Text('Ошибка при загрузке списка мультфильмов'),
-                ),
+          child: BlocBuilder<SerialsBloc, SerialsState>(
+            builder: (context, state) => state.when(
+              loading: () => const Center(
+                child: CircularProgressIndicator(),
+              ),
+              success: (serials) => _Serials(
+                serials: serials,
+              ),
+              error: () => const Center(
+                child: Text('Ошибка при загрузке списка мультфильмов'),
               ),
             ),
           ),
@@ -52,18 +52,6 @@ class _Serials extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: Constants.mediumPadding,
-          ),
-          child: Text(
-            'Сериалы',
-            style: Theme.of(context).textTheme.headline5,
-          ),
-        ),
-        const SizedBox(
-          height: Constants.mediumPadding,
-        ),
         Expanded(
           child: ListView.builder(
             physics: const BouncingScrollPhysics(),

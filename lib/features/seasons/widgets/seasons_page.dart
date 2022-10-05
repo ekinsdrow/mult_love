@@ -20,21 +20,19 @@ class SeasonsPage extends StatelessWidget {
     return SeasonsScope(
       serialLink: serial.link,
       child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            serial.title,
+          ),
+        ),
         body: SafeArea(
           child: Container(
-            padding: const EdgeInsets.all(
-              Constants.mediumPadding,
+            padding: const EdgeInsets.symmetric(
+              horizontal: Constants.mediumPadding,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  serial.title,
-                  style: Theme.of(context).textTheme.headline5,
-                ),
-                const SizedBox(
-                  height: Constants.bigPadding,
-                ),
                 Expanded(
                   child: BlocBuilder<SeasonsBloc, SeasonsState>(
                     builder: (context, state) => state.when(
@@ -46,15 +44,15 @@ class SeasonsPage extends StatelessWidget {
                       ),
                       success: (seasons) => GridView.builder(
                         physics: const BouncingScrollPhysics(),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
+                        // ignore: lines_longer_than_80_chars
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 4,
                           crossAxisSpacing: Constants.smallPadding,
                           mainAxisSpacing: Constants.smallPadding,
                         ),
                         itemBuilder: (context, index) => ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.grey[500],
+                            backgroundColor: Colors.grey[500],
                           ),
                           onPressed: () {
                             context.router.push(
