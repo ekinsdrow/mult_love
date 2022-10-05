@@ -171,23 +171,35 @@ class _VideoState extends State<_Video> {
   late VideoPlayerController _videoPlayerController;
   late ChewieController _chewieController;
 
+  var _isLoading = true;
+
   @override
   void initState() {
     super.initState();
 
     _videoPlayerController = VideoPlayerController.network(widget.videoLink);
-    _chewieController = ChewieController(
-      videoPlayerController: _videoPlayerController,
-      autoPlay: true,
-      looping: false,
-      autoInitialize: true,
-      allowedScreenSleep: false,
-      aspectRatio: 16 / 9,
-      materialProgressColors: ChewieProgressColors(
-        handleColor: widget.primaryColor,
-        backgroundColor: Colors.white,
-        playedColor: Colors.blue,
-      ),
+    _videoPlayerController.initialize().then(
+      (_) {
+        _chewieController = ChewieController(
+          videoPlayerController: _videoPlayerController,
+          autoPlay: true,
+          looping: false,
+          autoInitialize: true,
+          allowedScreenSleep: false,
+          aspectRatio: 16 / 9,
+          customControls: _PlayerBackNextControll(),
+          showControlsOnInitialize: false,
+          materialProgressColors: ChewieProgressColors(
+            handleColor: widget.primaryColor,
+            backgroundColor: Colors.white,
+            playedColor: Colors.blue,
+          ),
+        );
+
+        setState(() {
+          _isLoading = false;
+        });
+      },
     );
   }
 
@@ -200,8 +212,26 @@ class _VideoState extends State<_Video> {
 
   @override
   Widget build(BuildContext context) {
-    return Chewie(
-      controller: _chewieController,
+    return _isLoading
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : Chewie(
+            controller: _chewieController,
+          );
+  }
+}
+
+class _PlayerBackNextControll extends StatelessWidget {
+  const _PlayerBackNextControll({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 100,
+      height: 100,
+      color: Colors.red,
+      alignment: Alignment.center,
     );
   }
 }
