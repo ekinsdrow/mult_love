@@ -29,11 +29,21 @@ class SpecificSeriesBloc
     );
 
     try {
-      final specificSeries = await specificSeriesRepository.getSeries(
-        isSub: event.isSubtitles,
-        subType: event.subType,
+      var specificSeries = await specificSeriesRepository.getSeries(
         url: event.url,
       );
+
+      if (event.isSubtitles && event.subType != null) {
+        final subtitles = await specificSeriesRepository.getSubtitles(
+          seasonNumber: specificSeries.seasonNumber,
+          subType: event.subType!,
+          url: event.url,
+        );
+
+        specificSeries = specificSeries.copyWith(
+          subtitles: subtitles,
+        );
+      }
 
       emit(
         _Success(

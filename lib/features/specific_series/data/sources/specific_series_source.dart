@@ -12,8 +12,6 @@ class SpecificSeriesSource {
 
   Future<SpecificSeries> getSeries({
     required String url,
-    required bool isSub,
-    required SubType? subType,
   }) async {
     var response = await dio.get(url);
     final stringResponse = response.toString();
@@ -155,64 +153,11 @@ class SpecificSeriesSource {
       }
     }
 
-    //TODO: separete to another method
-    final subtitles = <Subtitle>[];
-    if (isSub && subType != null) {
-      final subtitleLink = url.substring(0, url.indexOf('series')) +
-          'captions/' +
-          (subType == SubType.eng ? 'eng' : 'rus') +
-          '/' +
-          seasonNumber +
-          '/' +
-          url.substring(url.indexOf('id=') + 3, url.indexOf('&')) +
-          '.vtt';
-
-      final response = await dio.get(subtitleLink);
-      final responseData = (response.data as String);
-
-      final subTitlesStringArr = responseData
-          .substring(
-            responseData.indexOf('WEBVTT') + 10,
-          )
-          .split('\n');
-
-      late Duration start;
-      late Duration end;
-      var text = '';
-      int index = 0;
-
-      for (final line in subTitlesStringArr) {
-        if (line != String.fromCharCode(13)) {
-          if (line.contains('-->')) {
-            final startText = line.substring(0, line.indexOf(' --> '));
-            final endText =
-                line.substring(line.indexOf(' --> ') + 5, line.length);
-            start = _parseDuration(startText);
-            end = _parseDuration(endText);
-          } else {
-            text += line;
-          }
-        } else {
-          subtitles.add(
-            Subtitle(
-              index: index,
-              start: start,
-              end: end,
-              text: text,
-            ),
-          );
-          text = '';
-
-          index++;
-        }
-      }
-    }
-
     return SpecificSeries(
       videoLink: videoLink,
       imageUrl: imageUrl,
       voices: voices,
-      subtitles: subtitles,
+      subtitles: null,
       seasonNumber: seasonNumber,
       title: title,
       description: description,
@@ -228,5 +173,64 @@ class SpecificSeriesSource {
     final msec = int.parse(input.substring(7));
 
     return Duration(milliseconds: msec + sec * 1000 + min * 60000);
+  }
+
+  Future<List<Subtitle>> getSubtitles({
+    required String url,
+    required SubType subType,
+    required String seasonNumber,
+  }) async {
+    final subtitles = <Subtitle>[];
+
+    final subtitleLink = url.substring(0, url.indexOf('series')) +
+        'captions/' +
+        (subType == SubType.eng ? 'eng' : 'rus') +
+        '/' +
+        seasonNumber +
+        '/' +
+        url.substring(url.indexOf('id=') + 3, url.indexOf('&')) +
+        '.vtt';
+
+    final response = await dio.get(subtitleLink);
+    final responseData = (response.data as String);
+
+    final subTitlesStringArr = responseData
+        .substring(
+          responseData.indexOf('WEBVTT') + 10,
+        )
+        .split('\n');
+
+    late Duration start;
+    late Duration end;
+    var text = '';
+    int index = 0;
+
+    for (final line in subTitlesStringArr) {
+      if (line != String.fromCharCode(13)) {
+        if (line.contains('-->')) {
+          final startText = line.substring(0, line.indexOf(' --> '));
+          final endText =
+              line.substring(line.indexOf(' --> ') + 5, line.length);
+          start = _parseDuration(startText);
+          end = _parseDuration(endText);
+        } else {
+          text += line;
+        }
+      } else {
+        subtitles.add(
+          Subtitle(
+            index: index,
+            start: start,
+            end: end,
+            text: text,
+          ),
+        );
+        text = '';
+
+        index++;
+      }
+    }
+
+    return subtitles;
   }
 }
