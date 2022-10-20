@@ -44,6 +44,22 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
           ),
           success: (specificSeries) => Scaffold(
             appBar: AppBar(
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    context.read<SpecificSeriesBloc>().add(
+                          SpecificSeriesEvent.fetch(
+                            url: specificSeries.serialLink + '/random.php',
+                            isSubtitles: false,
+                            subType: null,
+                          ),
+                        );
+                  },
+                  icon: const Icon(
+                    Icons.shuffle,
+                  ),
+                ),
+              ],
               title: Text(
                 specificSeries.serialTitle,
               ),

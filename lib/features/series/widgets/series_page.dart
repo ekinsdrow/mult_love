@@ -27,6 +27,20 @@ class SeriesPage extends StatelessWidget {
       serial: serial,
       child: Scaffold(
         appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () {
+                context.router.push(
+                  SpecificSeriesRoute(
+                    url: serial.link + '/random.php',
+                  ),
+                );
+              },
+              icon: const Icon(
+                Icons.shuffle,
+              ),
+            ),
+          ],
           title: Text(
             // ignore: lines_longer_than_80_chars
             '${serial.title} - ${season.number} ${AppLocalizations.of(context).season}',
