@@ -215,6 +215,7 @@ class _VideoState extends State<_Video> {
   late VideoPlayerController _videoPlayerController;
   late ChewieController _chewieController;
 
+  var _chewieIsInit = false;
   var _isLoading = true;
 
   @override
@@ -251,6 +252,7 @@ class _VideoState extends State<_Video> {
         );
 
         setState(() {
+          _chewieIsInit = true;
           _isLoading = false;
         });
       },
@@ -260,7 +262,9 @@ class _VideoState extends State<_Video> {
   @override
   void dispose() {
     _videoPlayerController.dispose();
-    _chewieController.dispose();
+    if (_chewieIsInit) {
+      _chewieController.dispose();
+    }
     super.dispose();
   }
 
