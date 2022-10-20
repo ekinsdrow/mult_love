@@ -25,6 +25,20 @@ class SeasonsPage extends StatelessWidget {
           title: Text(
             serial.title,
           ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                context.router.push(
+                  SpecificSeriesRoute(
+                    url: serial.link + '/random.php',
+                  ),
+                );
+              },
+              icon: const Icon(
+                Icons.shuffle,
+              ),
+            ),
+          ],
         ),
         body: SafeArea(
           child: Container(

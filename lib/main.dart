@@ -15,13 +15,14 @@ void main() => runZonedGuarded(
           ],
         );
         
+
         BlocOverrides.runZoned(
           () async {
             runApp(
               App(),
             );
           },
-          blocObserver: AppBlocObserver(),
+          // blocObserver: AppBlocObserver(),
         );
       },
       (error, stack) => {},

@@ -20,6 +20,10 @@ mixin _$SpecificSeries {
   String get description => throw _privateConstructorUsedError;
   String get videoLink => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
+  String get serialTitle => throw _privateConstructorUsedError;
+  String get seasonNumber => throw _privateConstructorUsedError;
+  String get seriesIndex => throw _privateConstructorUsedError;
+  String get serialLink => throw _privateConstructorUsedError;
   List<Voice> get voices => throw _privateConstructorUsedError;
   List<Subtitle>? get subtitles => throw _privateConstructorUsedError;
 
@@ -38,6 +42,10 @@ abstract class $SpecificSeriesCopyWith<$Res> {
       String description,
       String videoLink,
       String imageUrl,
+      String serialTitle,
+      String seasonNumber,
+      String seriesIndex,
+      String serialLink,
       List<Voice> voices,
       List<Subtitle>? subtitles});
 }
@@ -57,6 +65,10 @@ class _$SpecificSeriesCopyWithImpl<$Res>
     Object? description = freezed,
     Object? videoLink = freezed,
     Object? imageUrl = freezed,
+    Object? serialTitle = freezed,
+    Object? seasonNumber = freezed,
+    Object? seriesIndex = freezed,
+    Object? serialLink = freezed,
     Object? voices = freezed,
     Object? subtitles = freezed,
   }) {
@@ -76,6 +88,22 @@ class _$SpecificSeriesCopyWithImpl<$Res>
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      serialTitle: serialTitle == freezed
+          ? _value.serialTitle
+          : serialTitle // ignore: cast_nullable_to_non_nullable
+              as String,
+      seasonNumber: seasonNumber == freezed
+          ? _value.seasonNumber
+          : seasonNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      seriesIndex: seriesIndex == freezed
+          ? _value.seriesIndex
+          : seriesIndex // ignore: cast_nullable_to_non_nullable
+              as String,
+      serialLink: serialLink == freezed
+          ? _value.serialLink
+          : serialLink // ignore: cast_nullable_to_non_nullable
               as String,
       voices: voices == freezed
           ? _value.voices
@@ -101,6 +129,10 @@ abstract class _$$_SpecificSeriesCopyWith<$Res>
       String description,
       String videoLink,
       String imageUrl,
+      String serialTitle,
+      String seasonNumber,
+      String seriesIndex,
+      String serialLink,
       List<Voice> voices,
       List<Subtitle>? subtitles});
 }
@@ -122,6 +154,10 @@ class __$$_SpecificSeriesCopyWithImpl<$Res>
     Object? description = freezed,
     Object? videoLink = freezed,
     Object? imageUrl = freezed,
+    Object? serialTitle = freezed,
+    Object? seasonNumber = freezed,
+    Object? seriesIndex = freezed,
+    Object? serialLink = freezed,
     Object? voices = freezed,
     Object? subtitles = freezed,
   }) {
@@ -141,6 +177,22 @@ class __$$_SpecificSeriesCopyWithImpl<$Res>
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      serialTitle: serialTitle == freezed
+          ? _value.serialTitle
+          : serialTitle // ignore: cast_nullable_to_non_nullable
+              as String,
+      seasonNumber: seasonNumber == freezed
+          ? _value.seasonNumber
+          : seasonNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      seriesIndex: seriesIndex == freezed
+          ? _value.seriesIndex
+          : seriesIndex // ignore: cast_nullable_to_non_nullable
+              as String,
+      serialLink: serialLink == freezed
+          ? _value.serialLink
+          : serialLink // ignore: cast_nullable_to_non_nullable
               as String,
       voices: voices == freezed
           ? _value._voices
@@ -162,6 +214,10 @@ class _$_SpecificSeries implements _SpecificSeries {
       required this.description,
       required this.videoLink,
       required this.imageUrl,
+      required this.serialTitle,
+      required this.seasonNumber,
+      required this.seriesIndex,
+      required this.serialLink,
       required final List<Voice> voices,
       required final List<Subtitle>? subtitles})
       : _voices = voices,
@@ -175,6 +231,14 @@ class _$_SpecificSeries implements _SpecificSeries {
   final String videoLink;
   @override
   final String imageUrl;
+  @override
+  final String serialTitle;
+  @override
+  final String seasonNumber;
+  @override
+  final String seriesIndex;
+  @override
+  final String serialLink;
   final List<Voice> _voices;
   @override
   List<Voice> get voices {
@@ -193,7 +257,7 @@ class _$_SpecificSeries implements _SpecificSeries {
 
   @override
   String toString() {
-    return 'SpecificSeries(title: $title, description: $description, videoLink: $videoLink, imageUrl: $imageUrl, voices: $voices, subtitles: $subtitles)';
+    return 'SpecificSeries(title: $title, description: $description, videoLink: $videoLink, imageUrl: $imageUrl, serialTitle: $serialTitle, seasonNumber: $seasonNumber, seriesIndex: $seriesIndex, serialLink: $serialLink, voices: $voices, subtitles: $subtitles)';
   }
 
   @override
@@ -206,6 +270,14 @@ class _$_SpecificSeries implements _SpecificSeries {
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.videoLink, videoLink) &&
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.serialTitle, serialTitle) &&
+            const DeepCollectionEquality()
+                .equals(other.seasonNumber, seasonNumber) &&
+            const DeepCollectionEquality()
+                .equals(other.seriesIndex, seriesIndex) &&
+            const DeepCollectionEquality()
+                .equals(other.serialLink, serialLink) &&
             const DeepCollectionEquality().equals(other._voices, _voices) &&
             const DeepCollectionEquality()
                 .equals(other._subtitles, _subtitles));
@@ -218,6 +290,10 @@ class _$_SpecificSeries implements _SpecificSeries {
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(videoLink),
       const DeepCollectionEquality().hash(imageUrl),
+      const DeepCollectionEquality().hash(serialTitle),
+      const DeepCollectionEquality().hash(seasonNumber),
+      const DeepCollectionEquality().hash(seriesIndex),
+      const DeepCollectionEquality().hash(serialLink),
       const DeepCollectionEquality().hash(_voices),
       const DeepCollectionEquality().hash(_subtitles));
 
@@ -233,6 +309,10 @@ abstract class _SpecificSeries implements SpecificSeries {
       required final String description,
       required final String videoLink,
       required final String imageUrl,
+      required final String serialTitle,
+      required final String seasonNumber,
+      required final String seriesIndex,
+      required final String serialLink,
       required final List<Voice> voices,
       required final List<Subtitle>? subtitles}) = _$_SpecificSeries;
 
@@ -244,6 +324,14 @@ abstract class _SpecificSeries implements SpecificSeries {
   String get videoLink => throw _privateConstructorUsedError;
   @override
   String get imageUrl => throw _privateConstructorUsedError;
+  @override
+  String get serialTitle => throw _privateConstructorUsedError;
+  @override
+  String get seasonNumber => throw _privateConstructorUsedError;
+  @override
+  String get seriesIndex => throw _privateConstructorUsedError;
+  @override
+  String get serialLink => throw _privateConstructorUsedError;
   @override
   List<Voice> get voices => throw _privateConstructorUsedError;
   @override

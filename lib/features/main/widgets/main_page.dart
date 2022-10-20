@@ -19,6 +19,21 @@ class MainPage extends StatelessWidget {
           title: Text(
             AppLocalizations.of(context).serials,
           ),
+          centerTitle: false,
+          actions: [
+            IconButton(
+              onPressed: () {
+                context.router.push(
+                  SpecificSeriesRoute(
+                    url: 'https://familyguy.fox-fan.tv/random.php?ran=all',
+                  ),
+                );
+              },
+              icon: const Icon(
+                Icons.shuffle,
+              ),
+            ),
+          ],
         ),
         body: SafeArea(
           child: BlocBuilder<SerialsBloc, SerialsState>(
