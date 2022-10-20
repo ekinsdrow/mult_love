@@ -22,7 +22,7 @@ void main() => runZonedGuarded(
               App(),
             );
           },
-          // blocObserver: AppBlocObserver(),
+          blocObserver: AppBlocObserver(),
         );
       },
       (error, stack) => {},
