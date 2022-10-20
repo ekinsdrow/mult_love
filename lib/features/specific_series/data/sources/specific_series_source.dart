@@ -15,6 +15,7 @@ class SpecificSeriesSource {
   }) async {
     var response = await dio.get(url);
     final stringResponse = response.toString();
+
     var serialLink = url.substring(
       0,
       url.indexOf('.tv') + 3,
@@ -28,11 +29,13 @@ class SpecificSeriesSource {
           stringResponse.indexOf('\'>'),
         ),
       );
+
       final path = response.realUri.scheme +
           '://' +
           response.realUri.host +
           '/' +
           response.realUri.path;
+
       serialLink = path.substring(
         0,
         path.indexOf('.tv') + 3,
@@ -52,21 +55,19 @@ class SpecificSeriesSource {
       body.indexOf('.mp4') + 4,
     );
 
-    final seasonNumber = doc.body!
-        .querySelector('.topContent')!
-        .querySelectorAll('a')
+    final aLinks =
+        doc.body!.querySelector('.topContent')!.querySelectorAll('a');
+
+    final seasonNumber = aLinks
         .firstWhere(
           (element) => element.attributes['href']!.contains('season.php'),
         )
         .text
         .split(' ')[0];
 
-    final serialTitle =
-        doc.body!.querySelector('.topContent')!.querySelectorAll('a')[1].text;
+    final serialTitle = aLinks[1].text;
 
-    final seriesIndex = doc.body!
-        .querySelector('.topContent')!
-        .querySelectorAll('a')
+    final seriesIndex = aLinks
         .firstWhere(
           (element) => element.attributes['href']!.contains('series'),
         )
