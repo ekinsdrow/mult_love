@@ -42,12 +42,7 @@ class _$AppRouter extends RootStackRouter {
       final args = routeData.argsAs<SpecificSeriesRouteArgs>();
       return AdaptivePage<dynamic>(
           routeData: routeData,
-          child: SpecificSeriesPage(
-              key: args.key,
-              season: args.season,
-              serial: args.serial,
-              series: args.series,
-              seriesIndex: args.seriesIndex));
+          child: SpecificSeriesPage(key: args.key, url: args.url));
     }
   };
 
@@ -130,44 +125,23 @@ class SeriesRouteArgs {
 /// generated route for
 /// [SpecificSeriesPage]
 class SpecificSeriesRoute extends PageRouteInfo<SpecificSeriesRouteArgs> {
-  SpecificSeriesRoute(
-      {Key? key,
-      required Season season,
-      required Serial serial,
-      required Series series,
-      required String seriesIndex})
+  SpecificSeriesRoute({Key? key, required String url})
       : super(SpecificSeriesRoute.name,
             path: '/specific-series-page',
-            args: SpecificSeriesRouteArgs(
-                key: key,
-                season: season,
-                serial: serial,
-                series: series,
-                seriesIndex: seriesIndex));
+            args: SpecificSeriesRouteArgs(key: key, url: url));
 
   static const String name = 'SpecificSeriesRoute';
 }
 
 class SpecificSeriesRouteArgs {
-  const SpecificSeriesRouteArgs(
-      {this.key,
-      required this.season,
-      required this.serial,
-      required this.series,
-      required this.seriesIndex});
+  const SpecificSeriesRouteArgs({this.key, required this.url});
 
   final Key? key;
 
-  final Season season;
-
-  final Serial serial;
-
-  final Series series;
-
-  final String seriesIndex;
+  final String url;
 
   @override
   String toString() {
-    return 'SpecificSeriesRouteArgs{key: $key, season: $season, serial: $serial, series: $series, seriesIndex: $seriesIndex}';
+    return 'SpecificSeriesRouteArgs{key: $key, url: $url}';
   }
 }

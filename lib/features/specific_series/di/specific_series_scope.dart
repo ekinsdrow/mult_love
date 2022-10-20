@@ -1,9 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mult_love/features/main/data/models/serial.dart';
-import 'package:mult_love/features/seasons/data/models/season.dart';
-import 'package:mult_love/features/series/data/models/series.dart';
 import 'package:mult_love/features/specific_series/bloc/specific_series_bloc/specific_series_bloc.dart';
 import 'package:mult_love/features/specific_series/data/repositories/specific_series_repository.dart';
 import 'package:mult_love/features/specific_series/data/sources/specific_series_source.dart';
@@ -13,17 +10,11 @@ class SpecificSeriesScope extends StatelessWidget {
   const SpecificSeriesScope({
     Key? key,
     required this.child,
-    required this.series,
-    required this.serial,
-    required this.seriesIndex,
-    required this.season,
+    required this.url,
   }) : super(key: key);
 
   final Widget child;
-  final Serial serial;
-  final Series series;
-  final Season season;
-  final String seriesIndex;
+  final String url;
 
   @override
   Widget build(BuildContext context) {
@@ -51,13 +42,9 @@ class SpecificSeriesScope extends StatelessWidget {
                     context.read<ISpecificSeriesRepository>(),
               )..add(
                   SpecificSeriesEvent.fetch(
-                    series: series,
-                    serial: serial,
-                    season: season,
-                    link: series.link,
                     isSubtitles: false,
                     subType: null,
-                    seriesIndex: seriesIndex,
+                    url: url,
                   ),
                 ),
             ),

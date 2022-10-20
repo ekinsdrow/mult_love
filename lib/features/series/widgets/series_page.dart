@@ -88,10 +88,7 @@ class _Item extends StatelessWidget {
       onTap: () {
         context.router.push(
           SpecificSeriesRoute(
-            season: season,
-            seriesIndex: index.toString(),
-            serial: serial,
-            series: series,
+            url: series.link,
           ),
         );
       },

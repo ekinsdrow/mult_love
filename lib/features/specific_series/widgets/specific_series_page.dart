@@ -5,9 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:mult_love/common/assets/constants.dart';
-import 'package:mult_love/features/main/data/models/serial.dart';
-import 'package:mult_love/features/seasons/data/models/season.dart';
-import 'package:mult_love/features/series/data/models/series.dart';
 import 'package:mult_love/features/specific_series/bloc/specific_series_bloc/specific_series_bloc.dart';
 import 'package:mult_love/features/specific_series/di/specific_series_scope.dart';
 import 'package:video_player/video_player.dart';
@@ -15,16 +12,10 @@ import 'package:video_player/video_player.dart';
 class SpecificSeriesPage extends StatefulWidget {
   const SpecificSeriesPage({
     Key? key,
-    required this.season,
-    required this.serial,
-    required this.series,
-    required this.seriesIndex,
+    required this.url,
   }) : super(key: key);
 
-  final Serial serial;
-  final Season season;
-  final Series series;
-  final String seriesIndex;
+  final String url;
 
   @override
   State<SpecificSeriesPage> createState() => _SpecificSeriesPageState();
@@ -36,28 +27,29 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
   @override
   Widget build(BuildContext context) {
     return SpecificSeriesScope(
-      series: widget.series,
-      serial: widget.serial,
-      season: widget.season,
-      seriesIndex: widget.seriesIndex,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            widget.serial.title,
+      url: widget.url,
+      child: BlocBuilder<SpecificSeriesBloc, SpecificSeriesState>(
+        builder: (context, state) => state.when(
+          loading: () => const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
           ),
-        ),
-        body: SafeArea(
-          child: BlocBuilder<SpecificSeriesBloc, SpecificSeriesState>(
-            builder: (context, state) => state.when(
-              loading: () => const Center(
-                child: CircularProgressIndicator(),
+          error: () => Scaffold(
+            body: Center(
+              child: Text(
+                AppLocalizations.of(context).error_specific_series,
               ),
-              error: () => Center(
-                child: Text(
-                  AppLocalizations.of(context).error_specific_series,
-                ),
+            ),
+          ),
+          success: (specificSeries) => Scaffold(
+            appBar: AppBar(
+              title: Text(
+                specificSeries.serialTitle,
               ),
-              success: (s) => SingleChildScrollView(
+            ),
+            body: SafeArea(
+              child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,14 +66,14 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${widget.season.number} ${AppLocalizations.of(context).season} - ${widget.seriesIndex} ${AppLocalizations.of(context).seria}',
+                                '${specificSeries.seasonNumber} ${AppLocalizations.of(context).season} - ${specificSeries.seriesIndex} ${AppLocalizations.of(context).seria}',
                                 style: Theme.of(context).textTheme.headline6,
                               ),
                               const SizedBox(
                                 height: Constants.smallPadding,
                               ),
                               Text(
-                                s.title,
+                                specificSeries.title,
                                 style: Theme.of(context).textTheme.headline6,
                               ),
                               const SizedBox(
@@ -100,7 +92,9 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) => ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: voiceIndex == index ? Theme.of(context).primaryColor : Colors.grey,
+                                backgroundColor: voiceIndex == index
+                                    ? Theme.of(context).primaryColor
+                                    : Colors.grey,
                               ),
                               onPressed: () {
                                 setState(() {
@@ -109,22 +103,22 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
 
                                 context.read<SpecificSeriesBloc>().add(
                                       SpecificSeriesEvent.fetch(
-                                        series: widget.series,
-                                        seriesIndex: widget.seriesIndex,
-                                        serial: widget.serial,
-                                        season: widget.season,
-                                        link: s.voices[index].link,
-                                        isSubtitles: s.voices[index].isSub,
-                                        subType: s.voices[index].subType,
+                                        url: specificSeries.serialLink +
+                                            '/' +
+                                            specificSeries.voices[index].link,
+                                        isSubtitles:
+                                            specificSeries.voices[index].isSub,
+                                        subType: specificSeries
+                                            .voices[index].subType,
                                       ),
                                     );
                               },
-                              child: Text(s.voices[index].name),
+                              child: Text(specificSeries.voices[index].name),
                             ),
                             separatorBuilder: (_, __) => const SizedBox(
                               width: Constants.smallPadding,
                             ),
-                            itemCount: s.voices.length,
+                            itemCount: specificSeries.voices.length,
                           ),
                         ),
                         const SizedBox(
@@ -143,9 +137,9 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: _Video(
-                          videoLink: s.videoLink,
+                          videoLink: specificSeries.videoLink,
                           primaryColor: Theme.of(context).primaryColor,
-                          subtitles: s.subtitles,
+                          subtitles: specificSeries.subtitles,
                         ),
                       ),
                     ),
@@ -164,7 +158,7 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                             height: Constants.smallPadding,
                           ),
                           Html(
-                            data: widget.series.description,
+                            data: specificSeries.description,
                             style: {
                               '*': Style(
                                 margin: EdgeInsets.zero,

@@ -11,6 +11,10 @@ class SpecificSeries with _$SpecificSeries {
     required String description,
     required String videoLink,
     required String imageUrl,
+    required String serialTitle,
+    required String seasonNumber,
+    required String seriesIndex,
+    required String serialLink,
     required List<Voice> voices,
     required List<Subtitle>? subtitles,
   }) = _SpecificSeries;

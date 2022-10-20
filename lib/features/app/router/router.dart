@@ -5,7 +5,6 @@ import 'package:mult_love/features/main/data/models/serial.dart';
 import 'package:mult_love/features/main/widgets/main_page.dart';
 import 'package:mult_love/features/seasons/data/models/season.dart';
 import 'package:mult_love/features/seasons/widgets/seasons_page.dart';
-import 'package:mult_love/features/series/data/models/series.dart';
 import 'package:mult_love/features/series/widgets/series_page.dart';
 import 'package:mult_love/features/specific_series/widgets/specific_series_page.dart';
 

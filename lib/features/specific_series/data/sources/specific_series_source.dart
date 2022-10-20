@@ -1,9 +1,6 @@
 import 'package:chewie/chewie.dart';
 import 'package:dio/dio.dart';
 import 'package:html/parser.dart';
-import 'package:mult_love/features/main/data/models/serial.dart';
-import 'package:mult_love/features/seasons/data/models/season.dart';
-import 'package:mult_love/features/series/data/models/series.dart';
 import 'package:mult_love/features/specific_series/data/models/specific_series.dart';
 import 'package:mult_love/features/specific_series/data/models/sub_type.dart';
 import 'package:mult_love/features/specific_series/data/models/voice.dart';
@@ -14,15 +11,35 @@ class SpecificSeriesSource {
   SpecificSeriesSource(this.dio);
 
   Future<SpecificSeries> getSeries({
-    required Series series,
-    required String link,
-    required String seriesIndex,
-    required Serial serial,
-    required Season season,
+    required String url,
     required bool isSub,
     required SubType? subType,
   }) async {
-    final response = await dio.get(link);
+    var response = await dio.get(url);
+    final stringResponse = response.toString();
+    var serialLink = url.substring(
+      0,
+      url.indexOf('.tv') + 3,
+    );
+
+    ///if random series
+    if (stringResponse.contains('http-equiv=\'Refresh\'')) {
+      response = await dio.get(
+        stringResponse.substring(
+          stringResponse.indexOf('URL=') + 4,
+          stringResponse.indexOf('\'>'),
+        ),
+      );
+      final path = response.realUri.scheme +
+          '://' +
+          response.realUri.host +
+          '/' +
+          response.realUri.path;
+      serialLink = path.substring(
+        0,
+        path.indexOf('.tv') + 3,
+      );
+    }
 
     final doc = parse(response.data);
     final body = doc.body!.innerHtml;
@@ -36,6 +53,41 @@ class SpecificSeriesSource {
       body.indexOf('file:\'') + 6,
       body.indexOf('.mp4') + 4,
     );
+
+    final seasonNumber = doc.body!
+        .querySelector('.topContent')!
+        .querySelectorAll('a')
+        .firstWhere(
+          (element) => element.attributes['href']!.contains('season.php'),
+        )
+        .text
+        .split(' ')[0];
+
+    final serialTitle =
+        doc.body!.querySelector('.topContent')!.querySelectorAll('a')[1].text;
+
+    final seriesIndex = doc.body!
+        .querySelector('.topContent')!
+        .querySelectorAll('a')
+        .firstWhere(
+          (element) => element.attributes['href']!.contains('series'),
+        )
+        .text
+        .split(' ')[0];
+
+    final title = doc.body!
+        .querySelector('#titleSeries')!
+        .querySelector('a')!
+        .querySelector('h1')!
+        .innerHtml;
+
+    final description = doc.head!
+            .querySelectorAll('meta')
+            .firstWhere(
+              (element) => element.attributes['name'] == 'description',
+            )
+            .attributes['content'] ??
+        '';
 
     final voices = <Voice>[];
 
@@ -54,7 +106,7 @@ class SpecificSeriesSource {
           voices.add(
             Voice(
               name: name,
-              link: '${serial.link}/$link',
+              link: link,
               isActive: false,
               isSub: isSub,
               subType: isSub
@@ -74,7 +126,7 @@ class SpecificSeriesSource {
           voices.add(
             Voice(
               name: 'Субтитры ' + name,
-              link: '${serial.link}/$link',
+              link: link,
               isActive: false,
               isSub: true,
               subType: name == '(анг.)' ? SubType.eng : SubType.rus,
@@ -90,7 +142,7 @@ class SpecificSeriesSource {
         voices.add(
           Voice(
             name: name,
-            link: '${serial.link}/$link',
+            link: link,
             isActive: isActive,
             isSub: isSub,
             subType: isSub
@@ -106,13 +158,13 @@ class SpecificSeriesSource {
     //TODO: separete to another method
     final subtitles = <Subtitle>[];
     if (isSub && subType != null) {
-      final subtitleLink = link.substring(0, link.indexOf('series')) +
+      final subtitleLink = url.substring(0, url.indexOf('series')) +
           'captions/' +
           (subType == SubType.eng ? 'eng' : 'rus') +
           '/' +
-          season.number +
+          seasonNumber +
           '/' +
-          link.substring(link.indexOf('id=') + 3, link.indexOf('&')) +
+          url.substring(url.indexOf('id=') + 3, url.indexOf('&')) +
           '.vtt';
 
       final response = await dio.get(subtitleLink);
@@ -157,12 +209,16 @@ class SpecificSeriesSource {
     }
 
     return SpecificSeries(
-      title: series.title,
-      description: series.description,
       videoLink: videoLink,
       imageUrl: imageUrl,
       voices: voices,
       subtitles: subtitles,
+      seasonNumber: seasonNumber,
+      title: title,
+      description: description,
+      serialTitle: serialTitle,
+      seriesIndex: seriesIndex,
+      serialLink: serialLink,
     );
   }
 
