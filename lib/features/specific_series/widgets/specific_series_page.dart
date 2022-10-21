@@ -1,4 +1,7 @@
 // ignore_for_file: lines_longer_than_80_chars
+import 'dart:developer';
+
+import 'package:audio_session/audio_session.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -218,10 +221,25 @@ class _VideoState extends State<_Video> {
   var _chewieIsInit = false;
   var _isLoading = true;
 
-  @override
-  void initState() {
-    super.initState();
+  Future<void> _configureAudioSession() async {
+    final session = await AudioSession.instance;
+    await session.configure(const AudioSessionConfiguration.music());
 
+    session.interruptionEventStream.listen(
+      (event) {
+        if (event.begin) {
+          _chewieController.pause();
+        } else {
+          if (event.type == AudioInterruptionType.duck ||
+              event.type == AudioInterruptionType.pause) {
+            _chewieController.play();
+          }
+        }
+      },
+    );
+  }
+
+  void _configureVideo() {
     _videoPlayerController = VideoPlayerController.network(widget.videoLink);
     _videoPlayerController.initialize().then(
       (_) {
@@ -251,12 +269,22 @@ class _VideoState extends State<_Video> {
               : null,
         );
 
+        _configureAudioSession();
+        
         setState(() {
           _chewieIsInit = true;
           _isLoading = false;
         });
       },
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _configureVideo();
+    _configureAudioSession();
   }
 
   @override
