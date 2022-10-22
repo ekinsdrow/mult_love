@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:mult_love/common/assets/constants.dart';
 import 'package:mult_love/features/calendar/bloc/calendar_bloc.dart';
 import 'package:mult_love/features/calendar/data/models/calendar_series_event.dart';
 import 'package:mult_love/features/calendar/di/calendar_scope.dart';
@@ -56,6 +58,61 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ListView.separated(
+      padding: const EdgeInsets.symmetric(
+        vertical: Constants.smallPadding,
+        horizontal: Constants.mediumPadding,
+      ),
+      itemBuilder: (context, index) => Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.network(
+              series[index].imgUrl,
+              width: 174 / 1.5,
+              height: 125 / 1.5,
+            ),
+          ),
+          const SizedBox(
+            width: Constants.smallPadding,
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  '${index + 1}. ${series[index].title}',
+                  style: const TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Html(
+                  data: series[index].date,
+                  style: {
+                    '*': Style(
+                      margin: EdgeInsets.zero,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  },
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(series[index].description),
+              ],
+            ),
+          ),
+        ],
+      ),
+      itemCount: series.length,
+      separatorBuilder: (context, index) => const SizedBox(
+        height: Constants.mediumPadding,
+      ),
+    );
   }
 }

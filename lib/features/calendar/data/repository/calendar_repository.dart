@@ -37,10 +37,16 @@ class CalendarRepository implements ICalendarRepository {
               .querySelector('a img')!
               .attributes['src']!;
 
-      final title =
-          seriesHtml[i].querySelectorAll('td')[1].querySelector('h2')!.text;
+      final title = seriesHtml[i]
+          .querySelectorAll('td')[1]
+          .querySelector('h2')!
+          .text
+          .trimLeft()
+          .trimRight();
+
       final descriptionText =
           seriesHtml[i + 1].querySelectorAll('td')[0].innerHtml.toString();
+
       final description = descriptionText.substring(
         0,
         descriptionText.indexOf('<font'),
