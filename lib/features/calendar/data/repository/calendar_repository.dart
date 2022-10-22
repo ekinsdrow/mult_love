@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:html/parser.dart';
 import 'package:mult_love/features/calendar/data/models/calendar_series_event.dart';
