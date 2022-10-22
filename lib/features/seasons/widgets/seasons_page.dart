@@ -29,6 +29,19 @@ class SeasonsPage extends StatelessWidget {
             IconButton(
               onPressed: () {
                 context.router.push(
+                  CalndarRoute(
+                    serialLink: serial.link,
+                    serialTitle: serial.title,
+                  ),
+                );
+              },
+              icon: const Icon(
+                Icons.calendar_month,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                context.router.push(
                   SpecificSeriesRoute(
                     url: serial.link + '/random.php',
                   ),
@@ -56,7 +69,7 @@ class SeasonsPage extends StatelessWidget {
                       ),
                       error: () => Center(
                         child: Text(
-                          AppLocalizations.of(context).error_seasons_list,
+                          AppLocalizations.of(context)!.error_seasons_list,
                         ),
                       ),
                       success: (seasons) => GridView.builder(

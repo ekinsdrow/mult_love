@@ -1,4 +1,5 @@
 {
+  "calendar": "Calendar",
   "description": "Description",
   "error_mult_list": "Error when fetching serials list",
   "error_seasons_list": "Error when fetching seasons list",

@@ -43,6 +43,15 @@ class _$AppRouter extends RootStackRouter {
       return AdaptivePage<dynamic>(
           routeData: routeData,
           child: SpecificSeriesPage(key: args.key, url: args.url));
+    },
+    CalndarRoute.name: (routeData) {
+      final args = routeData.argsAs<CalndarRouteArgs>();
+      return AdaptivePage<dynamic>(
+          routeData: routeData,
+          child: CalendarScreen(
+              key: args.key,
+              serialLink: args.serialLink,
+              serialTitle: args.serialTitle));
     }
   };
 
@@ -52,7 +61,8 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(MainRoute.name, path: '/main-page'),
         RouteConfig(SeasonsRoute.name, path: '/seasons-page'),
         RouteConfig(SeriesRoute.name, path: '/series-page'),
-        RouteConfig(SpecificSeriesRoute.name, path: '/specific-series-page')
+        RouteConfig(SpecificSeriesRoute.name, path: '/specific-series-page'),
+        RouteConfig(CalndarRoute.name, path: '/calendar-screen')
       ];
 }
 
@@ -143,5 +153,34 @@ class SpecificSeriesRouteArgs {
   @override
   String toString() {
     return 'SpecificSeriesRouteArgs{key: $key, url: $url}';
+  }
+}
+
+/// generated route for
+/// [CalendarScreen]
+class CalndarRoute extends PageRouteInfo<CalndarRouteArgs> {
+  CalndarRoute(
+      {Key? key, required String serialLink, required String serialTitle})
+      : super(CalndarRoute.name,
+            path: '/calendar-screen',
+            args: CalndarRouteArgs(
+                key: key, serialLink: serialLink, serialTitle: serialTitle));
+
+  static const String name = 'CalndarRoute';
+}
+
+class CalndarRouteArgs {
+  const CalndarRouteArgs(
+      {this.key, required this.serialLink, required this.serialTitle});
+
+  final Key? key;
+
+  final String serialLink;
+
+  final String serialTitle;
+
+  @override
+  String toString() {
+    return 'CalndarRouteArgs{key: $key, serialLink: $serialLink, serialTitle: $serialTitle}';
   }
 }

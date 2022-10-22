@@ -31,6 +31,19 @@ class SeriesPage extends StatelessWidget {
             IconButton(
               onPressed: () {
                 context.router.push(
+                  CalndarRoute(
+                    serialLink: serial.link,
+                    serialTitle: serial.title,
+                  ),
+                );
+              },
+              icon: const Icon(
+                Icons.calendar_month,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                context.router.push(
                   SpecificSeriesRoute(
                     url: serial.link + '/random.php',
                   ),
@@ -43,7 +56,7 @@ class SeriesPage extends StatelessWidget {
           ],
           title: Text(
             // ignore: lines_longer_than_80_chars
-            '${serial.title} - ${season.number} ${AppLocalizations.of(context).season}',
+            '${serial.title} - ${season.number} ${AppLocalizations.of(context)!.season}',
           ),
         ),
         body: SafeArea(
@@ -58,7 +71,7 @@ class SeriesPage extends StatelessWidget {
                     ),
                     error: () => Center(
                       child: Text(
-                        AppLocalizations.of(context).error_series_list,
+                        AppLocalizations.of(context)!.error_series_list,
                       ),
                     ),
                     success: (series) => ListView.builder(

@@ -17,7 +17,7 @@ class MainPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            AppLocalizations.of(context).serials,
+            AppLocalizations.of(context)!.serials,
           ),
           centerTitle: false,
           actions: [
@@ -46,7 +46,7 @@ class MainPage extends StatelessWidget {
               ),
               error: () => Center(
                 child: Text(
-                  AppLocalizations.of(context).error_mult_list,
+                  AppLocalizations.of(context)!.error_mult_list,
                 ),
               ),
             ),
