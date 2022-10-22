@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mult_love/features/calendar/bloc/calendar_bloc.dart';
 
 class CalendarScope extends StatelessWidget {
   const CalendarScope({
@@ -12,6 +14,14 @@ class CalendarScope extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return child;
+    return BlocProvider(
+      create: (context) => CalendarBloc()
+        ..add(
+          CalendarEvent.fetch(
+            serialUrl: serialLink,
+          ),
+        ),
+      child: child,
+    );
   }
 }
