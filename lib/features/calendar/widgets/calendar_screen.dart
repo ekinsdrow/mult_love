@@ -59,6 +59,7 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.symmetric(
         vertical: Constants.smallPadding,
         horizontal: Constants.mediumPadding,
