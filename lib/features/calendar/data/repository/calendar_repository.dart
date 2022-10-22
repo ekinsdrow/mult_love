@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:html/parser.dart';
 import 'package:mult_love/features/calendar/data/models/calendar_series_event.dart';
@@ -37,8 +39,12 @@ class CalendarRepository implements ICalendarRepository {
 
       final title =
           seriesHtml[i].querySelectorAll('td')[1].querySelector('h2')!.text;
-
-      final description = seriesHtml[i + 1].querySelectorAll('td')[0].text;
+      final descriptionText =
+          seriesHtml[i + 1].querySelectorAll('td')[0].innerHtml.toString();
+      final description = descriptionText.substring(
+        0,
+        descriptionText.indexOf('<font'),
+      );
       final date = seriesHtml[i + 1].querySelector('font')!.text;
 
       result.add(
