@@ -1,10 +1,12 @@
 // ignore_for_file: lines_longer_than_80_chars
+import 'package:auto_route/auto_route.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:mult_love/common/assets/constants.dart';
+import 'package:mult_love/features/app/router/router.dart';
 import 'package:mult_love/features/specific_series/bloc/specific_series_bloc/specific_series_bloc.dart';
 import 'package:mult_love/features/specific_series/di/specific_series_scope.dart';
 import 'package:video_player/video_player.dart';
@@ -38,13 +40,26 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
           error: () => Scaffold(
             body: Center(
               child: Text(
-                AppLocalizations.of(context).error_specific_series,
+                AppLocalizations.of(context)!.error_specific_series,
               ),
             ),
           ),
           success: (specificSeries) => Scaffold(
             appBar: AppBar(
               actions: [
+                IconButton(
+                  onPressed: () {
+                    context.router.push(
+                      CalndarRoute(
+                        serialLink: specificSeries.serialLink,
+                        serialTitle: specificSeries.serialTitle,
+                      ),
+                    );
+                  },
+                  icon: const Icon(
+                    Icons.calendar_month,
+                  ),
+                ),
                 IconButton(
                   onPressed: () {
                     context.read<SpecificSeriesBloc>().add(
@@ -82,7 +97,7 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${specificSeries.seasonNumber} ${AppLocalizations.of(context).season} - ${specificSeries.seriesIndex} ${AppLocalizations.of(context).seria}',
+                                '${specificSeries.seasonNumber} ${AppLocalizations.of(context)!.season} - ${specificSeries.seriesIndex} ${AppLocalizations.of(context)!.seria}',
                                 style: Theme.of(context).textTheme.headline6,
                               ),
                               const SizedBox(
@@ -167,7 +182,7 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            AppLocalizations.of(context).description,
+                            AppLocalizations.of(context)!.description,
                             style: Theme.of(context).textTheme.headline6,
                           ),
                           const SizedBox(

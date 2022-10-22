@@ -1,10 +1,13 @@
 {
+  "calendar": "Calendar",
   "description": "Description",
   "error_mult_list": "Error when fetching serials list",
   "error_seasons_list": "Error when fetching seasons list",
   "error_series_list": "Error when fetching series list",
   "error_specific_series": "Error when fetching series",
+  "not_have_calendar": "This series doesn't have calendar",
   "season": "season",
   "seria": "series",
-  "serials": "Serials"
+  "serials": "Serials",
+  "unknown_error": "Unknown error"
 }
