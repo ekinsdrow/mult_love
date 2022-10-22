@@ -5,7 +5,9 @@
   "error_seasons_list": "Ошибка при запросе списка сезонов",
   "error_series_list": "Ошибка при запросе списка серий",
   "error_specific_series": "Ошибка при запросе серии",
+  "not_have_calendar": "У этого сериала нет расписания",
   "season": "сезон",
   "seria": "серия",
-  "serials": "Сериалы"
+  "serials": "Сериалы",
+  "unknown_error": "Неизвестная ошибка"
 }

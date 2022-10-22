@@ -218,43 +218,50 @@ mixin _$CalendarState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(String error) error,
-    required TResult Function() success,
+    required TResult Function() unknownError,
+    required TResult Function() dontHaveCalendarError,
+    required TResult Function(List<CalendarSeriesEvent> events) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function()? success,
+    TResult Function()? unknownError,
+    TResult Function()? dontHaveCalendarError,
+    TResult Function(List<CalendarSeriesEvent> events)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function()? success,
+    TResult Function()? unknownError,
+    TResult Function()? dontHaveCalendarError,
+    TResult Function(List<CalendarSeriesEvent> events)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
+    required TResult Function(_Error value) unknownError,
+    required TResult Function(_NotHaveCalendarError value)
+        dontHaveCalendarError,
     required TResult Function(_Success value) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
+    TResult Function(_Error value)? unknownError,
+    TResult Function(_NotHaveCalendarError value)? dontHaveCalendarError,
     TResult Function(_Success value)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
+    TResult Function(_Error value)? unknownError,
+    TResult Function(_NotHaveCalendarError value)? dontHaveCalendarError,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) =>
@@ -318,8 +325,9 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(String error) error,
-    required TResult Function() success,
+    required TResult Function() unknownError,
+    required TResult Function() dontHaveCalendarError,
+    required TResult Function(List<CalendarSeriesEvent> events) success,
   }) {
     return loading();
   }
@@ -328,8 +336,9 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function()? success,
+    TResult Function()? unknownError,
+    TResult Function()? dontHaveCalendarError,
+    TResult Function(List<CalendarSeriesEvent> events)? success,
   }) {
     return loading?.call();
   }
@@ -338,8 +347,9 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function()? success,
+    TResult Function()? unknownError,
+    TResult Function()? dontHaveCalendarError,
+    TResult Function(List<CalendarSeriesEvent> events)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -352,7 +362,9 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
+    required TResult Function(_Error value) unknownError,
+    required TResult Function(_NotHaveCalendarError value)
+        dontHaveCalendarError,
     required TResult Function(_Success value) success,
   }) {
     return loading(this);
@@ -362,7 +374,8 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
+    TResult Function(_Error value)? unknownError,
+    TResult Function(_NotHaveCalendarError value)? dontHaveCalendarError,
     TResult Function(_Success value)? success,
   }) {
     return loading?.call(this);
@@ -372,7 +385,8 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
+    TResult Function(_Error value)? unknownError,
+    TResult Function(_NotHaveCalendarError value)? dontHaveCalendarError,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
@@ -391,7 +405,6 @@ abstract class _Loading implements CalendarState {
 abstract class _$$_ErrorCopyWith<$Res> {
   factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
       __$$_ErrorCopyWithImpl<$Res>;
-  $Res call({String error});
 }
 
 /// @nodoc
@@ -402,80 +415,60 @@ class __$$_ErrorCopyWithImpl<$Res> extends _$CalendarStateCopyWithImpl<$Res>
 
   @override
   _$_Error get _value => super._value as _$_Error;
-
-  @override
-  $Res call({
-    Object? error = freezed,
-  }) {
-    return _then(_$_Error(
-      error: error == freezed
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$_Error implements _Error {
-  const _$_Error({required this.error});
-
-  @override
-  final String error;
+  const _$_Error();
 
   @override
   String toString() {
-    return 'CalendarState.error(error: $error)';
+    return 'CalendarState.unknownError()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Error &&
-            const DeepCollectionEquality().equals(other.error, error));
+        (other.runtimeType == runtimeType && other is _$_Error);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(String error) error,
-    required TResult Function() success,
+    required TResult Function() unknownError,
+    required TResult Function() dontHaveCalendarError,
+    required TResult Function(List<CalendarSeriesEvent> events) success,
   }) {
-    return error(this.error);
+    return unknownError();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function()? success,
+    TResult Function()? unknownError,
+    TResult Function()? dontHaveCalendarError,
+    TResult Function(List<CalendarSeriesEvent> events)? success,
   }) {
-    return error?.call(this.error);
+    return unknownError?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function()? success,
+    TResult Function()? unknownError,
+    TResult Function()? dontHaveCalendarError,
+    TResult Function(List<CalendarSeriesEvent> events)? success,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(this.error);
+    if (unknownError != null) {
+      return unknownError();
     }
     return orElse();
   }
@@ -484,44 +477,161 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
+    required TResult Function(_Error value) unknownError,
+    required TResult Function(_NotHaveCalendarError value)
+        dontHaveCalendarError,
     required TResult Function(_Success value) success,
   }) {
-    return error(this);
+    return unknownError(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
+    TResult Function(_Error value)? unknownError,
+    TResult Function(_NotHaveCalendarError value)? dontHaveCalendarError,
     TResult Function(_Success value)? success,
   }) {
-    return error?.call(this);
+    return unknownError?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
+    TResult Function(_Error value)? unknownError,
+    TResult Function(_NotHaveCalendarError value)? dontHaveCalendarError,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(this);
+    if (unknownError != null) {
+      return unknownError(this);
     }
     return orElse();
   }
 }
 
 abstract class _Error implements CalendarState {
-  const factory _Error({required final String error}) = _$_Error;
+  const factory _Error() = _$_Error;
+}
 
-  String get error => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      throw _privateConstructorUsedError;
+/// @nodoc
+abstract class _$$_NotHaveCalendarErrorCopyWith<$Res> {
+  factory _$$_NotHaveCalendarErrorCopyWith(_$_NotHaveCalendarError value,
+          $Res Function(_$_NotHaveCalendarError) then) =
+      __$$_NotHaveCalendarErrorCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_NotHaveCalendarErrorCopyWithImpl<$Res>
+    extends _$CalendarStateCopyWithImpl<$Res>
+    implements _$$_NotHaveCalendarErrorCopyWith<$Res> {
+  __$$_NotHaveCalendarErrorCopyWithImpl(_$_NotHaveCalendarError _value,
+      $Res Function(_$_NotHaveCalendarError) _then)
+      : super(_value, (v) => _then(v as _$_NotHaveCalendarError));
+
+  @override
+  _$_NotHaveCalendarError get _value => super._value as _$_NotHaveCalendarError;
+}
+
+/// @nodoc
+
+class _$_NotHaveCalendarError implements _NotHaveCalendarError {
+  const _$_NotHaveCalendarError();
+
+  @override
+  String toString() {
+    return 'CalendarState.dontHaveCalendarError()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NotHaveCalendarError);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function() unknownError,
+    required TResult Function() dontHaveCalendarError,
+    required TResult Function(List<CalendarSeriesEvent> events) success,
+  }) {
+    return dontHaveCalendarError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? unknownError,
+    TResult Function()? dontHaveCalendarError,
+    TResult Function(List<CalendarSeriesEvent> events)? success,
+  }) {
+    return dontHaveCalendarError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? unknownError,
+    TResult Function()? dontHaveCalendarError,
+    TResult Function(List<CalendarSeriesEvent> events)? success,
+    required TResult orElse(),
+  }) {
+    if (dontHaveCalendarError != null) {
+      return dontHaveCalendarError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) unknownError,
+    required TResult Function(_NotHaveCalendarError value)
+        dontHaveCalendarError,
+    required TResult Function(_Success value) success,
+  }) {
+    return dontHaveCalendarError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? unknownError,
+    TResult Function(_NotHaveCalendarError value)? dontHaveCalendarError,
+    TResult Function(_Success value)? success,
+  }) {
+    return dontHaveCalendarError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? unknownError,
+    TResult Function(_NotHaveCalendarError value)? dontHaveCalendarError,
+    TResult Function(_Success value)? success,
+    required TResult orElse(),
+  }) {
+    if (dontHaveCalendarError != null) {
+      return dontHaveCalendarError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NotHaveCalendarError implements CalendarState {
+  const factory _NotHaveCalendarError() = _$_NotHaveCalendarError;
 }
 
 /// @nodoc
@@ -529,6 +639,7 @@ abstract class _$$_SuccessCopyWith<$Res> {
   factory _$$_SuccessCopyWith(
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
+  $Res call({List<CalendarSeriesEvent> events});
 }
 
 /// @nodoc
@@ -539,57 +650,88 @@ class __$$_SuccessCopyWithImpl<$Res> extends _$CalendarStateCopyWithImpl<$Res>
 
   @override
   _$_Success get _value => super._value as _$_Success;
+
+  @override
+  $Res call({
+    Object? events = freezed,
+  }) {
+    return _then(_$_Success(
+      events: events == freezed
+          ? _value._events
+          : events // ignore: cast_nullable_to_non_nullable
+              as List<CalendarSeriesEvent>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Success implements _Success {
-  const _$_Success();
+  const _$_Success({required final List<CalendarSeriesEvent> events})
+      : _events = events;
+
+  final List<CalendarSeriesEvent> _events;
+  @override
+  List<CalendarSeriesEvent> get events {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_events);
+  }
 
   @override
   String toString() {
-    return 'CalendarState.success()';
+    return 'CalendarState.success(events: $events)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Success);
+        (other.runtimeType == runtimeType &&
+            other is _$_Success &&
+            const DeepCollectionEquality().equals(other._events, _events));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_events));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SuccessCopyWith<_$_Success> get copyWith =>
+      __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(String error) error,
-    required TResult Function() success,
+    required TResult Function() unknownError,
+    required TResult Function() dontHaveCalendarError,
+    required TResult Function(List<CalendarSeriesEvent> events) success,
   }) {
-    return success();
+    return success(events);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function()? success,
+    TResult Function()? unknownError,
+    TResult Function()? dontHaveCalendarError,
+    TResult Function(List<CalendarSeriesEvent> events)? success,
   }) {
-    return success?.call();
+    return success?.call(events);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function()? success,
+    TResult Function()? unknownError,
+    TResult Function()? dontHaveCalendarError,
+    TResult Function(List<CalendarSeriesEvent> events)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success();
+      return success(events);
     }
     return orElse();
   }
@@ -598,7 +740,9 @@ class _$_Success implements _Success {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
+    required TResult Function(_Error value) unknownError,
+    required TResult Function(_NotHaveCalendarError value)
+        dontHaveCalendarError,
     required TResult Function(_Success value) success,
   }) {
     return success(this);
@@ -608,7 +752,8 @@ class _$_Success implements _Success {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
+    TResult Function(_Error value)? unknownError,
+    TResult Function(_NotHaveCalendarError value)? dontHaveCalendarError,
     TResult Function(_Success value)? success,
   }) {
     return success?.call(this);
@@ -618,7 +763,8 @@ class _$_Success implements _Success {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
+    TResult Function(_Error value)? unknownError,
+    TResult Function(_NotHaveCalendarError value)? dontHaveCalendarError,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
@@ -630,5 +776,11 @@ class _$_Success implements _Success {
 }
 
 abstract class _Success implements CalendarState {
-  const factory _Success() = _$_Success;
+  const factory _Success({required final List<CalendarSeriesEvent> events}) =
+      _$_Success;
+
+  List<CalendarSeriesEvent> get events => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_SuccessCopyWith<_$_Success> get copyWith =>
+      throw _privateConstructorUsedError;
 }

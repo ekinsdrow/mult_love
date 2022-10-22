@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mult_love/features/calendar/bloc/calendar_bloc.dart';
+import 'package:mult_love/features/calendar/data/models/calendar_series_event.dart';
 import 'package:mult_love/features/calendar/di/calendar_scope.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -29,13 +30,32 @@ class CalendarScreen extends StatelessWidget {
             loading: () => const Center(
               child: CircularProgressIndicator(),
             ),
-            error: (e) => Center(
-              child: Text(e),
+            unknownError: () => Center(
+              child: Text(AppLocalizations.of(context)!.unknown_error),
             ),
-            success: () => const Text('Success'),
+            dontHaveCalendarError: () => Center(
+              child: Text(AppLocalizations.of(context)!.not_have_calendar),
+            ),
+            success: (series) => _Body(
+              series: series,
+            ),
           ),
         ),
       ),
     );
+  }
+}
+
+class _Body extends StatelessWidget {
+  const _Body({
+    Key? key,
+    required this.series,
+  }) : super(key: key);
+
+  final List<CalendarSeriesEvent> series;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
