@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'calendar_series_event.dart';
 
@@ -35,44 +35,47 @@ mixin _$CalendarSeriesEvent {
 abstract class $CalendarSeriesEventCopyWith<$Res> {
   factory $CalendarSeriesEventCopyWith(
           CalendarSeriesEvent value, $Res Function(CalendarSeriesEvent) then) =
-      _$CalendarSeriesEventCopyWithImpl<$Res>;
+      _$CalendarSeriesEventCopyWithImpl<$Res, CalendarSeriesEvent>;
+  @useResult
   $Res call({String imgUrl, String title, String description, String date});
 }
 
 /// @nodoc
-class _$CalendarSeriesEventCopyWithImpl<$Res>
+class _$CalendarSeriesEventCopyWithImpl<$Res, $Val extends CalendarSeriesEvent>
     implements $CalendarSeriesEventCopyWith<$Res> {
   _$CalendarSeriesEventCopyWithImpl(this._value, this._then);
 
-  final CalendarSeriesEvent _value;
   // ignore: unused_field
-  final $Res Function(CalendarSeriesEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? imgUrl = freezed,
-    Object? title = freezed,
-    Object? description = freezed,
-    Object? date = freezed,
+    Object? imgUrl = null,
+    Object? title = null,
+    Object? description = null,
+    Object? date = null,
   }) {
     return _then(_value.copyWith(
-      imgUrl: imgUrl == freezed
+      imgUrl: null == imgUrl
           ? _value.imgUrl
           : imgUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      date: date == freezed
+      date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -83,41 +86,40 @@ abstract class _$$_CalendarSeriesEventCopyWith<$Res>
           $Res Function(_$_CalendarSeriesEvent) then) =
       __$$_CalendarSeriesEventCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String imgUrl, String title, String description, String date});
 }
 
 /// @nodoc
 class __$$_CalendarSeriesEventCopyWithImpl<$Res>
-    extends _$CalendarSeriesEventCopyWithImpl<$Res>
+    extends _$CalendarSeriesEventCopyWithImpl<$Res, _$_CalendarSeriesEvent>
     implements _$$_CalendarSeriesEventCopyWith<$Res> {
   __$$_CalendarSeriesEventCopyWithImpl(_$_CalendarSeriesEvent _value,
       $Res Function(_$_CalendarSeriesEvent) _then)
-      : super(_value, (v) => _then(v as _$_CalendarSeriesEvent));
+      : super(_value, _then);
 
-  @override
-  _$_CalendarSeriesEvent get _value => super._value as _$_CalendarSeriesEvent;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? imgUrl = freezed,
-    Object? title = freezed,
-    Object? description = freezed,
-    Object? date = freezed,
+    Object? imgUrl = null,
+    Object? title = null,
+    Object? description = null,
+    Object? date = null,
   }) {
     return _then(_$_CalendarSeriesEvent(
-      imgUrl: imgUrl == freezed
+      imgUrl: null == imgUrl
           ? _value.imgUrl
           : imgUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      date: date == freezed
+      date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
@@ -156,31 +158,30 @@ class _$_CalendarSeriesEvent implements _CalendarSeriesEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CalendarSeriesEvent &&
-            const DeepCollectionEquality().equals(other.imgUrl, imgUrl) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.date, date));
+            (identical(other.imgUrl, imgUrl) || other.imgUrl == imgUrl) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.date, date) || other.date == date));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(imgUrl),
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(date));
+  int get hashCode =>
+      Object.hash(runtimeType, imgUrl, title, description, date);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CalendarSeriesEventCopyWith<_$_CalendarSeriesEvent> get copyWith =>
       __$$_CalendarSeriesEventCopyWithImpl<_$_CalendarSeriesEvent>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CalendarSeriesEventToJson(this);
+    return _$$_CalendarSeriesEventToJson(
+      this,
+    );
   }
 }
 
@@ -195,13 +196,13 @@ abstract class _CalendarSeriesEvent implements CalendarSeriesEvent {
       _$_CalendarSeriesEvent.fromJson;
 
   @override
-  String get imgUrl => throw _privateConstructorUsedError;
+  String get imgUrl;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
-  String get date => throw _privateConstructorUsedError;
+  String get date;
   @override
   @JsonKey(ignore: true)
   _$$_CalendarSeriesEventCopyWith<_$_CalendarSeriesEvent> get copyWith =>

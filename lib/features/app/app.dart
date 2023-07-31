@@ -18,8 +18,7 @@ class App extends StatelessWidget {
       dio: _dio,
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        routeInformationParser: _router.defaultRouteParser(),
-        routerDelegate: _router.delegate(),
+        routerConfig: _router.config(),
         title: 'Mult.love',
         theme: Themes.darkTheme,
         localizationsDelegates: const [

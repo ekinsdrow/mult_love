@@ -8,6 +8,7 @@ import 'package:mult_love/features/main/bloc/serials/serials_bloc.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
 import 'package:mult_love/features/main/di/main_scope.dart';
 
+@RoutePage()    
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 

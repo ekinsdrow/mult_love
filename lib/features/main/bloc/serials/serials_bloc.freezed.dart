@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'serials_bloc.dart';
 
@@ -23,7 +23,7 @@ mixin _$SerialsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetch,
+    TResult? Function()? fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,7 +39,7 @@ mixin _$SerialsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Fetch value)? fetch,
+    TResult? Function(_Fetch value)? fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,16 +54,18 @@ mixin _$SerialsEvent {
 abstract class $SerialsEventCopyWith<$Res> {
   factory $SerialsEventCopyWith(
           SerialsEvent value, $Res Function(SerialsEvent) then) =
-      _$SerialsEventCopyWithImpl<$Res>;
+      _$SerialsEventCopyWithImpl<$Res, SerialsEvent>;
 }
 
 /// @nodoc
-class _$SerialsEventCopyWithImpl<$Res> implements $SerialsEventCopyWith<$Res> {
+class _$SerialsEventCopyWithImpl<$Res, $Val extends SerialsEvent>
+    implements $SerialsEventCopyWith<$Res> {
   _$SerialsEventCopyWithImpl(this._value, this._then);
 
-  final SerialsEvent _value;
   // ignore: unused_field
-  final $Res Function(SerialsEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -73,13 +75,11 @@ abstract class _$$_FetchCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_FetchCopyWithImpl<$Res> extends _$SerialsEventCopyWithImpl<$Res>
+class __$$_FetchCopyWithImpl<$Res>
+    extends _$SerialsEventCopyWithImpl<$Res, _$_Fetch>
     implements _$$_FetchCopyWith<$Res> {
   __$$_FetchCopyWithImpl(_$_Fetch _value, $Res Function(_$_Fetch) _then)
-      : super(_value, (v) => _then(v as _$_Fetch));
-
-  @override
-  _$_Fetch get _value => super._value as _$_Fetch;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -112,7 +112,7 @@ class _$_Fetch implements _Fetch {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetch,
+    TResult? Function()? fetch,
   }) {
     return fetch?.call();
   }
@@ -140,7 +140,7 @@ class _$_Fetch implements _Fetch {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Fetch value)? fetch,
+    TResult? Function(_Fetch value)? fetch,
   }) {
     return fetch?.call(this);
   }
@@ -173,9 +173,9 @@ mixin _$SerialsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<Serial> serials)? success,
-    TResult Function()? error,
+    TResult? Function()? loading,
+    TResult? Function(List<Serial> serials)? success,
+    TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -195,9 +195,9 @@ mixin _$SerialsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -214,16 +214,18 @@ mixin _$SerialsState {
 abstract class $SerialsStateCopyWith<$Res> {
   factory $SerialsStateCopyWith(
           SerialsState value, $Res Function(SerialsState) then) =
-      _$SerialsStateCopyWithImpl<$Res>;
+      _$SerialsStateCopyWithImpl<$Res, SerialsState>;
 }
 
 /// @nodoc
-class _$SerialsStateCopyWithImpl<$Res> implements $SerialsStateCopyWith<$Res> {
+class _$SerialsStateCopyWithImpl<$Res, $Val extends SerialsState>
+    implements $SerialsStateCopyWith<$Res> {
   _$SerialsStateCopyWithImpl(this._value, this._then);
 
-  final SerialsState _value;
   // ignore: unused_field
-  final $Res Function(SerialsState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -234,13 +236,11 @@ abstract class _$$_LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res> extends _$SerialsStateCopyWithImpl<$Res>
+class __$$_LoadingCopyWithImpl<$Res>
+    extends _$SerialsStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
-      : super(_value, (v) => _then(v as _$_Loading));
-
-  @override
-  _$_Loading get _value => super._value as _$_Loading;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -275,9 +275,9 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<Serial> serials)? success,
-    TResult Function()? error,
+    TResult? Function()? loading,
+    TResult? Function(List<Serial> serials)? success,
+    TResult? Function()? error,
   }) {
     return loading?.call();
   }
@@ -309,9 +309,9 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
   }
@@ -340,24 +340,24 @@ abstract class _$$_SuccessCopyWith<$Res> {
   factory _$$_SuccessCopyWith(
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<Serial> serials});
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res> extends _$SerialsStateCopyWithImpl<$Res>
+class __$$_SuccessCopyWithImpl<$Res>
+    extends _$SerialsStateCopyWithImpl<$Res, _$_Success>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
-      : super(_value, (v) => _then(v as _$_Success));
+      : super(_value, _then);
 
-  @override
-  _$_Success get _value => super._value as _$_Success;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? serials = freezed,
+    Object? serials = null,
   }) {
     return _then(_$_Success(
-      serials: serials == freezed
+      serials: null == serials
           ? _value._serials
           : serials // ignore: cast_nullable_to_non_nullable
               as List<Serial>,
@@ -373,6 +373,7 @@ class _$_Success implements _Success {
   final List<Serial> _serials;
   @override
   List<Serial> get serials {
+    if (_serials is EqualUnmodifiableListView) return _serials;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_serials);
   }
@@ -396,6 +397,7 @@ class _$_Success implements _Success {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
       __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
 
@@ -412,9 +414,9 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<Serial> serials)? success,
-    TResult Function()? error,
+    TResult? Function()? loading,
+    TResult? Function(List<Serial> serials)? success,
+    TResult? Function()? error,
   }) {
     return success?.call(serials);
   }
@@ -446,9 +448,9 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
   }) {
     return success?.call(this);
   }
@@ -471,7 +473,7 @@ class _$_Success implements _Success {
 abstract class _Success implements SerialsState {
   const factory _Success({required final List<Serial> serials}) = _$_Success;
 
-  List<Serial> get serials => throw _privateConstructorUsedError;
+  List<Serial> get serials;
   @JsonKey(ignore: true)
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
       throw _privateConstructorUsedError;
@@ -484,13 +486,11 @@ abstract class _$$_ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res> extends _$SerialsStateCopyWithImpl<$Res>
+class __$$_ErrorCopyWithImpl<$Res>
+    extends _$SerialsStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
   __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
-      : super(_value, (v) => _then(v as _$_Error));
-
-  @override
-  _$_Error get _value => super._value as _$_Error;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -525,9 +525,9 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<Serial> serials)? success,
-    TResult Function()? error,
+    TResult? Function()? loading,
+    TResult? Function(List<Serial> serials)? success,
+    TResult? Function()? error,
   }) {
     return error?.call();
   }
@@ -559,9 +559,9 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
   }

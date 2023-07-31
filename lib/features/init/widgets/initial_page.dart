@@ -5,6 +5,7 @@ import 'package:mult_love/features/app/router/router.dart';
 import 'package:mult_love/features/init/blocs/init/initial_bloc.dart';
 import 'package:mult_love/features/init/di/inital_page_scope.dart';
 
+@RoutePage()
 class InitialPage extends StatelessWidget {
   const InitialPage({Key? key}) : super(key: key);
 

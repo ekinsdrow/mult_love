@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'voice.dart';
 
@@ -34,49 +34,53 @@ mixin _$Voice {
 /// @nodoc
 abstract class $VoiceCopyWith<$Res> {
   factory $VoiceCopyWith(Voice value, $Res Function(Voice) then) =
-      _$VoiceCopyWithImpl<$Res>;
+      _$VoiceCopyWithImpl<$Res, Voice>;
+  @useResult
   $Res call(
       {String name, String link, bool isActive, bool isSub, SubType? subType});
 }
 
 /// @nodoc
-class _$VoiceCopyWithImpl<$Res> implements $VoiceCopyWith<$Res> {
+class _$VoiceCopyWithImpl<$Res, $Val extends Voice>
+    implements $VoiceCopyWith<$Res> {
   _$VoiceCopyWithImpl(this._value, this._then);
 
-  final Voice _value;
   // ignore: unused_field
-  final $Res Function(Voice) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? link = freezed,
-    Object? isActive = freezed,
-    Object? isSub = freezed,
+    Object? name = null,
+    Object? link = null,
+    Object? isActive = null,
+    Object? isSub = null,
     Object? subType = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      link: link == freezed
+      link: null == link
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
               as String,
-      isActive: isActive == freezed
+      isActive: null == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool,
-      isSub: isSub == freezed
+      isSub: null == isSub
           ? _value.isSub
           : isSub // ignore: cast_nullable_to_non_nullable
               as bool,
-      subType: subType == freezed
+      subType: freezed == subType
           ? _value.subType
           : subType // ignore: cast_nullable_to_non_nullable
               as SubType?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -85,45 +89,44 @@ abstract class _$$_VoiceCopyWith<$Res> implements $VoiceCopyWith<$Res> {
   factory _$$_VoiceCopyWith(_$_Voice value, $Res Function(_$_Voice) then) =
       __$$_VoiceCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String name, String link, bool isActive, bool isSub, SubType? subType});
 }
 
 /// @nodoc
-class __$$_VoiceCopyWithImpl<$Res> extends _$VoiceCopyWithImpl<$Res>
+class __$$_VoiceCopyWithImpl<$Res> extends _$VoiceCopyWithImpl<$Res, _$_Voice>
     implements _$$_VoiceCopyWith<$Res> {
   __$$_VoiceCopyWithImpl(_$_Voice _value, $Res Function(_$_Voice) _then)
-      : super(_value, (v) => _then(v as _$_Voice));
+      : super(_value, _then);
 
-  @override
-  _$_Voice get _value => super._value as _$_Voice;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? link = freezed,
-    Object? isActive = freezed,
-    Object? isSub = freezed,
+    Object? name = null,
+    Object? link = null,
+    Object? isActive = null,
+    Object? isSub = null,
     Object? subType = freezed,
   }) {
     return _then(_$_Voice(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      link: link == freezed
+      link: null == link
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
               as String,
-      isActive: isActive == freezed
+      isActive: null == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool,
-      isSub: isSub == freezed
+      isSub: null == isSub
           ? _value.isSub
           : isSub // ignore: cast_nullable_to_non_nullable
               as bool,
-      subType: subType == freezed
+      subType: freezed == subType
           ? _value.subType
           : subType // ignore: cast_nullable_to_non_nullable
               as SubType?,
@@ -165,31 +168,30 @@ class _$_Voice implements _Voice {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Voice &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.link, link) &&
-            const DeepCollectionEquality().equals(other.isActive, isActive) &&
-            const DeepCollectionEquality().equals(other.isSub, isSub) &&
-            const DeepCollectionEquality().equals(other.subType, subType));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.link, link) || other.link == link) &&
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive) &&
+            (identical(other.isSub, isSub) || other.isSub == isSub) &&
+            (identical(other.subType, subType) || other.subType == subType));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(link),
-      const DeepCollectionEquality().hash(isActive),
-      const DeepCollectionEquality().hash(isSub),
-      const DeepCollectionEquality().hash(subType));
+  int get hashCode =>
+      Object.hash(runtimeType, name, link, isActive, isSub, subType);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_VoiceCopyWith<_$_Voice> get copyWith =>
       __$$_VoiceCopyWithImpl<_$_Voice>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_VoiceToJson(this);
+    return _$$_VoiceToJson(
+      this,
+    );
   }
 }
 
@@ -204,15 +206,15 @@ abstract class _Voice implements Voice {
   factory _Voice.fromJson(Map<String, dynamic> json) = _$_Voice.fromJson;
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get link => throw _privateConstructorUsedError;
+  String get link;
   @override
-  bool get isActive => throw _privateConstructorUsedError;
+  bool get isActive;
   @override
-  bool get isSub => throw _privateConstructorUsedError;
+  bool get isSub;
   @override
-  SubType? get subType => throw _privateConstructorUsedError;
+  SubType? get subType;
   @override
   @JsonKey(ignore: true)
   _$$_VoiceCopyWith<_$_Voice> get copyWith =>

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'calendar_bloc.dart';
 
@@ -24,7 +24,7 @@ mixin _$CalendarEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String serialUrl)? fetch,
+    TResult? Function(String serialUrl)? fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +40,7 @@ mixin _$CalendarEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Fecth value)? fetch,
+    TResult? Function(_Fecth value)? fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,29 +59,32 @@ mixin _$CalendarEvent {
 abstract class $CalendarEventCopyWith<$Res> {
   factory $CalendarEventCopyWith(
           CalendarEvent value, $Res Function(CalendarEvent) then) =
-      _$CalendarEventCopyWithImpl<$Res>;
+      _$CalendarEventCopyWithImpl<$Res, CalendarEvent>;
+  @useResult
   $Res call({String serialUrl});
 }
 
 /// @nodoc
-class _$CalendarEventCopyWithImpl<$Res>
+class _$CalendarEventCopyWithImpl<$Res, $Val extends CalendarEvent>
     implements $CalendarEventCopyWith<$Res> {
   _$CalendarEventCopyWithImpl(this._value, this._then);
 
-  final CalendarEvent _value;
   // ignore: unused_field
-  final $Res Function(CalendarEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? serialUrl = freezed,
+    Object? serialUrl = null,
   }) {
     return _then(_value.copyWith(
-      serialUrl: serialUrl == freezed
+      serialUrl: null == serialUrl
           ? _value.serialUrl
           : serialUrl // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -90,24 +93,24 @@ abstract class _$$_FecthCopyWith<$Res> implements $CalendarEventCopyWith<$Res> {
   factory _$$_FecthCopyWith(_$_Fecth value, $Res Function(_$_Fecth) then) =
       __$$_FecthCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String serialUrl});
 }
 
 /// @nodoc
-class __$$_FecthCopyWithImpl<$Res> extends _$CalendarEventCopyWithImpl<$Res>
+class __$$_FecthCopyWithImpl<$Res>
+    extends _$CalendarEventCopyWithImpl<$Res, _$_Fecth>
     implements _$$_FecthCopyWith<$Res> {
   __$$_FecthCopyWithImpl(_$_Fecth _value, $Res Function(_$_Fecth) _then)
-      : super(_value, (v) => _then(v as _$_Fecth));
+      : super(_value, _then);
 
-  @override
-  _$_Fecth get _value => super._value as _$_Fecth;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? serialUrl = freezed,
+    Object? serialUrl = null,
   }) {
     return _then(_$_Fecth(
-      serialUrl: serialUrl == freezed
+      serialUrl: null == serialUrl
           ? _value.serialUrl
           : serialUrl // ignore: cast_nullable_to_non_nullable
               as String,
@@ -133,15 +136,16 @@ class _$_Fecth implements _Fecth {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Fecth &&
-            const DeepCollectionEquality().equals(other.serialUrl, serialUrl));
+            (identical(other.serialUrl, serialUrl) ||
+                other.serialUrl == serialUrl));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(serialUrl));
+  int get hashCode => Object.hash(runtimeType, serialUrl);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FecthCopyWith<_$_Fecth> get copyWith =>
       __$$_FecthCopyWithImpl<_$_Fecth>(this, _$identity);
 
@@ -156,7 +160,7 @@ class _$_Fecth implements _Fecth {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String serialUrl)? fetch,
+    TResult? Function(String serialUrl)? fetch,
   }) {
     return fetch?.call(serialUrl);
   }
@@ -184,7 +188,7 @@ class _$_Fecth implements _Fecth {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Fecth value)? fetch,
+    TResult? Function(_Fecth value)? fetch,
   }) {
     return fetch?.call(this);
   }
@@ -206,7 +210,7 @@ abstract class _Fecth implements CalendarEvent {
   const factory _Fecth({required final String serialUrl}) = _$_Fecth;
 
   @override
-  String get serialUrl => throw _privateConstructorUsedError;
+  String get serialUrl;
   @override
   @JsonKey(ignore: true)
   _$$_FecthCopyWith<_$_Fecth> get copyWith =>
@@ -225,10 +229,10 @@ mixin _$CalendarState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? unknownError,
-    TResult Function()? dontHaveCalendarError,
-    TResult Function(List<CalendarSeriesEvent> events)? success,
+    TResult? Function()? loading,
+    TResult? Function()? unknownError,
+    TResult? Function()? dontHaveCalendarError,
+    TResult? Function(List<CalendarSeriesEvent> events)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -251,10 +255,10 @@ mixin _$CalendarState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? unknownError,
-    TResult Function(_NotHaveCalendarError value)? dontHaveCalendarError,
-    TResult Function(_Success value)? success,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? unknownError,
+    TResult? Function(_NotHaveCalendarError value)? dontHaveCalendarError,
+    TResult? Function(_Success value)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -272,17 +276,18 @@ mixin _$CalendarState {
 abstract class $CalendarStateCopyWith<$Res> {
   factory $CalendarStateCopyWith(
           CalendarState value, $Res Function(CalendarState) then) =
-      _$CalendarStateCopyWithImpl<$Res>;
+      _$CalendarStateCopyWithImpl<$Res, CalendarState>;
 }
 
 /// @nodoc
-class _$CalendarStateCopyWithImpl<$Res>
+class _$CalendarStateCopyWithImpl<$Res, $Val extends CalendarState>
     implements $CalendarStateCopyWith<$Res> {
   _$CalendarStateCopyWithImpl(this._value, this._then);
 
-  final CalendarState _value;
   // ignore: unused_field
-  final $Res Function(CalendarState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -293,13 +298,11 @@ abstract class _$$_LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res> extends _$CalendarStateCopyWithImpl<$Res>
+class __$$_LoadingCopyWithImpl<$Res>
+    extends _$CalendarStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
-      : super(_value, (v) => _then(v as _$_Loading));
-
-  @override
-  _$_Loading get _value => super._value as _$_Loading;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -335,10 +338,10 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? unknownError,
-    TResult Function()? dontHaveCalendarError,
-    TResult Function(List<CalendarSeriesEvent> events)? success,
+    TResult? Function()? loading,
+    TResult? Function()? unknownError,
+    TResult? Function()? dontHaveCalendarError,
+    TResult? Function(List<CalendarSeriesEvent> events)? success,
   }) {
     return loading?.call();
   }
@@ -373,10 +376,10 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? unknownError,
-    TResult Function(_NotHaveCalendarError value)? dontHaveCalendarError,
-    TResult Function(_Success value)? success,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? unknownError,
+    TResult? Function(_NotHaveCalendarError value)? dontHaveCalendarError,
+    TResult? Function(_Success value)? success,
   }) {
     return loading?.call(this);
   }
@@ -408,13 +411,11 @@ abstract class _$$_ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res> extends _$CalendarStateCopyWithImpl<$Res>
+class __$$_ErrorCopyWithImpl<$Res>
+    extends _$CalendarStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
   __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
-      : super(_value, (v) => _then(v as _$_Error));
-
-  @override
-  _$_Error get _value => super._value as _$_Error;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -450,10 +451,10 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? unknownError,
-    TResult Function()? dontHaveCalendarError,
-    TResult Function(List<CalendarSeriesEvent> events)? success,
+    TResult? Function()? loading,
+    TResult? Function()? unknownError,
+    TResult? Function()? dontHaveCalendarError,
+    TResult? Function(List<CalendarSeriesEvent> events)? success,
   }) {
     return unknownError?.call();
   }
@@ -488,10 +489,10 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? unknownError,
-    TResult Function(_NotHaveCalendarError value)? dontHaveCalendarError,
-    TResult Function(_Success value)? success,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? unknownError,
+    TResult? Function(_NotHaveCalendarError value)? dontHaveCalendarError,
+    TResult? Function(_Success value)? success,
   }) {
     return unknownError?.call(this);
   }
@@ -525,14 +526,11 @@ abstract class _$$_NotHaveCalendarErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_NotHaveCalendarErrorCopyWithImpl<$Res>
-    extends _$CalendarStateCopyWithImpl<$Res>
+    extends _$CalendarStateCopyWithImpl<$Res, _$_NotHaveCalendarError>
     implements _$$_NotHaveCalendarErrorCopyWith<$Res> {
   __$$_NotHaveCalendarErrorCopyWithImpl(_$_NotHaveCalendarError _value,
       $Res Function(_$_NotHaveCalendarError) _then)
-      : super(_value, (v) => _then(v as _$_NotHaveCalendarError));
-
-  @override
-  _$_NotHaveCalendarError get _value => super._value as _$_NotHaveCalendarError;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -568,10 +566,10 @@ class _$_NotHaveCalendarError implements _NotHaveCalendarError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? unknownError,
-    TResult Function()? dontHaveCalendarError,
-    TResult Function(List<CalendarSeriesEvent> events)? success,
+    TResult? Function()? loading,
+    TResult? Function()? unknownError,
+    TResult? Function()? dontHaveCalendarError,
+    TResult? Function(List<CalendarSeriesEvent> events)? success,
   }) {
     return dontHaveCalendarError?.call();
   }
@@ -606,10 +604,10 @@ class _$_NotHaveCalendarError implements _NotHaveCalendarError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? unknownError,
-    TResult Function(_NotHaveCalendarError value)? dontHaveCalendarError,
-    TResult Function(_Success value)? success,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? unknownError,
+    TResult? Function(_NotHaveCalendarError value)? dontHaveCalendarError,
+    TResult? Function(_Success value)? success,
   }) {
     return dontHaveCalendarError?.call(this);
   }
@@ -639,24 +637,24 @@ abstract class _$$_SuccessCopyWith<$Res> {
   factory _$$_SuccessCopyWith(
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<CalendarSeriesEvent> events});
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res> extends _$CalendarStateCopyWithImpl<$Res>
+class __$$_SuccessCopyWithImpl<$Res>
+    extends _$CalendarStateCopyWithImpl<$Res, _$_Success>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
-      : super(_value, (v) => _then(v as _$_Success));
+      : super(_value, _then);
 
-  @override
-  _$_Success get _value => super._value as _$_Success;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? events = freezed,
+    Object? events = null,
   }) {
     return _then(_$_Success(
-      events: events == freezed
+      events: null == events
           ? _value._events
           : events // ignore: cast_nullable_to_non_nullable
               as List<CalendarSeriesEvent>,
@@ -673,6 +671,7 @@ class _$_Success implements _Success {
   final List<CalendarSeriesEvent> _events;
   @override
   List<CalendarSeriesEvent> get events {
+    if (_events is EqualUnmodifiableListView) return _events;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_events);
   }
@@ -696,6 +695,7 @@ class _$_Success implements _Success {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
       __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
 
@@ -713,10 +713,10 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? unknownError,
-    TResult Function()? dontHaveCalendarError,
-    TResult Function(List<CalendarSeriesEvent> events)? success,
+    TResult? Function()? loading,
+    TResult? Function()? unknownError,
+    TResult? Function()? dontHaveCalendarError,
+    TResult? Function(List<CalendarSeriesEvent> events)? success,
   }) {
     return success?.call(events);
   }
@@ -751,10 +751,10 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? unknownError,
-    TResult Function(_NotHaveCalendarError value)? dontHaveCalendarError,
-    TResult Function(_Success value)? success,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? unknownError,
+    TResult? Function(_NotHaveCalendarError value)? dontHaveCalendarError,
+    TResult? Function(_Success value)? success,
   }) {
     return success?.call(this);
   }
@@ -779,7 +779,7 @@ abstract class _Success implements CalendarState {
   const factory _Success({required final List<CalendarSeriesEvent> events}) =
       _$_Success;
 
-  List<CalendarSeriesEvent> get events => throw _privateConstructorUsedError;
+  List<CalendarSeriesEvent> get events;
   @JsonKey(ignore: true)
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
       throw _privateConstructorUsedError;

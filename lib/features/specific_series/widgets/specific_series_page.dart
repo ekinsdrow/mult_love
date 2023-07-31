@@ -6,11 +6,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:mult_love/common/assets/constants.dart';
-import 'package:mult_love/features/app/router/router.dart';
+import 'package:mult_love/common/widgets/appbar.dart';
+import 'package:mult_love/features/main/data/models/serial.dart';
 import 'package:mult_love/features/specific_series/bloc/specific_series_bloc/specific_series_bloc.dart';
 import 'package:mult_love/features/specific_series/di/specific_series_scope.dart';
 import 'package:video_player/video_player.dart';
 
+@RoutePage()
 class SpecificSeriesPage extends StatefulWidget {
   const SpecificSeriesPage({
     Key? key,
@@ -45,38 +47,15 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
             ),
           ),
           success: (specificSeries) => Scaffold(
-            appBar: AppBar(
-              actions: [
-                IconButton(
-                  onPressed: () {
-                    context.router.push(
-                      CalndarRoute(
-                        serialLink: specificSeries.serialLink,
-                        serialTitle: specificSeries.serialTitle,
-                      ),
-                    );
-                  },
-                  icon: const Icon(
-                    Icons.calendar_month,
-                  ),
+            appBar: PreferredSize(
+              preferredSize: const Size.fromHeight(kToolbarHeight),
+              child: CustomAppBar(
+                serial: Serial(
+                  logoUrl: '',
+                  title: specificSeries.serialTitle,
+                  link: specificSeries.serialLink,
                 ),
-                IconButton(
-                  onPressed: () {
-                    context.read<SpecificSeriesBloc>().add(
-                          SpecificSeriesEvent.fetch(
-                            url: specificSeries.serialLink + '/random.php',
-                            isSubtitles: false,
-                            subType: null,
-                          ),
-                        );
-                  },
-                  icon: const Icon(
-                    Icons.shuffle,
-                  ),
-                ),
-              ],
-              title: Text(
-                specificSeries.serialTitle,
+                customTitle: specificSeries.serialTitle,
               ),
             ),
             body: SafeArea(
@@ -192,7 +171,7 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                             data: specificSeries.description,
                             style: {
                               '*': Style(
-                                margin: EdgeInsets.zero,
+                                margin: Margins.zero,
                               ),
                             },
                           ),

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'season.dart';
 
@@ -31,33 +31,37 @@ mixin _$Season {
 /// @nodoc
 abstract class $SeasonCopyWith<$Res> {
   factory $SeasonCopyWith(Season value, $Res Function(Season) then) =
-      _$SeasonCopyWithImpl<$Res>;
+      _$SeasonCopyWithImpl<$Res, Season>;
+  @useResult
   $Res call({String link, String number});
 }
 
 /// @nodoc
-class _$SeasonCopyWithImpl<$Res> implements $SeasonCopyWith<$Res> {
+class _$SeasonCopyWithImpl<$Res, $Val extends Season>
+    implements $SeasonCopyWith<$Res> {
   _$SeasonCopyWithImpl(this._value, this._then);
 
-  final Season _value;
   // ignore: unused_field
-  final $Res Function(Season) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? link = freezed,
-    Object? number = freezed,
+    Object? link = null,
+    Object? number = null,
   }) {
     return _then(_value.copyWith(
-      link: link == freezed
+      link: null == link
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
               as String,
-      number: number == freezed
+      number: null == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -66,29 +70,29 @@ abstract class _$$_SeasonCopyWith<$Res> implements $SeasonCopyWith<$Res> {
   factory _$$_SeasonCopyWith(_$_Season value, $Res Function(_$_Season) then) =
       __$$_SeasonCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String link, String number});
 }
 
 /// @nodoc
-class __$$_SeasonCopyWithImpl<$Res> extends _$SeasonCopyWithImpl<$Res>
+class __$$_SeasonCopyWithImpl<$Res>
+    extends _$SeasonCopyWithImpl<$Res, _$_Season>
     implements _$$_SeasonCopyWith<$Res> {
   __$$_SeasonCopyWithImpl(_$_Season _value, $Res Function(_$_Season) _then)
-      : super(_value, (v) => _then(v as _$_Season));
+      : super(_value, _then);
 
-  @override
-  _$_Season get _value => super._value as _$_Season;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? link = freezed,
-    Object? number = freezed,
+    Object? link = null,
+    Object? number = null,
   }) {
     return _then(_$_Season(
-      link: link == freezed
+      link: null == link
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
               as String,
-      number: number == freezed
+      number: null == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String,
@@ -119,25 +123,25 @@ class _$_Season implements _Season {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Season &&
-            const DeepCollectionEquality().equals(other.link, link) &&
-            const DeepCollectionEquality().equals(other.number, number));
+            (identical(other.link, link) || other.link == link) &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(link),
-      const DeepCollectionEquality().hash(number));
+  int get hashCode => Object.hash(runtimeType, link, number);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SeasonCopyWith<_$_Season> get copyWith =>
       __$$_SeasonCopyWithImpl<_$_Season>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SeasonToJson(this);
+    return _$$_SeasonToJson(
+      this,
+    );
   }
 }
 
@@ -148,9 +152,9 @@ abstract class _Season implements Season {
   factory _Season.fromJson(Map<String, dynamic> json) = _$_Season.fromJson;
 
   @override
-  String get link => throw _privateConstructorUsedError;
+  String get link;
   @override
-  String get number => throw _privateConstructorUsedError;
+  String get number;
   @override
   @JsonKey(ignore: true)
   _$$_SeasonCopyWith<_$_Season> get copyWith =>

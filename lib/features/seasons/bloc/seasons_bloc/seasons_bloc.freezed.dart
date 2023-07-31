@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'seasons_bloc.dart';
 
@@ -24,7 +24,7 @@ mixin _$SeasonsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String serialLink)? fetch,
+    TResult? Function(String serialLink)? fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +40,7 @@ mixin _$SeasonsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Fetch value)? fetch,
+    TResult? Function(_Fetch value)? fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,28 +59,32 @@ mixin _$SeasonsEvent {
 abstract class $SeasonsEventCopyWith<$Res> {
   factory $SeasonsEventCopyWith(
           SeasonsEvent value, $Res Function(SeasonsEvent) then) =
-      _$SeasonsEventCopyWithImpl<$Res>;
+      _$SeasonsEventCopyWithImpl<$Res, SeasonsEvent>;
+  @useResult
   $Res call({String serialLink});
 }
 
 /// @nodoc
-class _$SeasonsEventCopyWithImpl<$Res> implements $SeasonsEventCopyWith<$Res> {
+class _$SeasonsEventCopyWithImpl<$Res, $Val extends SeasonsEvent>
+    implements $SeasonsEventCopyWith<$Res> {
   _$SeasonsEventCopyWithImpl(this._value, this._then);
 
-  final SeasonsEvent _value;
   // ignore: unused_field
-  final $Res Function(SeasonsEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? serialLink = freezed,
+    Object? serialLink = null,
   }) {
     return _then(_value.copyWith(
-      serialLink: serialLink == freezed
+      serialLink: null == serialLink
           ? _value.serialLink
           : serialLink // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -89,24 +93,24 @@ abstract class _$$_FetchCopyWith<$Res> implements $SeasonsEventCopyWith<$Res> {
   factory _$$_FetchCopyWith(_$_Fetch value, $Res Function(_$_Fetch) then) =
       __$$_FetchCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String serialLink});
 }
 
 /// @nodoc
-class __$$_FetchCopyWithImpl<$Res> extends _$SeasonsEventCopyWithImpl<$Res>
+class __$$_FetchCopyWithImpl<$Res>
+    extends _$SeasonsEventCopyWithImpl<$Res, _$_Fetch>
     implements _$$_FetchCopyWith<$Res> {
   __$$_FetchCopyWithImpl(_$_Fetch _value, $Res Function(_$_Fetch) _then)
-      : super(_value, (v) => _then(v as _$_Fetch));
+      : super(_value, _then);
 
-  @override
-  _$_Fetch get _value => super._value as _$_Fetch;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? serialLink = freezed,
+    Object? serialLink = null,
   }) {
     return _then(_$_Fetch(
-      serialLink: serialLink == freezed
+      serialLink: null == serialLink
           ? _value.serialLink
           : serialLink // ignore: cast_nullable_to_non_nullable
               as String,
@@ -132,16 +136,16 @@ class _$_Fetch implements _Fetch {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Fetch &&
-            const DeepCollectionEquality()
-                .equals(other.serialLink, serialLink));
+            (identical(other.serialLink, serialLink) ||
+                other.serialLink == serialLink));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(serialLink));
+  int get hashCode => Object.hash(runtimeType, serialLink);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FetchCopyWith<_$_Fetch> get copyWith =>
       __$$_FetchCopyWithImpl<_$_Fetch>(this, _$identity);
 
@@ -156,7 +160,7 @@ class _$_Fetch implements _Fetch {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String serialLink)? fetch,
+    TResult? Function(String serialLink)? fetch,
   }) {
     return fetch?.call(serialLink);
   }
@@ -184,7 +188,7 @@ class _$_Fetch implements _Fetch {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Fetch value)? fetch,
+    TResult? Function(_Fetch value)? fetch,
   }) {
     return fetch?.call(this);
   }
@@ -206,7 +210,7 @@ abstract class _Fetch implements SeasonsEvent {
   const factory _Fetch({required final String serialLink}) = _$_Fetch;
 
   @override
-  String get serialLink => throw _privateConstructorUsedError;
+  String get serialLink;
   @override
   @JsonKey(ignore: true)
   _$$_FetchCopyWith<_$_Fetch> get copyWith =>
@@ -224,9 +228,9 @@ mixin _$SeasonsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? error,
-    TResult Function(List<Season> seasons)? success,
+    TResult? Function()? loading,
+    TResult? Function()? error,
+    TResult? Function(List<Season> seasons)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -246,9 +250,9 @@ mixin _$SeasonsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Success value)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -265,16 +269,18 @@ mixin _$SeasonsState {
 abstract class $SeasonsStateCopyWith<$Res> {
   factory $SeasonsStateCopyWith(
           SeasonsState value, $Res Function(SeasonsState) then) =
-      _$SeasonsStateCopyWithImpl<$Res>;
+      _$SeasonsStateCopyWithImpl<$Res, SeasonsState>;
 }
 
 /// @nodoc
-class _$SeasonsStateCopyWithImpl<$Res> implements $SeasonsStateCopyWith<$Res> {
+class _$SeasonsStateCopyWithImpl<$Res, $Val extends SeasonsState>
+    implements $SeasonsStateCopyWith<$Res> {
   _$SeasonsStateCopyWithImpl(this._value, this._then);
 
-  final SeasonsState _value;
   // ignore: unused_field
-  final $Res Function(SeasonsState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -285,13 +291,11 @@ abstract class _$$_LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res> extends _$SeasonsStateCopyWithImpl<$Res>
+class __$$_LoadingCopyWithImpl<$Res>
+    extends _$SeasonsStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
-      : super(_value, (v) => _then(v as _$_Loading));
-
-  @override
-  _$_Loading get _value => super._value as _$_Loading;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -326,9 +330,9 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? error,
-    TResult Function(List<Season> seasons)? success,
+    TResult? Function()? loading,
+    TResult? Function()? error,
+    TResult? Function(List<Season> seasons)? success,
   }) {
     return loading?.call();
   }
@@ -360,9 +364,9 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Success value)? success,
   }) {
     return loading?.call(this);
   }
@@ -393,13 +397,11 @@ abstract class _$$_ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res> extends _$SeasonsStateCopyWithImpl<$Res>
+class __$$_ErrorCopyWithImpl<$Res>
+    extends _$SeasonsStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
   __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
-      : super(_value, (v) => _then(v as _$_Error));
-
-  @override
-  _$_Error get _value => super._value as _$_Error;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -434,9 +436,9 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? error,
-    TResult Function(List<Season> seasons)? success,
+    TResult? Function()? loading,
+    TResult? Function()? error,
+    TResult? Function(List<Season> seasons)? success,
   }) {
     return error?.call();
   }
@@ -468,9 +470,9 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Success value)? success,
   }) {
     return error?.call(this);
   }
@@ -499,24 +501,24 @@ abstract class _$$_SuccessCopyWith<$Res> {
   factory _$$_SuccessCopyWith(
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<Season> seasons});
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res> extends _$SeasonsStateCopyWithImpl<$Res>
+class __$$_SuccessCopyWithImpl<$Res>
+    extends _$SeasonsStateCopyWithImpl<$Res, _$_Success>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
-      : super(_value, (v) => _then(v as _$_Success));
+      : super(_value, _then);
 
-  @override
-  _$_Success get _value => super._value as _$_Success;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? seasons = freezed,
+    Object? seasons = null,
   }) {
     return _then(_$_Success(
-      seasons: seasons == freezed
+      seasons: null == seasons
           ? _value._seasons
           : seasons // ignore: cast_nullable_to_non_nullable
               as List<Season>,
@@ -532,6 +534,7 @@ class _$_Success implements _Success {
   final List<Season> _seasons;
   @override
   List<Season> get seasons {
+    if (_seasons is EqualUnmodifiableListView) return _seasons;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_seasons);
   }
@@ -555,6 +558,7 @@ class _$_Success implements _Success {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
       __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
 
@@ -571,9 +575,9 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? error,
-    TResult Function(List<Season> seasons)? success,
+    TResult? Function()? loading,
+    TResult? Function()? error,
+    TResult? Function(List<Season> seasons)? success,
   }) {
     return success?.call(seasons);
   }
@@ -605,9 +609,9 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Success value)? success,
   }) {
     return success?.call(this);
   }
@@ -630,7 +634,7 @@ class _$_Success implements _Success {
 abstract class _Success implements SeasonsState {
   const factory _Success({required final List<Season> seasons}) = _$_Success;
 
-  List<Season> get seasons => throw _privateConstructorUsedError;
+  List<Season> get seasons;
   @JsonKey(ignore: true)
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
       throw _privateConstructorUsedError;
