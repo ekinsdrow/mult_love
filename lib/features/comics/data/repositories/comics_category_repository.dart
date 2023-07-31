@@ -43,6 +43,8 @@ class ComicsCategoryRepository implements IComicsCategoryRepository {
               div.nextElementSibling!.querySelector('img')!.attributes['src']!,
         );
 
+        index++;
+
 
 
         result.add(comicsCategory);

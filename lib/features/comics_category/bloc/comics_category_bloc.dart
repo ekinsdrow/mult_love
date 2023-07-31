@@ -36,7 +36,6 @@ class ComicsCategoryBloc
       );
     } catch (_) {
       emit(const _Error());
-      rethrow;
     }
   }
 }
