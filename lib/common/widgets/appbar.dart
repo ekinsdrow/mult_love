@@ -1,6 +1,10 @@
+
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:mult_love/features/app/router/router.dart';
+import 'package:mult_love/features/comics/data/serial_with_comics.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -15,11 +19,24 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(serial.link.toString());
+    
     return AppBar(
       title: Text(
         customTitle ?? serial.title,
       ),
       actions: [
+        if (SerialWithComics.serialsWithComics.keys.contains(serial.link))
+          IconButton(
+            onPressed: () {
+              context.router.push(
+                const ComicsRoute(),
+              );
+            },
+            icon: const Icon(
+              Icons.book,
+            ),
+          ),
         IconButton(
           onPressed: () {
             context.router.push(
