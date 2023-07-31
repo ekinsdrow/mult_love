@@ -8,6 +8,7 @@ class ComicsCategory with _$ComicsCategory {
   factory ComicsCategory({
     required String title,
     required String imageUrl,
+    required String categoryUrl,
   }) = _ComicsCategory;
 
   factory ComicsCategory.fromJson(Map<String, dynamic> json) =>

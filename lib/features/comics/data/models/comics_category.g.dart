@@ -10,10 +10,12 @@ _$_ComicsCategory _$$_ComicsCategoryFromJson(Map<String, dynamic> json) =>
     _$_ComicsCategory(
       title: json['title'] as String,
       imageUrl: json['imageUrl'] as String,
+      categoryUrl: json['categoryUrl'] as String,
     );
 
 Map<String, dynamic> _$$_ComicsCategoryToJson(_$_ComicsCategory instance) =>
     <String, dynamic>{
       'title': instance.title,
       'imageUrl': instance.imageUrl,
+      'categoryUrl': instance.categoryUrl,
     };

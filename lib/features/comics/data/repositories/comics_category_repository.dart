@@ -32,14 +32,18 @@ class ComicsCategoryRepository implements IComicsCategoryRepository {
 
     final result = <ComicsCategory>[];
 
+    var index = 1;
     for (final div in leftContent.querySelectorAll('div')) {
       if (div.classes.contains('numberSeason')) {
         final comicsCategory = ComicsCategory(
           title: div.querySelector('a')!.innerHtml,
+          categoryUrl: '$serialUrl/comixs.php?id=$index',
           imageUrl: serialUrl +
               '/' +
               div.nextElementSibling!.querySelector('img')!.attributes['src']!,
         );
+
+
 
         result.add(comicsCategory);
       }

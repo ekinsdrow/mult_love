@@ -79,6 +79,18 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ComicsCategoryRoute.name: (routeData) {
+      final args = routeData.argsAs<ComicsCategoryRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ComicsCategoryPage(
+          key: args.key,
+          serial: args.serial,
+          url: args.url,
+          categoryTitle: args.categoryTitle,
+        ),
+      );
+    },
   };
 }
 
@@ -305,5 +317,53 @@ class SpecificSeriesRouteArgs {
   @override
   String toString() {
     return 'SpecificSeriesRouteArgs{key: $key, url: $url}';
+  }
+}
+
+/// generated route for
+/// [ComicsCategoryPage]
+class ComicsCategoryRoute extends PageRouteInfo<ComicsCategoryRouteArgs> {
+  ComicsCategoryRoute({
+    Key? key,
+    required Serial serial,
+    required String url,
+    required String categoryTitle,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ComicsCategoryRoute.name,
+          args: ComicsCategoryRouteArgs(
+            key: key,
+            serial: serial,
+            url: url,
+            categoryTitle: categoryTitle,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ComicsCategoryRoute';
+
+  static const PageInfo<ComicsCategoryRouteArgs> page =
+      PageInfo<ComicsCategoryRouteArgs>(name);
+}
+
+class ComicsCategoryRouteArgs {
+  const ComicsCategoryRouteArgs({
+    this.key,
+    required this.serial,
+    required this.url,
+    required this.categoryTitle,
+  });
+
+  final Key? key;
+
+  final Serial serial;
+
+  final String url;
+
+  final String categoryTitle;
+
+  @override
+  String toString() {
+    return 'ComicsCategoryRouteArgs{key: $key, serial: $serial, url: $url, categoryTitle: $categoryTitle}';
   }
 }

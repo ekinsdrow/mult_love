@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mult_love/common/assets/constants.dart';
 import 'package:mult_love/common/widgets/appbar.dart';
+import 'package:mult_love/features/app/router/router.dart';
 import 'package:mult_love/features/comics/bloc/comics_bloc.dart';
 import 'package:mult_love/features/comics/data/models/comics_category.dart';
 import 'package:mult_love/features/comics/di/comics_scope.dart';
@@ -45,6 +46,7 @@ class ComicsPage extends StatelessWidget {
               success: (s) => s.isNotEmpty
                   ? _BodyList(
                       comicsCategories: s,
+                      serial: serial,
                     )
                   : Center(
                       child: Text(
@@ -63,9 +65,11 @@ class _BodyList extends StatelessWidget {
   const _BodyList({
     Key? key,
     required this.comicsCategories,
+    required this.serial,
   }) : super(key: key);
 
   final List<ComicsCategory> comicsCategories;
+  final Serial serial;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +78,13 @@ class _BodyList extends StatelessWidget {
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {
-            // TODO:
+            context.router.push(
+              ComicsCategoryRoute(
+                serial: serial,
+                url: comicsCategories[index].categoryUrl,
+                categoryTitle: comicsCategories[index].title,
+              ),
+            );
           },
           child: Container(
             padding: const EdgeInsets.symmetric(

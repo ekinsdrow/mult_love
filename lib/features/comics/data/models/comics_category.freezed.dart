@@ -22,6 +22,7 @@ ComicsCategory _$ComicsCategoryFromJson(Map<String, dynamic> json) {
 mixin _$ComicsCategory {
   String get title => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
+  String get categoryUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $ComicsCategoryCopyWith<$Res> {
           ComicsCategory value, $Res Function(ComicsCategory) then) =
       _$ComicsCategoryCopyWithImpl<$Res, ComicsCategory>;
   @useResult
-  $Res call({String title, String imageUrl});
+  $Res call({String title, String imageUrl, String categoryUrl});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$ComicsCategoryCopyWithImpl<$Res, $Val extends ComicsCategory>
   $Res call({
     Object? title = null,
     Object? imageUrl = null,
+    Object? categoryUrl = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -62,6 +64,10 @@ class _$ComicsCategoryCopyWithImpl<$Res, $Val extends ComicsCategory>
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      categoryUrl: null == categoryUrl
+          ? _value.categoryUrl
+          : categoryUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -75,7 +81,7 @@ abstract class _$$_ComicsCategoryCopyWith<$Res>
       __$$_ComicsCategoryCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String imageUrl});
+  $Res call({String title, String imageUrl, String categoryUrl});
 }
 
 /// @nodoc
@@ -91,6 +97,7 @@ class __$$_ComicsCategoryCopyWithImpl<$Res>
   $Res call({
     Object? title = null,
     Object? imageUrl = null,
+    Object? categoryUrl = null,
   }) {
     return _then(_$_ComicsCategory(
       title: null == title
@@ -101,6 +108,10 @@ class __$$_ComicsCategoryCopyWithImpl<$Res>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      categoryUrl: null == categoryUrl
+          ? _value.categoryUrl
+          : categoryUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -108,7 +119,8 @@ class __$$_ComicsCategoryCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ComicsCategory implements _ComicsCategory {
-  _$_ComicsCategory({required this.title, required this.imageUrl});
+  _$_ComicsCategory(
+      {required this.title, required this.imageUrl, required this.categoryUrl});
 
   factory _$_ComicsCategory.fromJson(Map<String, dynamic> json) =>
       _$$_ComicsCategoryFromJson(json);
@@ -117,10 +129,12 @@ class _$_ComicsCategory implements _ComicsCategory {
   final String title;
   @override
   final String imageUrl;
+  @override
+  final String categoryUrl;
 
   @override
   String toString() {
-    return 'ComicsCategory(title: $title, imageUrl: $imageUrl)';
+    return 'ComicsCategory(title: $title, imageUrl: $imageUrl, categoryUrl: $categoryUrl)';
   }
 
   @override
@@ -130,12 +144,14 @@ class _$_ComicsCategory implements _ComicsCategory {
             other is _$_ComicsCategory &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl));
+                other.imageUrl == imageUrl) &&
+            (identical(other.categoryUrl, categoryUrl) ||
+                other.categoryUrl == categoryUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, imageUrl);
+  int get hashCode => Object.hash(runtimeType, title, imageUrl, categoryUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -154,7 +170,8 @@ class _$_ComicsCategory implements _ComicsCategory {
 abstract class _ComicsCategory implements ComicsCategory {
   factory _ComicsCategory(
       {required final String title,
-      required final String imageUrl}) = _$_ComicsCategory;
+      required final String imageUrl,
+      required final String categoryUrl}) = _$_ComicsCategory;
 
   factory _ComicsCategory.fromJson(Map<String, dynamic> json) =
       _$_ComicsCategory.fromJson;
@@ -163,6 +180,8 @@ abstract class _ComicsCategory implements ComicsCategory {
   String get title;
   @override
   String get imageUrl;
+  @override
+  String get categoryUrl;
   @override
   @JsonKey(ignore: true)
   _$$_ComicsCategoryCopyWith<_$_ComicsCategory> get copyWith =>

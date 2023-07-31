@@ -35,7 +35,6 @@ class ComicsBloc extends Bloc<ComicsBlocEvent, ComicsBlocState> {
       );
     } catch (_) {
       emit(const _Error());
-      rethrow;
     }
   }
 }
