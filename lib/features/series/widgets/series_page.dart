@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mult_love/common/assets/constants.dart';
+import 'package:mult_love/common/widgets/appbar.dart';
 import 'package:mult_love/features/app/router/router.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
 import 'package:mult_love/features/seasons/data/models/season.dart';
@@ -10,7 +11,7 @@ import 'package:mult_love/features/series/bloc/series_bloc/series_bloc.dart';
 import 'package:mult_love/features/series/data/models/series.dart';
 import 'package:mult_love/features/series/di/series_scope.dart';
 
-@RoutePage()    
+@RoutePage()
 class SeriesPage extends StatelessWidget {
   const SeriesPage({
     Key? key,
@@ -27,37 +28,13 @@ class SeriesPage extends StatelessWidget {
       season: season,
       serial: serial,
       child: Scaffold(
-        appBar: AppBar(
-          actions: [
-            IconButton(
-              onPressed: () {
-                context.router.push(
-                  CalendarRoute(
-                    serialLink: serial.link,
-                    serialTitle: serial.title,
-                  ),
-                );
-              },
-              icon: const Icon(
-                Icons.calendar_month,
-              ),
-            ),
-            IconButton(
-              onPressed: () {
-                context.router.push(
-                  SpecificSeriesRoute(
-                    url: serial.link + '/random.php',
-                  ),
-                );
-              },
-              icon: const Icon(
-                Icons.shuffle,
-              ),
-            ),
-          ],
-          title: Text(
-            // ignore: lines_longer_than_80_chars
-            '${serial.title} - ${season.number} ${AppLocalizations.of(context)!.season}',
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(kToolbarHeight),
+          child: CustomAppBar(
+            serial: serial,
+            customTitle:
+                // ignore: lines_longer_than_80_chars
+                '${serial.title} - ${season.number} ${AppLocalizations.of(context)!.season}',
           ),
         ),
         body: SafeArea(

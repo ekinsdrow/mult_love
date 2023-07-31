@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mult_love/common/assets/constants.dart';
+import 'package:mult_love/common/widgets/appbar.dart';
 import 'package:mult_love/features/app/router/router.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
 import 'package:mult_love/features/seasons/bloc/seasons_bloc/seasons_bloc.dart';
 import 'package:mult_love/features/seasons/di/seasons_scope.dart';
 
-@RoutePage()    
+@RoutePage()
 class SeasonsPage extends StatelessWidget {
   const SeasonsPage({
     Key? key,
@@ -22,37 +23,11 @@ class SeasonsPage extends StatelessWidget {
     return SeasonsScope(
       serialLink: serial.link,
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            serial.title,
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(kToolbarHeight),
+          child: CustomAppBar(
+            serial: serial,
           ),
-          actions: [
-            IconButton(
-              onPressed: () {
-                context.router.push(
-                  CalendarRoute(
-                    serialLink: serial.link,
-                    serialTitle: serial.title,
-                  ),
-                );
-              },
-              icon: const Icon(
-                Icons.calendar_month,
-              ),
-            ),
-            IconButton(
-              onPressed: () {
-                context.router.push(
-                  SpecificSeriesRoute(
-                    url: serial.link + '/random.php',
-                  ),
-                );
-              },
-              icon: const Icon(
-                Icons.shuffle,
-              ),
-            ),
-          ],
         ),
         body: SafeArea(
           child: Container(
