@@ -14,22 +14,28 @@ class ComicsReadPage extends StatelessWidget {
   const ComicsReadPage({
     Key? key,
     required this.serial,
+    required this.isNeedAddPage,
+    required this.isNeedAnd,
     required this.url,
   }) : super(key: key);
 
   final Serial serial;
   final String url;
+  final bool isNeedAddPage;
+  final bool isNeedAnd;
 
   @override
   Widget build(BuildContext context) {
     return ComicsReadScope(
       serial: serial,
+      isNeedAddPage: isNeedAddPage,
       url: url,
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(kToolbarHeight),
           child: CustomAppBar(
             serial: serial,
+            showComicsButton: false,
           ),
         ),
         body: SafeArea(
@@ -46,6 +52,7 @@ class ComicsReadPage extends StatelessWidget {
               success: (page) => _Body(
                 comicsPage: page,
                 serial: serial,
+                isNeedAnd: isNeedAnd,
                 url: url,
               ),
             ),
@@ -62,11 +69,13 @@ class _Body extends StatefulWidget {
     required this.comicsPage,
     required this.serial,
     required this.url,
+    required this.isNeedAnd,
   }) : super(key: key);
 
   final ComicsModelPage comicsPage;
   final Serial serial;
   final String url;
+  final bool isNeedAnd;
 
   @override
   State<_Body> createState() => _BodyState();
@@ -90,6 +99,7 @@ class _BodyState extends State<_Body> {
             number: page + 1,
             url: widget.url,
             serialUrl: widget.serial.link,
+            isNeedAnd: widget.isNeedAnd,
           ),
         );
   }
@@ -99,6 +109,7 @@ class _BodyState extends State<_Body> {
     return ComicsReadScope(
       serial: widget.serial,
       url: widget.url,
+      isNeedAddPage: true,
       child: Column(
         children: [
           SizedBox(
@@ -137,6 +148,19 @@ class _BodyState extends State<_Body> {
                   ? InteractiveViewer(
                       child: Image.network(
                         widget.comicsPage.currentImage.imageUrl,
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) {
+                            return child;
+                          }
+
+                          return const SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          );
+                        },
                       ),
                     )
                   : BlocBuilder<ComicsReadBloc, ComicsReadState>(
@@ -152,6 +176,21 @@ class _BodyState extends State<_Body> {
                         success: (page) => InteractiveViewer(
                           child: Image.network(
                             page.currentImage.imageUrl,
+                            width: MediaQuery.of(context).size.width -
+                                Constants.smallPadding * 2,
+                            loadingBuilder: (context, child, loadingProgress) {
+                              if (loadingProgress == null) {
+                                return child;
+                              }
+
+                              return const SizedBox(
+                                width: 50,
+                                height: 50,
+                                child: Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ),
@@ -172,7 +211,9 @@ class _BodyState extends State<_Body> {
                             ? null
                             : () {
                                 _getPage(
-                                    page: --_currentPage, context: context);
+                                  page: --_currentPage,
+                                  context: context,
+                                );
                               },
                         child: Text(
                           AppLocalizations.of(context)!.previous,

@@ -98,6 +98,8 @@ abstract class _$AppRouter extends RootStackRouter {
         child: ComicsReadPage(
           key: args.key,
           serial: args.serial,
+          isNeedAddPage: args.isNeedAddPage,
+          isNeedAnd: args.isNeedAnd,
           url: args.url,
         ),
       );
@@ -385,6 +387,8 @@ class ComicsReadRoute extends PageRouteInfo<ComicsReadRouteArgs> {
   ComicsReadRoute({
     Key? key,
     required Serial serial,
+    required bool isNeedAddPage,
+    required bool isNeedAnd,
     required String url,
     List<PageRouteInfo>? children,
   }) : super(
@@ -392,6 +396,8 @@ class ComicsReadRoute extends PageRouteInfo<ComicsReadRouteArgs> {
           args: ComicsReadRouteArgs(
             key: key,
             serial: serial,
+            isNeedAddPage: isNeedAddPage,
+            isNeedAnd: isNeedAnd,
             url: url,
           ),
           initialChildren: children,
@@ -407,6 +413,8 @@ class ComicsReadRouteArgs {
   const ComicsReadRouteArgs({
     this.key,
     required this.serial,
+    required this.isNeedAddPage,
+    required this.isNeedAnd,
     required this.url,
   });
 
@@ -414,10 +422,14 @@ class ComicsReadRouteArgs {
 
   final Serial serial;
 
+  final bool isNeedAddPage;
+
+  final bool isNeedAnd;
+
   final String url;
 
   @override
   String toString() {
-    return 'ComicsReadRouteArgs{key: $key, serial: $serial, url: $url}';
+    return 'ComicsReadRouteArgs{key: $key, serial: $serial, isNeedAddPage: $isNeedAddPage, isNeedAnd: $isNeedAnd, url: $url}';
   }
 }

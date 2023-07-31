@@ -28,6 +28,8 @@ class ComicsReadBloc extends Bloc<ComicsReadEvent, ComicsReadState> {
         url: event.url,
         page: 1,
         serialUrl: event.serialUrl,
+        isNeedAddPage: event.isNeedAddPage,
+        isNeedAnd: true,
       );
 
       emit(
@@ -51,6 +53,8 @@ class ComicsReadBloc extends Bloc<ComicsReadEvent, ComicsReadState> {
         url: event.url,
         page: event.number,
         serialUrl: event.serialUrl,
+        isNeedAddPage: true,
+        isNeedAnd: event.isNeedAnd,
       );
 
       emit(

@@ -20,21 +20,25 @@ mixin _$ComicsReadEvent {
   String get serialUrl => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String url, String serialUrl) fetch,
-    required TResult Function(int number, String url, String serialUrl)
+    required TResult Function(String url, String serialUrl, bool isNeedAddPage)
+        fetch,
+    required TResult Function(
+            int number, String url, String serialUrl, bool isNeedAnd)
         nextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String url, String serialUrl)? fetch,
-    TResult? Function(int number, String url, String serialUrl)? nextPage,
+    TResult? Function(String url, String serialUrl, bool isNeedAddPage)? fetch,
+    TResult? Function(int number, String url, String serialUrl, bool isNeedAnd)?
+        nextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String url, String serialUrl)? fetch,
-    TResult Function(int number, String url, String serialUrl)? nextPage,
+    TResult Function(String url, String serialUrl, bool isNeedAddPage)? fetch,
+    TResult Function(int number, String url, String serialUrl, bool isNeedAnd)?
+        nextPage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -108,7 +112,7 @@ abstract class _$$_FetchCopyWith<$Res>
       __$$_FetchCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String url, String serialUrl});
+  $Res call({String url, String serialUrl, bool isNeedAddPage});
 }
 
 /// @nodoc
@@ -123,6 +127,7 @@ class __$$_FetchCopyWithImpl<$Res>
   $Res call({
     Object? url = null,
     Object? serialUrl = null,
+    Object? isNeedAddPage = null,
   }) {
     return _then(_$_Fetch(
       url: null == url
@@ -133,6 +138,10 @@ class __$$_FetchCopyWithImpl<$Res>
           ? _value.serialUrl
           : serialUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      isNeedAddPage: null == isNeedAddPage
+          ? _value.isNeedAddPage
+          : isNeedAddPage // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -140,16 +149,21 @@ class __$$_FetchCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Fetch implements _Fetch {
-  const _$_Fetch({required this.url, required this.serialUrl});
+  const _$_Fetch(
+      {required this.url,
+      required this.serialUrl,
+      required this.isNeedAddPage});
 
   @override
   final String url;
   @override
   final String serialUrl;
+  @override
+  final bool isNeedAddPage;
 
   @override
   String toString() {
-    return 'ComicsReadEvent.fetch(url: $url, serialUrl: $serialUrl)';
+    return 'ComicsReadEvent.fetch(url: $url, serialUrl: $serialUrl, isNeedAddPage: $isNeedAddPage)';
   }
 
   @override
@@ -159,11 +173,13 @@ class _$_Fetch implements _Fetch {
             other is _$_Fetch &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.serialUrl, serialUrl) ||
-                other.serialUrl == serialUrl));
+                other.serialUrl == serialUrl) &&
+            (identical(other.isNeedAddPage, isNeedAddPage) ||
+                other.isNeedAddPage == isNeedAddPage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, url, serialUrl);
+  int get hashCode => Object.hash(runtimeType, url, serialUrl, isNeedAddPage);
 
   @JsonKey(ignore: true)
   @override
@@ -174,31 +190,35 @@ class _$_Fetch implements _Fetch {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String url, String serialUrl) fetch,
-    required TResult Function(int number, String url, String serialUrl)
+    required TResult Function(String url, String serialUrl, bool isNeedAddPage)
+        fetch,
+    required TResult Function(
+            int number, String url, String serialUrl, bool isNeedAnd)
         nextPage,
   }) {
-    return fetch(url, serialUrl);
+    return fetch(url, serialUrl, isNeedAddPage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String url, String serialUrl)? fetch,
-    TResult? Function(int number, String url, String serialUrl)? nextPage,
+    TResult? Function(String url, String serialUrl, bool isNeedAddPage)? fetch,
+    TResult? Function(int number, String url, String serialUrl, bool isNeedAnd)?
+        nextPage,
   }) {
-    return fetch?.call(url, serialUrl);
+    return fetch?.call(url, serialUrl, isNeedAddPage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String url, String serialUrl)? fetch,
-    TResult Function(int number, String url, String serialUrl)? nextPage,
+    TResult Function(String url, String serialUrl, bool isNeedAddPage)? fetch,
+    TResult Function(int number, String url, String serialUrl, bool isNeedAnd)?
+        nextPage,
     required TResult orElse(),
   }) {
     if (fetch != null) {
-      return fetch(url, serialUrl);
+      return fetch(url, serialUrl, isNeedAddPage);
     }
     return orElse();
   }
@@ -237,12 +257,15 @@ class _$_Fetch implements _Fetch {
 
 abstract class _Fetch implements ComicsReadEvent {
   const factory _Fetch(
-      {required final String url, required final String serialUrl}) = _$_Fetch;
+      {required final String url,
+      required final String serialUrl,
+      required final bool isNeedAddPage}) = _$_Fetch;
 
   @override
   String get url;
   @override
   String get serialUrl;
+  bool get isNeedAddPage;
   @override
   @JsonKey(ignore: true)
   _$$_FetchCopyWith<_$_Fetch> get copyWith =>
@@ -257,7 +280,7 @@ abstract class _$$_NextPageCopyWith<$Res>
       __$$_NextPageCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int number, String url, String serialUrl});
+  $Res call({int number, String url, String serialUrl, bool isNeedAnd});
 }
 
 /// @nodoc
@@ -274,6 +297,7 @@ class __$$_NextPageCopyWithImpl<$Res>
     Object? number = null,
     Object? url = null,
     Object? serialUrl = null,
+    Object? isNeedAnd = null,
   }) {
     return _then(_$_NextPage(
       number: null == number
@@ -288,6 +312,10 @@ class __$$_NextPageCopyWithImpl<$Res>
           ? _value.serialUrl
           : serialUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      isNeedAnd: null == isNeedAnd
+          ? _value.isNeedAnd
+          : isNeedAnd // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -296,7 +324,10 @@ class __$$_NextPageCopyWithImpl<$Res>
 
 class _$_NextPage implements _NextPage {
   const _$_NextPage(
-      {required this.number, required this.url, required this.serialUrl});
+      {required this.number,
+      required this.url,
+      required this.serialUrl,
+      required this.isNeedAnd});
 
   @override
   final int number;
@@ -304,10 +335,12 @@ class _$_NextPage implements _NextPage {
   final String url;
   @override
   final String serialUrl;
+  @override
+  final bool isNeedAnd;
 
   @override
   String toString() {
-    return 'ComicsReadEvent.nextPage(number: $number, url: $url, serialUrl: $serialUrl)';
+    return 'ComicsReadEvent.nextPage(number: $number, url: $url, serialUrl: $serialUrl, isNeedAnd: $isNeedAnd)';
   }
 
   @override
@@ -318,11 +351,14 @@ class _$_NextPage implements _NextPage {
             (identical(other.number, number) || other.number == number) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.serialUrl, serialUrl) ||
-                other.serialUrl == serialUrl));
+                other.serialUrl == serialUrl) &&
+            (identical(other.isNeedAnd, isNeedAnd) ||
+                other.isNeedAnd == isNeedAnd));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, number, url, serialUrl);
+  int get hashCode =>
+      Object.hash(runtimeType, number, url, serialUrl, isNeedAnd);
 
   @JsonKey(ignore: true)
   @override
@@ -333,31 +369,35 @@ class _$_NextPage implements _NextPage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String url, String serialUrl) fetch,
-    required TResult Function(int number, String url, String serialUrl)
+    required TResult Function(String url, String serialUrl, bool isNeedAddPage)
+        fetch,
+    required TResult Function(
+            int number, String url, String serialUrl, bool isNeedAnd)
         nextPage,
   }) {
-    return nextPage(number, url, serialUrl);
+    return nextPage(number, url, serialUrl, isNeedAnd);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String url, String serialUrl)? fetch,
-    TResult? Function(int number, String url, String serialUrl)? nextPage,
+    TResult? Function(String url, String serialUrl, bool isNeedAddPage)? fetch,
+    TResult? Function(int number, String url, String serialUrl, bool isNeedAnd)?
+        nextPage,
   }) {
-    return nextPage?.call(number, url, serialUrl);
+    return nextPage?.call(number, url, serialUrl, isNeedAnd);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String url, String serialUrl)? fetch,
-    TResult Function(int number, String url, String serialUrl)? nextPage,
+    TResult Function(String url, String serialUrl, bool isNeedAddPage)? fetch,
+    TResult Function(int number, String url, String serialUrl, bool isNeedAnd)?
+        nextPage,
     required TResult orElse(),
   }) {
     if (nextPage != null) {
-      return nextPage(number, url, serialUrl);
+      return nextPage(number, url, serialUrl, isNeedAnd);
     }
     return orElse();
   }
@@ -398,13 +438,15 @@ abstract class _NextPage implements ComicsReadEvent {
   const factory _NextPage(
       {required final int number,
       required final String url,
-      required final String serialUrl}) = _$_NextPage;
+      required final String serialUrl,
+      required final bool isNeedAnd}) = _$_NextPage;
 
   int get number;
   @override
   String get url;
   @override
   String get serialUrl;
+  bool get isNeedAnd;
   @override
   @JsonKey(ignore: true)
   _$$_NextPageCopyWith<_$_NextPage> get copyWith =>

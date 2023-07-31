@@ -27,11 +27,28 @@ class CustomAppBar extends StatelessWidget {
             showComicsButton)
           IconButton(
             onPressed: () {
-              context.router.push(
-                ComicsRoute(
-                  serial: serial,
-                ),
-              );
+              final serialKey = SerialWithComics.serialsWithComics.keys
+                  .firstWhere((element) => element == serial.link);
+
+              final serialValue =
+                  SerialWithComics.serialsWithComics[serialKey]!;
+
+              if (serialValue == "comix.php") {
+                context.router.push(
+                  ComicsReadRoute(
+                    serial: serial,
+                    url: serial.link + '/comix.php',
+                    isNeedAddPage: false,
+                    isNeedAnd: false,
+                  ),
+                );
+              } else {
+                context.router.push(
+                  ComicsRoute(
+                    serial: serial,
+                  ),
+                );
+              }
             },
             icon: const Icon(
               Icons.book,

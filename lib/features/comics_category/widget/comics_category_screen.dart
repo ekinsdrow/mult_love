@@ -110,6 +110,8 @@ class _BodyList extends StatelessWidget {
                       ComicsReadRoute(
                         serial: serial,
                         url: comicses[index].url,
+                        isNeedAddPage: true,
+                        isNeedAnd: true,
                       ),
                     );
                   },

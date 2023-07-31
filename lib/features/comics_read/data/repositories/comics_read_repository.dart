@@ -8,6 +8,8 @@ abstract class IComicsReadRepository {
     required String url,
     required String serialUrl,
     required int page,
+    required bool isNeedAddPage,
+    required bool isNeedAnd,
   });
 }
 
@@ -23,9 +25,12 @@ class ComicsReadRepository implements IComicsReadRepository {
     required String url,
     required String serialUrl,
     required int page,
+    required bool isNeedAddPage,
+    required bool isNeedAnd,
   }) async {
+    final pageStr = (isNeedAnd ? '&' : '?') + 'str=$page';
     final response = await dio.get(
-      url + '&str=$page',
+      url + (isNeedAddPage ? pageStr : ''),
     );
 
     final doc = parse(response.data);

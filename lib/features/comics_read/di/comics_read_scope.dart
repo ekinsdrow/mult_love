@@ -11,11 +11,13 @@ class ComicsReadScope extends StatelessWidget {
     required this.child,
     required this.serial,
     required this.url,
+    required this.isNeedAddPage,
   }) : super(key: key);
 
   final Widget child;
   final Serial serial;
   final String url;
+  final bool isNeedAddPage;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class ComicsReadScope extends StatelessWidget {
           ComicsReadEvent.fetch(
             url: url,
             serialUrl: serial.link,
+            isNeedAddPage: isNeedAddPage,
           ),
         ),
       child: child,
