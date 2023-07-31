@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'specific_series_bloc.dart';
 
@@ -27,7 +27,7 @@ mixin _$SpecificSeriesEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String url, bool isSubtitles, SubType? subType)? fetch,
+    TResult? Function(String url, bool isSubtitles, SubType? subType)? fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,7 +43,7 @@ mixin _$SpecificSeriesEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Fetch value)? fetch,
+    TResult? Function(_Fetch value)? fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,39 +62,42 @@ mixin _$SpecificSeriesEvent {
 abstract class $SpecificSeriesEventCopyWith<$Res> {
   factory $SpecificSeriesEventCopyWith(
           SpecificSeriesEvent value, $Res Function(SpecificSeriesEvent) then) =
-      _$SpecificSeriesEventCopyWithImpl<$Res>;
+      _$SpecificSeriesEventCopyWithImpl<$Res, SpecificSeriesEvent>;
+  @useResult
   $Res call({String url, bool isSubtitles, SubType? subType});
 }
 
 /// @nodoc
-class _$SpecificSeriesEventCopyWithImpl<$Res>
+class _$SpecificSeriesEventCopyWithImpl<$Res, $Val extends SpecificSeriesEvent>
     implements $SpecificSeriesEventCopyWith<$Res> {
   _$SpecificSeriesEventCopyWithImpl(this._value, this._then);
 
-  final SpecificSeriesEvent _value;
   // ignore: unused_field
-  final $Res Function(SpecificSeriesEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? url = freezed,
-    Object? isSubtitles = freezed,
+    Object? url = null,
+    Object? isSubtitles = null,
     Object? subType = freezed,
   }) {
     return _then(_value.copyWith(
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      isSubtitles: isSubtitles == freezed
+      isSubtitles: null == isSubtitles
           ? _value.isSubtitles
           : isSubtitles // ignore: cast_nullable_to_non_nullable
               as bool,
-      subType: subType == freezed
+      subType: freezed == subType
           ? _value.subType
           : subType // ignore: cast_nullable_to_non_nullable
               as SubType?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -104,35 +107,34 @@ abstract class _$$_FetchCopyWith<$Res>
   factory _$$_FetchCopyWith(_$_Fetch value, $Res Function(_$_Fetch) then) =
       __$$_FetchCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String url, bool isSubtitles, SubType? subType});
 }
 
 /// @nodoc
 class __$$_FetchCopyWithImpl<$Res>
-    extends _$SpecificSeriesEventCopyWithImpl<$Res>
+    extends _$SpecificSeriesEventCopyWithImpl<$Res, _$_Fetch>
     implements _$$_FetchCopyWith<$Res> {
   __$$_FetchCopyWithImpl(_$_Fetch _value, $Res Function(_$_Fetch) _then)
-      : super(_value, (v) => _then(v as _$_Fetch));
+      : super(_value, _then);
 
-  @override
-  _$_Fetch get _value => super._value as _$_Fetch;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? url = freezed,
-    Object? isSubtitles = freezed,
+    Object? url = null,
+    Object? isSubtitles = null,
     Object? subType = freezed,
   }) {
     return _then(_$_Fetch(
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      isSubtitles: isSubtitles == freezed
+      isSubtitles: null == isSubtitles
           ? _value.isSubtitles
           : isSubtitles // ignore: cast_nullable_to_non_nullable
               as bool,
-      subType: subType == freezed
+      subType: freezed == subType
           ? _value.subType
           : subType // ignore: cast_nullable_to_non_nullable
               as SubType?,
@@ -163,21 +165,18 @@ class _$_Fetch implements _Fetch {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Fetch &&
-            const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality()
-                .equals(other.isSubtitles, isSubtitles) &&
-            const DeepCollectionEquality().equals(other.subType, subType));
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.isSubtitles, isSubtitles) ||
+                other.isSubtitles == isSubtitles) &&
+            (identical(other.subType, subType) || other.subType == subType));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(isSubtitles),
-      const DeepCollectionEquality().hash(subType));
+  int get hashCode => Object.hash(runtimeType, url, isSubtitles, subType);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FetchCopyWith<_$_Fetch> get copyWith =>
       __$$_FetchCopyWithImpl<_$_Fetch>(this, _$identity);
 
@@ -193,7 +192,7 @@ class _$_Fetch implements _Fetch {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String url, bool isSubtitles, SubType? subType)? fetch,
+    TResult? Function(String url, bool isSubtitles, SubType? subType)? fetch,
   }) {
     return fetch?.call(url, isSubtitles, subType);
   }
@@ -221,7 +220,7 @@ class _$_Fetch implements _Fetch {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Fetch value)? fetch,
+    TResult? Function(_Fetch value)? fetch,
   }) {
     return fetch?.call(this);
   }
@@ -246,11 +245,11 @@ abstract class _Fetch implements SpecificSeriesEvent {
       required final SubType? subType}) = _$_Fetch;
 
   @override
-  String get url => throw _privateConstructorUsedError;
+  String get url;
   @override
-  bool get isSubtitles => throw _privateConstructorUsedError;
+  bool get isSubtitles;
   @override
-  SubType? get subType => throw _privateConstructorUsedError;
+  SubType? get subType;
   @override
   @JsonKey(ignore: true)
   _$$_FetchCopyWith<_$_Fetch> get copyWith =>
@@ -268,9 +267,9 @@ mixin _$SpecificSeriesState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? error,
-    TResult Function(SpecificSeries specificSeries)? success,
+    TResult? Function()? loading,
+    TResult? Function()? error,
+    TResult? Function(SpecificSeries specificSeries)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -290,9 +289,9 @@ mixin _$SpecificSeriesState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Success value)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -309,17 +308,18 @@ mixin _$SpecificSeriesState {
 abstract class $SpecificSeriesStateCopyWith<$Res> {
   factory $SpecificSeriesStateCopyWith(
           SpecificSeriesState value, $Res Function(SpecificSeriesState) then) =
-      _$SpecificSeriesStateCopyWithImpl<$Res>;
+      _$SpecificSeriesStateCopyWithImpl<$Res, SpecificSeriesState>;
 }
 
 /// @nodoc
-class _$SpecificSeriesStateCopyWithImpl<$Res>
+class _$SpecificSeriesStateCopyWithImpl<$Res, $Val extends SpecificSeriesState>
     implements $SpecificSeriesStateCopyWith<$Res> {
   _$SpecificSeriesStateCopyWithImpl(this._value, this._then);
 
-  final SpecificSeriesState _value;
   // ignore: unused_field
-  final $Res Function(SpecificSeriesState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -331,13 +331,10 @@ abstract class _$$_LoadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadingCopyWithImpl<$Res>
-    extends _$SpecificSeriesStateCopyWithImpl<$Res>
+    extends _$SpecificSeriesStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
-      : super(_value, (v) => _then(v as _$_Loading));
-
-  @override
-  _$_Loading get _value => super._value as _$_Loading;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -372,9 +369,9 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? error,
-    TResult Function(SpecificSeries specificSeries)? success,
+    TResult? Function()? loading,
+    TResult? Function()? error,
+    TResult? Function(SpecificSeries specificSeries)? success,
   }) {
     return loading?.call();
   }
@@ -406,9 +403,9 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Success value)? success,
   }) {
     return loading?.call(this);
   }
@@ -440,13 +437,10 @@ abstract class _$$_ErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ErrorCopyWithImpl<$Res>
-    extends _$SpecificSeriesStateCopyWithImpl<$Res>
+    extends _$SpecificSeriesStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
   __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
-      : super(_value, (v) => _then(v as _$_Error));
-
-  @override
-  _$_Error get _value => super._value as _$_Error;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -481,9 +475,9 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? error,
-    TResult Function(SpecificSeries specificSeries)? success,
+    TResult? Function()? loading,
+    TResult? Function()? error,
+    TResult? Function(SpecificSeries specificSeries)? success,
   }) {
     return error?.call();
   }
@@ -515,9 +509,9 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Success value)? success,
   }) {
     return error?.call(this);
   }
@@ -546,6 +540,7 @@ abstract class _$$_SuccessCopyWith<$Res> {
   factory _$$_SuccessCopyWith(
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
+  @useResult
   $Res call({SpecificSeries specificSeries});
 
   $SpecificSeriesCopyWith<$Res> get specificSeries;
@@ -553,20 +548,18 @@ abstract class _$$_SuccessCopyWith<$Res> {
 
 /// @nodoc
 class __$$_SuccessCopyWithImpl<$Res>
-    extends _$SpecificSeriesStateCopyWithImpl<$Res>
+    extends _$SpecificSeriesStateCopyWithImpl<$Res, _$_Success>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
-      : super(_value, (v) => _then(v as _$_Success));
+      : super(_value, _then);
 
-  @override
-  _$_Success get _value => super._value as _$_Success;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? specificSeries = freezed,
+    Object? specificSeries = null,
   }) {
     return _then(_$_Success(
-      specificSeries == freezed
+      null == specificSeries
           ? _value.specificSeries
           : specificSeries // ignore: cast_nullable_to_non_nullable
               as SpecificSeries,
@@ -574,6 +567,7 @@ class __$$_SuccessCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $SpecificSeriesCopyWith<$Res> get specificSeries {
     return $SpecificSeriesCopyWith<$Res>(_value.specificSeries, (value) {
       return _then(_value.copyWith(specificSeries: value));
@@ -599,16 +593,16 @@ class _$_Success implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Success &&
-            const DeepCollectionEquality()
-                .equals(other.specificSeries, specificSeries));
+            (identical(other.specificSeries, specificSeries) ||
+                other.specificSeries == specificSeries));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(specificSeries));
+  int get hashCode => Object.hash(runtimeType, specificSeries);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
       __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
 
@@ -625,9 +619,9 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? error,
-    TResult Function(SpecificSeries specificSeries)? success,
+    TResult? Function()? loading,
+    TResult? Function()? error,
+    TResult? Function(SpecificSeries specificSeries)? success,
   }) {
     return success?.call(specificSeries);
   }
@@ -659,9 +653,9 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Success value)? success,
   }) {
     return success?.call(this);
   }
@@ -684,7 +678,7 @@ class _$_Success implements _Success {
 abstract class _Success implements SpecificSeriesState {
   const factory _Success(final SpecificSeries specificSeries) = _$_Success;
 
-  SpecificSeries get specificSeries => throw _privateConstructorUsedError;
+  SpecificSeries get specificSeries;
   @JsonKey(ignore: true)
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
       throw _privateConstructorUsedError;

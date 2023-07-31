@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'specific_series.dart';
 
@@ -36,7 +36,8 @@ mixin _$SpecificSeries {
 abstract class $SpecificSeriesCopyWith<$Res> {
   factory $SpecificSeriesCopyWith(
           SpecificSeries value, $Res Function(SpecificSeries) then) =
-      _$SpecificSeriesCopyWithImpl<$Res>;
+      _$SpecificSeriesCopyWithImpl<$Res, SpecificSeries>;
+  @useResult
   $Res call(
       {String title,
       String description,
@@ -51,69 +52,71 @@ abstract class $SpecificSeriesCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SpecificSeriesCopyWithImpl<$Res>
+class _$SpecificSeriesCopyWithImpl<$Res, $Val extends SpecificSeries>
     implements $SpecificSeriesCopyWith<$Res> {
   _$SpecificSeriesCopyWithImpl(this._value, this._then);
 
-  final SpecificSeries _value;
   // ignore: unused_field
-  final $Res Function(SpecificSeries) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = freezed,
-    Object? description = freezed,
-    Object? videoLink = freezed,
-    Object? imageUrl = freezed,
-    Object? serialTitle = freezed,
-    Object? seasonNumber = freezed,
-    Object? seriesIndex = freezed,
-    Object? serialLink = freezed,
-    Object? voices = freezed,
+    Object? title = null,
+    Object? description = null,
+    Object? videoLink = null,
+    Object? imageUrl = null,
+    Object? serialTitle = null,
+    Object? seasonNumber = null,
+    Object? seriesIndex = null,
+    Object? serialLink = null,
+    Object? voices = null,
     Object? subtitles = freezed,
   }) {
     return _then(_value.copyWith(
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      videoLink: videoLink == freezed
+      videoLink: null == videoLink
           ? _value.videoLink
           : videoLink // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: imageUrl == freezed
+      imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      serialTitle: serialTitle == freezed
+      serialTitle: null == serialTitle
           ? _value.serialTitle
           : serialTitle // ignore: cast_nullable_to_non_nullable
               as String,
-      seasonNumber: seasonNumber == freezed
+      seasonNumber: null == seasonNumber
           ? _value.seasonNumber
           : seasonNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      seriesIndex: seriesIndex == freezed
+      seriesIndex: null == seriesIndex
           ? _value.seriesIndex
           : seriesIndex // ignore: cast_nullable_to_non_nullable
               as String,
-      serialLink: serialLink == freezed
+      serialLink: null == serialLink
           ? _value.serialLink
           : serialLink // ignore: cast_nullable_to_non_nullable
               as String,
-      voices: voices == freezed
+      voices: null == voices
           ? _value.voices
           : voices // ignore: cast_nullable_to_non_nullable
               as List<Voice>,
-      subtitles: subtitles == freezed
+      subtitles: freezed == subtitles
           ? _value.subtitles
           : subtitles // ignore: cast_nullable_to_non_nullable
               as List<Subtitle>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -124,6 +127,7 @@ abstract class _$$_SpecificSeriesCopyWith<$Res>
           _$_SpecificSeries value, $Res Function(_$_SpecificSeries) then) =
       __$$_SpecificSeriesCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String title,
       String description,
@@ -139,66 +143,64 @@ abstract class _$$_SpecificSeriesCopyWith<$Res>
 
 /// @nodoc
 class __$$_SpecificSeriesCopyWithImpl<$Res>
-    extends _$SpecificSeriesCopyWithImpl<$Res>
+    extends _$SpecificSeriesCopyWithImpl<$Res, _$_SpecificSeries>
     implements _$$_SpecificSeriesCopyWith<$Res> {
   __$$_SpecificSeriesCopyWithImpl(
       _$_SpecificSeries _value, $Res Function(_$_SpecificSeries) _then)
-      : super(_value, (v) => _then(v as _$_SpecificSeries));
+      : super(_value, _then);
 
-  @override
-  _$_SpecificSeries get _value => super._value as _$_SpecificSeries;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = freezed,
-    Object? description = freezed,
-    Object? videoLink = freezed,
-    Object? imageUrl = freezed,
-    Object? serialTitle = freezed,
-    Object? seasonNumber = freezed,
-    Object? seriesIndex = freezed,
-    Object? serialLink = freezed,
-    Object? voices = freezed,
+    Object? title = null,
+    Object? description = null,
+    Object? videoLink = null,
+    Object? imageUrl = null,
+    Object? serialTitle = null,
+    Object? seasonNumber = null,
+    Object? seriesIndex = null,
+    Object? serialLink = null,
+    Object? voices = null,
     Object? subtitles = freezed,
   }) {
     return _then(_$_SpecificSeries(
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      videoLink: videoLink == freezed
+      videoLink: null == videoLink
           ? _value.videoLink
           : videoLink // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: imageUrl == freezed
+      imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      serialTitle: serialTitle == freezed
+      serialTitle: null == serialTitle
           ? _value.serialTitle
           : serialTitle // ignore: cast_nullable_to_non_nullable
               as String,
-      seasonNumber: seasonNumber == freezed
+      seasonNumber: null == seasonNumber
           ? _value.seasonNumber
           : seasonNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      seriesIndex: seriesIndex == freezed
+      seriesIndex: null == seriesIndex
           ? _value.seriesIndex
           : seriesIndex // ignore: cast_nullable_to_non_nullable
               as String,
-      serialLink: serialLink == freezed
+      serialLink: null == serialLink
           ? _value.serialLink
           : serialLink // ignore: cast_nullable_to_non_nullable
               as String,
-      voices: voices == freezed
+      voices: null == voices
           ? _value._voices
           : voices // ignore: cast_nullable_to_non_nullable
               as List<Voice>,
-      subtitles: subtitles == freezed
+      subtitles: freezed == subtitles
           ? _value._subtitles
           : subtitles // ignore: cast_nullable_to_non_nullable
               as List<Subtitle>?,
@@ -242,6 +244,7 @@ class _$_SpecificSeries implements _SpecificSeries {
   final List<Voice> _voices;
   @override
   List<Voice> get voices {
+    if (_voices is EqualUnmodifiableListView) return _voices;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_voices);
   }
@@ -251,6 +254,7 @@ class _$_SpecificSeries implements _SpecificSeries {
   List<Subtitle>? get subtitles {
     final value = _subtitles;
     if (value == null) return null;
+    if (_subtitles is EqualUnmodifiableListView) return _subtitles;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -265,19 +269,21 @@ class _$_SpecificSeries implements _SpecificSeries {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SpecificSeries &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.videoLink, videoLink) &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
-            const DeepCollectionEquality()
-                .equals(other.serialTitle, serialTitle) &&
-            const DeepCollectionEquality()
-                .equals(other.seasonNumber, seasonNumber) &&
-            const DeepCollectionEquality()
-                .equals(other.seriesIndex, seriesIndex) &&
-            const DeepCollectionEquality()
-                .equals(other.serialLink, serialLink) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.videoLink, videoLink) ||
+                other.videoLink == videoLink) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.serialTitle, serialTitle) ||
+                other.serialTitle == serialTitle) &&
+            (identical(other.seasonNumber, seasonNumber) ||
+                other.seasonNumber == seasonNumber) &&
+            (identical(other.seriesIndex, seriesIndex) ||
+                other.seriesIndex == seriesIndex) &&
+            (identical(other.serialLink, serialLink) ||
+                other.serialLink == serialLink) &&
             const DeepCollectionEquality().equals(other._voices, _voices) &&
             const DeepCollectionEquality()
                 .equals(other._subtitles, _subtitles));
@@ -286,19 +292,20 @@ class _$_SpecificSeries implements _SpecificSeries {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(videoLink),
-      const DeepCollectionEquality().hash(imageUrl),
-      const DeepCollectionEquality().hash(serialTitle),
-      const DeepCollectionEquality().hash(seasonNumber),
-      const DeepCollectionEquality().hash(seriesIndex),
-      const DeepCollectionEquality().hash(serialLink),
+      title,
+      description,
+      videoLink,
+      imageUrl,
+      serialTitle,
+      seasonNumber,
+      seriesIndex,
+      serialLink,
       const DeepCollectionEquality().hash(_voices),
       const DeepCollectionEquality().hash(_subtitles));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SpecificSeriesCopyWith<_$_SpecificSeries> get copyWith =>
       __$$_SpecificSeriesCopyWithImpl<_$_SpecificSeries>(this, _$identity);
 }
@@ -317,25 +324,25 @@ abstract class _SpecificSeries implements SpecificSeries {
       required final List<Subtitle>? subtitles}) = _$_SpecificSeries;
 
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
-  String get videoLink => throw _privateConstructorUsedError;
+  String get videoLink;
   @override
-  String get imageUrl => throw _privateConstructorUsedError;
+  String get imageUrl;
   @override
-  String get serialTitle => throw _privateConstructorUsedError;
+  String get serialTitle;
   @override
-  String get seasonNumber => throw _privateConstructorUsedError;
+  String get seasonNumber;
   @override
-  String get seriesIndex => throw _privateConstructorUsedError;
+  String get seriesIndex;
   @override
-  String get serialLink => throw _privateConstructorUsedError;
+  String get serialLink;
   @override
-  List<Voice> get voices => throw _privateConstructorUsedError;
+  List<Voice> get voices;
   @override
-  List<Subtitle>? get subtitles => throw _privateConstructorUsedError;
+  List<Subtitle>? get subtitles;
   @override
   @JsonKey(ignore: true)
   _$$_SpecificSeriesCopyWith<_$_SpecificSeries> get copyWith =>

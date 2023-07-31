@@ -11,6 +11,7 @@ import 'package:mult_love/features/specific_series/bloc/specific_series_bloc/spe
 import 'package:mult_love/features/specific_series/di/specific_series_scope.dart';
 import 'package:video_player/video_player.dart';
 
+@RoutePage()    
 class SpecificSeriesPage extends StatefulWidget {
   const SpecificSeriesPage({
     Key? key,
@@ -50,7 +51,7 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                 IconButton(
                   onPressed: () {
                     context.router.push(
-                      CalndarRoute(
+                      CalendarRoute(
                         serialLink: specificSeries.serialLink,
                         serialTitle: specificSeries.serialTitle,
                       ),

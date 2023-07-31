@@ -8,6 +8,7 @@ import 'package:mult_love/features/main/data/models/serial.dart';
 import 'package:mult_love/features/seasons/bloc/seasons_bloc/seasons_bloc.dart';
 import 'package:mult_love/features/seasons/di/seasons_scope.dart';
 
+@RoutePage()    
 class SeasonsPage extends StatelessWidget {
   const SeasonsPage({
     Key? key,
@@ -29,7 +30,7 @@ class SeasonsPage extends StatelessWidget {
             IconButton(
               onPressed: () {
                 context.router.push(
-                  CalndarRoute(
+                  CalendarRoute(
                     serialLink: serial.link,
                     serialTitle: serial.title,
                   ),

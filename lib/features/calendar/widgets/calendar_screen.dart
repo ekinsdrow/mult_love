@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -7,8 +8,9 @@ import 'package:mult_love/features/calendar/bloc/calendar_bloc.dart';
 import 'package:mult_love/features/calendar/data/models/calendar_series_event.dart';
 import 'package:mult_love/features/calendar/di/calendar_scope.dart';
 
-class CalendarScreen extends StatelessWidget {
-  const CalendarScreen({
+@RoutePage()
+class CalendarPage extends StatelessWidget {
+  const CalendarPage({
     Key? key,
     required this.serialLink,
     required this.serialTitle,
