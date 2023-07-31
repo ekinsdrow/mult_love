@@ -91,6 +91,17 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ComicsReadRoute.name: (routeData) {
+      final args = routeData.argsAs<ComicsReadRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ComicsReadPage(
+          key: args.key,
+          serial: args.serial,
+          url: args.url,
+        ),
+      );
+    },
   };
 }
 
@@ -365,5 +376,48 @@ class ComicsCategoryRouteArgs {
   @override
   String toString() {
     return 'ComicsCategoryRouteArgs{key: $key, serial: $serial, url: $url, categoryTitle: $categoryTitle}';
+  }
+}
+
+/// generated route for
+/// [ComicsReadPage]
+class ComicsReadRoute extends PageRouteInfo<ComicsReadRouteArgs> {
+  ComicsReadRoute({
+    Key? key,
+    required Serial serial,
+    required String url,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ComicsReadRoute.name,
+          args: ComicsReadRouteArgs(
+            key: key,
+            serial: serial,
+            url: url,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ComicsReadRoute';
+
+  static const PageInfo<ComicsReadRouteArgs> page =
+      PageInfo<ComicsReadRouteArgs>(name);
+}
+
+class ComicsReadRouteArgs {
+  const ComicsReadRouteArgs({
+    this.key,
+    required this.serial,
+    required this.url,
+  });
+
+  final Key? key;
+
+  final Serial serial;
+
+  final String url;
+
+  @override
+  String toString() {
+    return 'ComicsReadRouteArgs{key: $key, serial: $serial, url: $url}';
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mult_love/common/assets/constants.dart';
 import 'package:mult_love/common/widgets/appbar.dart';
+import 'package:mult_love/features/app/router/router.dart';
 import 'package:mult_love/features/comics_category/bloc/comics_category_bloc.dart';
 import 'package:mult_love/features/comics_category/data/models/comics.dart';
 import 'package:mult_love/features/comics_category/di/comics_category_scope.dart';
@@ -105,7 +106,12 @@ class _BodyList extends StatelessWidget {
                 color: Colors.transparent,
                 child: InkWell(
                   onTap: () {
-                    // TODO:
+                    context.router.push(
+                      ComicsReadRoute(
+                        serial: serial,
+                        url: comicses[index].url,
+                      ),
+                    );
                   },
                 ),
               ),

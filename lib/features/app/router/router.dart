@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mult_love/features/calendar/widgets/calendar_screen.dart';
 import 'package:mult_love/features/comics/widget/comics_screen.dart';
 import 'package:mult_love/features/comics_category/widget/comics_category_screen.dart';
+import 'package:mult_love/features/comics_read/widget/comics_read_page.dart';
 import 'package:mult_love/features/init/widgets/initial_page.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
 import 'package:mult_love/features/main/widgets/main_page.dart';
@@ -42,6 +43,9 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           page: ComicsCategoryRoute.page,
+        ), 
+        AutoRoute(
+          page: ComicsReadRoute.page,
         ),
       ];
 }

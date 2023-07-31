@@ -10,5 +10,7 @@
   "season": "season",
   "seria": "series",
   "serials": "Serials",
-  "unknown_error": "Unknown error"
+  "unknown_error": "Unknown error",
+  "next": "Next",
+  "previous": "Previous"
 }

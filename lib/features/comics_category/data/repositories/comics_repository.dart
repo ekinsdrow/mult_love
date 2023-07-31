@@ -33,7 +33,7 @@ class ComicsRepository implements IComicsRepository {
       result.add(
         Comics(
           imageUrl: serialUrl + '/' + div.querySelector('img')!.attributes['src']!,
-          url: serialUrl + '/' + div.querySelector('a')!.attributes['href']!,
+          url: serialUrl + '/' + div.querySelector('a')!.attributes['href']!.replaceFirst('#mark', ''),
         ),
       );
     }
