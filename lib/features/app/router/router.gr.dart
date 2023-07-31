@@ -33,9 +33,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     ComicsRoute.name: (routeData) {
+      final args = routeData.argsAs<ComicsRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ComicsPage(),
+        child: ComicsPage(
+          key: args.key,
+          serial: args.serial,
+        ),
       );
     },
     CalendarRoute.name: (routeData) {
@@ -136,16 +140,39 @@ class InitialRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ComicsPage]
-class ComicsRoute extends PageRouteInfo<void> {
-  const ComicsRoute({List<PageRouteInfo>? children})
-      : super(
+class ComicsRoute extends PageRouteInfo<ComicsRouteArgs> {
+  ComicsRoute({
+    Key? key,
+    required Serial serial,
+    List<PageRouteInfo>? children,
+  }) : super(
           ComicsRoute.name,
+          args: ComicsRouteArgs(
+            key: key,
+            serial: serial,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ComicsRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ComicsRouteArgs> page = PageInfo<ComicsRouteArgs>(name);
+}
+
+class ComicsRouteArgs {
+  const ComicsRouteArgs({
+    this.key,
+    required this.serial,
+  });
+
+  final Key? key;
+
+  final Serial serial;
+
+  @override
+  String toString() {
+    return 'ComicsRouteArgs{key: $key, serial: $serial}';
+  }
 }
 
 /// generated route for

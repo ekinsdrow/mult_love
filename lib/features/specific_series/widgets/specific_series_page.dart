@@ -7,7 +7,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:mult_love/common/assets/constants.dart';
 import 'package:mult_love/common/widgets/appbar.dart';
-import 'package:mult_love/features/app/router/router.dart';
 import 'package:mult_love/features/main/data/models/serial.dart';
 import 'package:mult_love/features/specific_series/bloc/specific_series_bloc/specific_series_bloc.dart';
 import 'package:mult_love/features/specific_series/di/specific_series_scope.dart';
