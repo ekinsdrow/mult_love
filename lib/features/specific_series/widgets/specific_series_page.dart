@@ -192,7 +192,7 @@ class _SpecificSeriesPageState extends State<SpecificSeriesPage> {
                             data: specificSeries.description,
                             style: {
                               '*': Style(
-                                margin: EdgeInsets.zero,
+                                margin: Margins.zero,
                               ),
                             },
                           ),

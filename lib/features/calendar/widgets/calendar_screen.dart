@@ -96,7 +96,7 @@ class _Body extends StatelessWidget {
                   data: series[index].date,
                   style: {
                     '*': Style(
-                      margin: EdgeInsets.zero,
+                      margin: Margins.zero,
                       fontWeight: FontWeight.bold,
                     ),
                   },
